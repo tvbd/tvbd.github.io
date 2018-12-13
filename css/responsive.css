@@ -1,0 +1,259 @@
+/* ----------------------------------------------------------------------- */
+/* 	Coming Soon Style 2 Responsive CSS */
+/*------------------------------------------------------------------------ */
+@media screen and (max-width: 1199px) {
+    h1 {
+        line-height: 1;
+        font-size: 36px;
+    }
+    h2 {
+        font-size: 30px;
+    }
+    h3 {
+        font-size: 24px;
+    }
+    .primary-title {
+        margin-bottom: 20px;
+    }
+    .tab-content {
+        padding-left: 50px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .padding-big {
+        padding: 50px 0;
+    }
+    .tab-content {
+        max-width: 600px;
+        padding-left: 100px;
+    }
+    .countdown-timer li span:first-child {
+        font-size: 36px;
+        padding-bottom: 15px;
+    }
+    .countdown-timer li span:first-child:after {
+        top: 15px;
+    }
+    .countdown-timer li span:last-child {
+        margin-top: 15px;
+    }
+    .countdown-timer li {
+        margin: 0 .5%;
+        padding: 25px 5px;
+        width: 19%;
+    }
+    .tab-style-two {
+        margin-top: -45px;
+    }
+    .tab-style-two {
+        padding: 32px 25px;
+    }
+.owl-carousel {
+    margin-top: 15px;
+
+}
+}
+
+@media screen and (max-width: 767px) {
+    .xs-no-positioning {
+        position: static;
+        -webkit-transform: none;
+           -moz-transform: none;
+            -ms-transform: none;
+             -o-transform: none;
+                transform: none;
+    }
+    .logo {
+    padding-left: 15px;
+}
+.owl-carousel {
+    margin-top: 15px;
+
+}
+.carousel-control.left {
+    left: -10px;
+    
+}
+.carousel-control.right {
+    right: -10px;
+    
+}
+    html,
+	body {
+        height: auto;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    h2 {
+        font-size: 26px;
+    }
+    h3 {
+        font-size: 22px;
+    }
+    .rect-1 {
+        -webkit-border-radius: 20px 0 20px 0;
+           -moz-border-radius: 20px 0 20px 0;
+                border-radius: 20px 0 20px 0;
+    }
+    .rect-2 {
+        -webkit-border-radius: 0 12px 0 12px;
+           -moz-border-radius: 0 12px 0 12px;
+                border-radius: 0 12px 0 12px;
+    }
+
+	
+    .tab-style-two {
+        margin-top: 0;
+    }
+    .tab-content {
+        max-width: 100%;
+        padding-left: 0;
+    }
+    .modal-dialog,
+	.tab-container {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        -webkit-border-radius: 0;
+           -moz-border-radius: 0;
+                border-radius: 0;
+    }
+    .tab-container {
+        height: auto;
+    }
+    .tab-controller {
+        float: none !important;
+    }
+    .tab-controller {
+        text-align: center;
+        padding: 12px;
+        margin-bottom: 35px;
+    }
+    .tab-controller li {
+        display: inline-block;
+        width: 30%;
+    }
+    .tab-style-two li a {
+        -webkit-transform: none;
+           -moz-transform: none;
+            -ms-transform: none;
+             -o-transform: none;
+                transform: none;
+    }
+    .countdown-timer li {
+        width: 23%;
+    }
+    .field-half-width {
+        width: 100%;
+        float: none !important;
+    }
+    .btn {
+        max-width: 140px;
+    }
+    .form-inline .form-control {
+        padding-right: 140px;
+        -webkit-border-radius: 30px;
+           -moz-border-radius: 30px;
+                border-radius: 30px;
+    }
+    .footer-menu {
+        text-align: center;
+        border: none;
+    }
+    .modal-footer ul,
+	.modal-footer {
+        float: none !important;
+        text-align: center;
+    }
+    .modal-footer ul {
+        margin-bottom: 15px;
+    }
+    .modal .contact-form {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 491px) {
+    .exs-full-width {
+        width: 100%;
+    }
+	.modal-dialog, .tab-container {
+        width: 95%;
+    }
+    h1 {
+        line-height: 1.2;
+    }
+    .main-header,
+    .main-body {
+        padding: 10px 0;
+    }
+    .btn,
+	.form-control {
+        height: 45px;
+    }
+    .main-header {
+        padding: 20px 0px 0px 0px;
+        text-align: center;
+    }
+    .logo {
+        padding-left: 0;
+        margin-top: 25px;
+    }
+    .header-right {
+        float: none !important;
+    }
+    .tab-content {
+        text-align: center;
+    }
+    .countdown-timer li {
+        width: 45%;
+        margin: 2%;
+    }
+    .padding-big {
+        padding: 30px 0;
+    }
+    .form-inline .form-control {
+        padding-right: 25px;
+        padding-left: 25px;
+    }
+    .form-inline .btn {
+        position: relative;
+        margin-top: 15px;
+        min-width: 75%;
+    }
+    .tab-controller {
+        padding: 0;
+        border: none;
+    }
+    .tab-controller li {
+        width: auto;
+        margin: 0;
+    }
+    .tab-style-two li a {
+        font-size: 13px;
+        padding: 10px 18px;
+    }
+	.footer-menu li {
+		padding: 0;
+	}
+.owl-carousel {
+    margin-top: 15px;
+
+}
+.carousel-control.left {
+    left: -10px;
+height: 20px;
+  width : 20px;
+font-size: 9px;
+    
+}
+.carousel-control.right {
+    right: -10px;
+height: 20px;
+  width : 20px;
+font-size: 9px;
+    
+}
+}
