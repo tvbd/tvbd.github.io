@@ -4,14 +4,14 @@
 <item>
 <title>Gazi TV</title>
 <description>HDTV</description>
-<jwplayer:image>http://broadbandathome.com/tv/starselect1.jpg</jwplayer:image>
+<jwplayer:image>https://tvbd.github.io/img/channels/masranga.png</jwplayer:image>
 <jwplayer:source file="http://103.85.196.10:8080/hls/one.m3u8"/>
 </item>
 
 <item>
 <title>SPORTS 2</title>
 <description>HDTV</description>
-<jwplayer:image>http://broadbandathome.com/tv/gazitv.jpg</jwplayer:image>
+<jwplayer:image>/img/channels/masranga.png</jwplayer:image>
 <jwplayer:source file="http://boss.bdtv.live:8080/hls/2.m3u8"/>
 </item>
 
