@@ -1,7 +1,7 @@
 jwplayer.key="cbPZjCLEJ+O5oZl0AvaDQqyb50+ydDAD5kEqJuS10Zg=";
 
 jwplayer("vplayer").setup({
-			playlist: "playlist.rss",
+			playlist: "https://tvbd.github.io/1/playlist.rss",
 			width: '100%',
 			preload: "none",
 			primary: "html5",
