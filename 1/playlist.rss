@@ -5,43 +5,35 @@
 <title>Gazi TV</title>
 <description>HDTV</description>
 <jwplayer:image>http://broadbandathome.com/tv/starselect1.jpg</jwplayer:image>
-<jwplayer:source file="http://103.85.196.10:8080/hls/one.m3u8" />
+<jwplayer:source file="http://103.85.196.10:8080/hls/one.m3u8"/>
 </item>
 
 <item>
 <title>SPORTS 2</title>
 <description>HDTV</description>
 <jwplayer:image>http://broadbandathome.com/tv/gazitv.jpg</jwplayer:image>
-<jwplayer:source file="http://boss.bdtv.live:8080/hls/2.m3u8" />
+<jwplayer:source file="http://boss.bdtv.live:8080/hls/2.m3u8"/>
 </item>
 
 <item>
 <title>SPORTS 3</title>
 <description>HDTV</description>
 <jwplayer:image>http://broadbandathome.com/tv/masranga.jpg</jwplayer:image>
-<jwplayer:source file="http://boss.bdtv.live:8080/hls/3.m3u8" />
+<jwplayer:source file="http://boss.bdtv.live:8080/hls/3.m3u8"/>
 </item>
 
 <item>
 <title>SPORTS 4</title>
 <description>HDTV</description>
 <jwplayer:image>http://broadbandathome.com/tv/sonysix.jpg</jwplayer:image>
-<jwplayer:source file="http://boss.bdtv.live:8080/hls/4.m3u8" />
+<jwplayer:source file="http://boss.bdtv.live:8080/hls/4.m3u8"/>
 </item>
 
 <item>
 <title>SPORTS 4</title>
 <description>HDTV</description>
 <jwplayer:image>http://broadbandathome.com/tv/sonysix.jpg</jwplayer:image>
-<jwplayer:source file="http://boss.bdtv.live:8080/hls/5.m3u8" />
-</item>
-
-
-<item>
-<title>SPORTS 4</title>
-<description>HDTV</description>
-<jwplayer:image>http://broadbandathome.com/tv/sonysix.jpg</jwplayer:image>
-<jwplayer:source file="http://boss.bdtv.live:8080/hls/6.m3u8" />
+<jwplayer:source file="http://boss.bdtv.live:8080/hls/5.m3u8"/>
 </item>
 
 
@@ -49,7 +41,15 @@
 <title>SPORTS 4</title>
 <description>HDTV</description>
 <jwplayer:image>http://broadbandathome.com/tv/sonysix.jpg</jwplayer:image>
-<jwplayer:source file="http://boss.bdtv.live:8080/hls/7.m3u8" />
+<jwplayer:source file="http://boss.bdtv.live:8080/hls/6.m3u8"/>
+</item>
+
+
+<item>
+<title>SPORTS 4</title>
+<description>HDTV</description>
+<jwplayer:image>http://broadbandathome.com/tv/sonysix.jpg</jwplayer:image>
+<jwplayer:source file="http://boss.bdtv.live:8080/hls/7.m3u8"/>
 </item>
 
 
