@@ -2,10 +2,10 @@
 <channel>
 
 <item>
-<title>SPORTS 1</title>
+<title>Gazi TV</title>
 <description>HDTV</description>
 <jwplayer:image>http://broadbandathome.com/tv/starselect1.jpg</jwplayer:image>
-<jwplayer:source file="http://boss.bdtv.live:8080/hls/1.m3u8" />
+<jwplayer:source file="http://103.85.196.10:8080/hls/one.m3u8" />
 </item>
 
 <item>
