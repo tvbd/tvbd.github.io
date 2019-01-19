@@ -3,22 +3,33 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Ebilive</title>
-		<meta name="author" content="mzyy94">
-		<meta name="description" content="Ebilive - Ebi movie live broadcasting">
+		<meta name="author" content="tvbd">
+		<meta name="description" content="Tvbd live broadcasting">
 		<meta name="keywords" content="ebilive">
-		<style type="text/css">
-			body {
-				background-color: #000;
-			}
-			#player {
-				margin: 20px auto;
-				display: block;
-			}
-		</style>
+		
 		<script type="text/javascript" src="plugin/swfobject.js"></script>
 	</head>
 	<body>
-		<video width="1280" height="720" autoplay src="http://172.28.28.112/live/antbd1001/index.m3u8" id="player" controls></video>
+		<script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+
+</script>
+<script>
+  var responseText = ''+sv+'';
+  urlArry = responseText.split(',');
+  start = true;
+  num_of_urlArry = urlArry.length;
+  index_of_urlArry = 0;
+</script>
+		
+		<video width="1280" height="720" autoplay src="'+sv+'" id="player" controls></video>
 		<script type="text/javascript">
 		var player = null;
 		
@@ -32,7 +43,7 @@
 			}
 			
 			var parameters = {
-				src: location.protocol + "//" + location.host +  "http://172.28.28.112/live/antbd1001/index.m3u8",
+				src: "'+sv+'",
 				autoPlay: true,
 				verbose: true,
 				controlBarAutoHide: true,
