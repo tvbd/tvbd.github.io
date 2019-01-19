@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Ebilive</title>
+		<meta name="author" content="mzyy94">
+		<meta name="description" content="Ebilive - Ebi movie live broadcasting">
+		<meta name="keywords" content="ebilive">
+		<style type="text/css">
+			body {
+				background-color: #000;
+			}
+			#player {
+				margin: 20px auto;
+				display: block;
+			}
+		</style>
+		<script type="text/javascript" src="plugin/swfobject.js"></script>
+	</head>
+	<body>
+		<video width="1280" height="720" autoplay src="live/index.m3u8" id="player" controls></video>
+		<script type="text/javascript">
+		var player = null;
+		
+		var ua = window.navigator.userAgent.toLowerCase();
+		if (/(ipod|iphone|ipad|macintosh|android)/.test(ua) && /^(?!.*chrome).*$/.test(ua) && /safari/.test(ua)) {
+			player = document.getElementById("player");
+			player.play()
+		} else {
+			function jsbridge(playerId, event, data) {
+				player = player || document.getElementById(playerId);
+			}
+			
+			var parameters = {
+				src: location.protocol + "//" + location.host +  "/live/index.m3u8",
+				autoPlay: true,
+				verbose: true,
+				controlBarAutoHide: true,
+				controlBarPosition: "bottom",
+				javascriptCallbackFunction: "jsbridge",
+				plugin_hls: "plugin/flashlsOSMF.swf",
+				hls_minbufferlength: -1,
+				hls_maxbufferlength: 300,
+				hls_lowbufferlength: 3,
+				hls_seekmode: "KEYFRAME",
+				hls_startfromlevel: -1,
+				hls_seekfromlevel: -1,
+				hls_live_flushurlcache: false,
+				hls_info: true,
+				hls_warn: true,
+				hls_error: true,
+				hls_fragmentloadmaxretry : -1,
+				hls_manifestloadmaxretry : -1,
+				hls_capleveltostage : false,
+				hls_maxlevelcappingmode : "downscale"
+			};
+			
+			swfobject.embedSWF(
+				"plugin/GrindPlayer.swf",
+				"player",
+				1280,
+				720,
+				"10.1.0",
+				"expressInstall.swf",
+				parameters,
+				{
+					allowFullScreen: "true"
+				},
+				{
+					name: "player"
+				}
+			);
+		}
+		</script>
+	</body>
+</html>
