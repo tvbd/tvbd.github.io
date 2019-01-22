@@ -12,15 +12,8 @@
 </head>
 <body>
 
-<div id='anc_pl'></div>
 
-<div id='anc_tp'></div>
-<div id='anc_data'>
-[id]HD;anc.gn/https://www.youtube.com/watch?v=qbfRwfQKcXk|
-02;anc.jw/https://www.youtube.com/watch?v=tjUMEOXzRK8|
-[/id]
-</div>
-</div>
+
 
 <style type='text/css'>
 id{font-size:0px;display:none;width:0;height:0;}
@@ -37,6 +30,16 @@ id{font-size:0px;display:none;width:0;height:0;}
 .sv_active{margin-top: 4px;display: block;float: left;border-bottom: 2px solid #CA8800;padding-bottom: 0;padding-left: 0;width: 100%;color: #CA8800;}
 #logoplayer {background: url(https://4.bp.blogspot.com/-7SK6MIIqmQo/WwaYuIwVinI/AAAAAAAAA5Q/S5cwexVdx1Ylh667OQDIV7E9hxeSKVwXQCLcBGAs/s320/LogoMakr_4vPbcY.png) no-repeat;float:left;display:inline-block;position:absolute;width:200px;height:45px;margin: 330px 500px;filter:alpha(opacity=45);opacity:.45;}
 </style>
+
+<div id='anc_pl'></div><div id='anc_tp'></div>
+
+<div id='anc_data'>
+[id]HD;anc.jw/https://www.youtube.com/watch?v=qbfRwfQKcXk|
+02;anc.jw/https://www.youtube.com/watch?v=tjUMEOXzRK8|
+[/id]
+</div>
+
+
 
 
 
@@ -213,9 +216,9 @@ rut = '<iframe width="100%" height="'+height+'" src="';
 qua = '<div id="logoplayer"></div><';
 	return obj = [
 	// grind 
-'<object data="//www.hlsplayer.net/player/grindplayer/GrindPlayer.swf" id="playerayer" height="'+width+'" id="player" style="visibility: visible;" type="application/x-shockwave-flash" width="'+width+'"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="opaque" name="wmode"><param value="autoPlay=true&src='+x+'&streamType=live&scaleMode=letterbox&plugin_hls=//www.hlsplayer.net/player/grindplayer/flashlsOSMF.swf&hls_debug=false&hls_debug2=false&hls_minbufferlength=-1&hls_lowbufferlength=2&hls_maxbufferlength=60&hls_startfromlowestlevel=false&hls_seekfromlowestlevel=false&hls_live_flushurlcache=false&hls_seekmode=ACCURATE&hls_capleveltostage=false&hls_maxlevelcappingmode=downscale" name="flashvars" id="playerayer"></object> ',
+'<div class="tbn_css_frame_wrap"> <div class="tbn_css_frame_wrap_inner bottomshadows"><object data="//www.hlsplayer.net/player/grindplayer/GrindPlayer.swf" id="playerayer" height="'+width+'" id="player" style="visibility: visible;" type="application/x-shockwave-flash" width="'+width+'"><param value="true" name="allowFullScreen"><param value="always" name="allowScriptAccess"><param value="opaque" name="wmode"><param value="autoPlay=true&src='+x+'&streamType=live&scaleMode=letterbox&plugin_hls=//www.hlsplayer.net/player/grindplayer/flashlsOSMF.swf&hls_debug=false&hls_debug2=false&hls_minbufferlength=-1&hls_lowbufferlength=2&hls_maxbufferlength=60&hls_startfromlowestlevel=false&hls_seekfromlowestlevel=false&hls_live_flushurlcache=false&hls_seekmode=ACCURATE&hls_capleveltostage=false&hls_maxlevelcappingmode=downscale" name="flashvars" id="playerayer"></object></div></div> ',
 
-'<div class="player" id="player"><div class="player-inner"></div></div><input  type="hidden" name="stream_url" id=stream_url value="'+x+'">',
+'<div class=player id=player><div class=player-inner></div></div><input  type="hidden" name="stream_url" id=stream_url value="'+x+'">',
 
 
 // 1 grind
@@ -273,6 +276,17 @@ else
 if($("#url-form").find("#error_text"))
 {$("#url-form").find("#error_text").remove();}
 return true;}} </script>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
