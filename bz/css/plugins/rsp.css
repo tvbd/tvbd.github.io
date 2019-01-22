@@ -1,0 +1,7 @@
+.vid-block {
+    position: relative;
+    width: 100%;
+}
+.player_responsive .vjs-fullscreen  {
+    padding-top: 0px !important;
+}
