@@ -66,14 +66,14 @@ var sv = getParam("sv");
 							
 							
 							
-							<video id="video-player" class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9"   controls preload="auto" autoplay="true"  playsInline  width="640" height="360" poster="img/thumb.jpg" data-setup='{}'>
+							<video id="video-player" class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9"   controls preload="auto"  playsInline  width="640" height="360" poster="img/thumb.jpg" autoplay data-setup='{"fluid":true,"plugins":{"airplayButton":{}}}'>
 
 							  </video>
 								<script>
 									videojs('video-player', {
 										controls: true,
 										techOrder:  ["youtube"],
-										sources: [{ "type": "video/youtube", "src": ""+sv+"""}],
+										sources: [{ "type": "video/youtube", "src": ""+sv+""}],
 										plugins: {
 											videoJsResolutionSwitcher: {
 												default: 'low',
