@@ -72,11 +72,12 @@ var sv = getParam("sv");
 								<script>
 									videojs('video-player', {
 										controls: true,
+										autoplay: true,
 										techOrder:  ["youtube"],
 										sources: [{ "type": "video/youtube", "src": ""+sv+""}],
 										plugins: {
 											videoJsResolutionSwitcher: {
-												default: 'low',
+												default: 'high',
 												dynamicLabel: true
 											}
 										}
