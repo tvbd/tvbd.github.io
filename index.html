@@ -1,408 +1,76 @@
-<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
-<head>
-<link href='//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css' rel='stylesheet'/>
-<script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' type='text/javascript'></script>
-<meta content='IE=EmulateIE7' http-equiv='X-UA-Compatible'/>
-<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
-<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-
-<meta content='' property='og:description'/>
-<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
-<title>BDIX |Exclusive ServerBD</title>
-
-</head>
-<body>
-<script type='text/javascript'>
-//<![CDATA[	
-(function ($) {
-    $.fn.accordion = function (duration) {
-        if (duration == null)
-            duration = 200;
-        this.find("[data-type='accordion-section']").each(function () {
-            $(this).attr("draggable", "true");
-            var content = $(this).find("[data-type='accordion-section-body']");
-            var title = $(this).find("[data-type='accordion-section-title']");
-            title.addClass("header-default");
-            content.addClass("content-default");
-            title.append("<i class='fa fa-plus-circle right'></i>")
-            title.click(function () {
-                if (content.css("display") == "none") {
-                    $("[data-type='accordion-section-title']").each(function () {
-                        $(this).removeClass("header-active");
-                        $(this).find("i").removeClass("fa-minus-circle");
-                        $(this).find("i").addClass("fa-plus-circle");
-                    });
-                    $(this).addClass("header-active");
-                    $("[data-type='accordion-section-body']").each(function () {
-                        $(this).hide(duration);
-                    });
-                    content.show(duration);
-                    title.find("i").addClass("fa-minus-circle");
-                    title.find("i").removeClass("fa-plus-circle");
-                } else {
-                    content.hide(duration);
-                    title.removeClass("header-active");
-                    title.find("i").removeClass("fa-minus-circle");
-                    title.find("i").addClass("fa-plus-circle");
-                }
-            });
-        });
-
-        /*Make search*/
-        $("[data-type='accordion-search']").keyup(function () {
-            var expression = false;
-            var value = $(this).val();
-            var finder = "";
-            if (value.indexOf("\"") > -1 && value.lastIndexOf("\"") > 0) {
-                finder = value.substring(eval(value.indexOf("\"")) + 1, value.lastIndexOf("\""));
-                expression = true;
-            }
-            $("[data-type='accordion-section']").each(function () {
-                var title = $(this).find("[data-type='accordion-section-title']").text();
-                if (expression) {
-                    if ($(this).text().toLowerCase().search(finder.toLowerCase()) == -1) {
-                        $(this).hide();
-                    } else {
-                        $(this).show();
-                    }
-                } else {
-                    if (title.toLowerCase().indexOf(value.toLowerCase()) < 0) {
-                        $(this).hide();
-                    } else {
-                        $(this).show();
-                    }
-                }
-            });
-        });
-
-        /**/
-        $("[data-type='accordion-ordering']").each(function () {
-            var ordering = $(this).attr("ordering");
-            if (ordering == "")
-                ordering = "asc";
-            if (ordering == "asc") {
-                $(this).append("<i class='fa fa-2x fa-sort-alpha-asc'></i>");
-
-            } else {
-                $(this).append("<i class='fa fa-2x fa-sort-alpha-desc'></i>");
-            }
-            $(this).click(function () {
-                var sections = $("[data-type='accordion-section']");
-                for (i = 0; i < sections.length; i++) {
-                    for (x = 0; x < sections.length; x++) {
-                        var str1 = sections.eq(x).find("[data-type='accordion-section-title']").text();
-                        var str2 = sections.eq(x + 1).find("[data-type='accordion-section-title']").text();
-                        if (ordering == "desc") {
-                            if (str2 > str1) {
-                                sections.eq(x).before(sections.eq(x + 1));
-                            }
-                        } else {
-                            if (str2 < str1) {
-                                sections.eq(x).before(sections.eq(x + 1));
-                            }
-                        }
-                        sections = $("[data-type='accordion-section']");
-                    }
-                }
-            });
-        });
-        $("[data-type='accordion-filter']").change(function () {
-            var selected = $(this).select().val();
-            $("[data-type='accordion-section']").each(function () {
-                $(this).show();
-                if (selected != "default") {
-                    if ($(this).attr("data-filter") != selected) {
-                        if ($(this).css("display") == "block")
-                            $(this).hide();
-                    }
-                }
-            });
-        });
-        return this;
-    };
-})(jQuery);
-//]]>
-</script>
-<style>
-
-
-.list {
-	float: left;
-	width: 17%;
-	overflow-y: auto;
-	height: 100%;
-	overflow-x: hidden;
-	padding-right: 0.33%;
-	margin-right: 0.65%;
-}
-@media (max-width: 600px) {
-.list {
-	float: left;
-	width: 100%;
-	overflow-y: auto;
-	height: 191px;
-	overflow-x: hidden;
-	margin-bottom: 7px;
-	padding-right: 0;
-	margin-right: 0;
-}
-}
-
-.playerdiv {
-	width:82%;
-	float: left;
-	background: #000000;
-	
-}
-
-.sectionplayer {
-	padding-top: px;
-}
-
-@media (max-width: 600px) {
-.playerdiv {
-	width: 100%;
-	float: left;
-	left: 0;
-	padding: 0;
-}
-}
-
-#ploader {
-    height: 800px;
-}
-@media (max-width: 600px) {
-#ploader {
-     height: 100%;
-}
-}
-@media (max-width: 500px) {
-#ploader {
-     height: 100%;
-}
-}
-@media (max-width: 450px) {
-#ploader {
-     height: 100%;
-}
-}
-@media (max-width: 400px) {
-#ploader {
-    height: 100%;
-}
-}
-
-.header-default {
-	box-sizing: border-box;
-	width: 100%;
-	padding: 8px 10px 8px;
-	border: 1px solid #d1d1d1;
-	background-color: #202020;
-	color: #FFF;
-	margin-bottom: -0.2em !important;
-	cursor: pointer;
-	font-size: 15px;
-	margin-top: 2px;
-}
-
-
-#filter {
-	width: 100%;
-	padding: 0px 0px 1px 6px;
-	border: 1px solid #d1d1d1;
-	background-color: #0E0E0E; 
-	height: 36px;
-	margin-top: 4px;
-	color: #fff;
-	font: normal normal 14px Poppins;
-}
-
-.header-default:hover { background-color: #000000; }
-
-.header-active {
-  background-color: #000 !important;
-  margin-bottom: 0px !important;
-}
-
-.header-active:hover { background-color: #000 !important; }
-
-.content-default { display: none; }
-.right { float: right; }
-
-.accordion-content {
-	text-align: justify;
-	box-sizing: border-box;
-	margin: 0px;
-	padding: 6px 12px 6px;
-	border: 1px solid #d1d1d1;
-	/* border-bottom-left-radius: 10px; */
-	border-bottom-right-radius: 10px;
-	font-size: 12px;
-	color: #000;
-	cursor: pointer;
-	background: #FFF;
-	/* height: 20px; */
-	border-top-width: 0;
-}
-
-#search {
-	background-image: url('//i.imgur.com/cdalOVI.png');
-	background-position: 13px 9px;
-	background-repeat: no-repeat;
-	width: calc(100% - 2px);
-	font: normal normal 14px Poppins;
-	padding: 0px 0px 0px 40px;
-	border: 2px solid #2C2C2C;
-	background-color: #FFFFFF;
-	height: 29px;
-	color: #000000;
-	border-top-right-radius: 6px;
-	border-bottom-left-radius: 5px;
-	
-
- [data-type="accordion-search"] {
- min-height: 15px;
- border-radius: 4px;
-}
- [data-type="accordion-filter"] {
- min-height: 15px;
- border-radius: 0px;
- min-width: 120px;
- height: 20px;
-}
-}
-
-</style>
-<div class='sectionplayer'>
-<div class='list'>
-<input data-type='accordion-search' id='search' name='search' placeholder='SEARCH...' type='text'/>
-<select data-type='accordion-filter' id='filter' name='filter'>
-<option value='default'></option>BY CATEGORY
-<option value='bein'></option>beIN SPORTS
-<option value='adsport'></option>AD SPORTS
-<option value='mbc'></option>MBC
-<option value='morocco'></option>MOROCCO
-<option value='algeria'></option>ALGERIA
-<option value='egypt'></option>EGYPT
-</select>
-<section id='accordion'>
-<div data-filter='bdix' data-type='accordion-section'>
-<h3 data-type='accordion-section-title'>Bdix Tv Server</h3>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://amrbd.com&#39;)'>Amrbd</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://172.28.28.112&#39;)'>172.28.28.112 </div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://bdtv.live/&#39;)'>BDTV</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://175.41.46.16&#39;)'>Bdix</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://serverbd247.com/livetv/&#39;)'>serverbd247</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://www.bossbd.net/TV/&#39;)'>Bosstv</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://tv.bossbd.net/&#39;)'>Fastway</div>
-</div>
-<div data-filter='bpl' data-type='accordion-section'>
-<h3 data-type='accordion-section-title'>BPL 2019</h3>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://tvbd.github.io/try/?sv=http://172.28.28.112/live/antbd1001/index.m3u8&#39;)'>Dsports</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;https://www.tvbd.cf/try/?sv=http://172.28.28.112/live/antbd1006/index.m3u8&#39;)'>Gavi_Tv</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;https://www.tvbd.cf/try/?sv=http://103.85.196.10:8080/hls/one.m3u8&#39;)'>Masranga_Tv</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://www.tvbd.cf/try/?sv=http://boss.bdtv.live:8080/hls/2.m3u8&#39;)'>Masranga_Tv2</div>
-</div>
-	
-<div data-filter='ltv' data-type='accordion-section'>
-<h3 data-type='accordion-section-title'>Local Tv Sever</h3>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://www.jagobd.com&#39;)'>Jago BD</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://www.bioscopelive.com/en/featured-tv/&#39;)'>Bioscope Live</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://banglaflix.com.bd/&#39;)'>Banglafix</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://c247.se/&#39;)'>SpotsLive</div>
-
-</div>
-
-
-	
-<div data-filter='mp3' data-type='accordion-section'>
-<h3 data-type='accordion-section-title'>Ftp Sever</h3>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://timepassbd.com/&#39;)'>Timepassbd</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://dhakamovie.com/&#39;)'>Dhakamovie</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://naturalbd.com/&#39;)'>Naturalbd</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://bokashoka.com/&#39;)'>Bokashoka</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://ihub.live/&#39;)'>ihub</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://banglaflix.com.bd/&#39;)'>Banglafix</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://plygig.com/&#39;)'>Plygig</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://cdn.bossbd.net&#39;)'>Bossbd</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://www.crazynetbd.com/movie/&#39;)'>Crazynetbd</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://emby.bossbd.net:8096/&#39;)'>Emby Boss</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://103.106.59.226:8096/web/index.html&#39;)'>Emby ajobnet</div>
-
-</div>	
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Ebilive</title>
+		<meta name="author" content="mzyy94">
+		<meta name="description" content="Ebilive - Ebi movie live broadcasting">
+		<meta name="keywords" content="ebilive">
+		<style type="text/css">
+			body {
+				background-color: #000;
+			}
+			#player {
+				margin: 20px auto;
+				display: block;
+			}
+		</style>
+		<script type="text/javascript" src="plugin/swfobject.js"></script>
+	</head>
+	<body>
+		<video width="1280" height="720" autoplay src="http://boss.bdtv.live:8080/hls/2.m3u8" id="player" controls></video>
+		<script type="text/javascript">
+		var player = null;
 		
-
-
-
-<div data-filter='pcgames' data-type='accordion-section'>
-<h3 data-type='accordion-section-title'>Pc Games Sever</h3>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://ftp.alphamediazone.com/Games/PC%20Games&#39;)'>Alphazone</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://ftp.alphamediazone.com/Games/PC%20Games%20New&#39;)'>Alphazone2 </div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://ftp.alphamediazone.com/Games/Console%20Games/&#39;)'>Consol </div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://cdn.bossbd.net/Games/&#39;)'>Bossbd</div>
-</div>
-	
-<div data-filter='apkgames' data-type='accordion-section'>
-<h3 data-type='accordion-section-title'>Andriod Games Sever</h3>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://ftp.alphamediazone.com/Games/Android%20Games/&#39;)'>AlphaZone</div>
-</div>	
-
-
-	
-<div data-filter='torrent' data-type='accordion-section'>
-<h3 data-type='accordion-section-title'>Torrent Sever</h3>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;https://www.bdix.org/index.php&#39;)'>CrazzyHD(Bdix)</div>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;https://www.torrentbd.com./&#39;)'>Torrent BD (Bdix)</div>
-</div>	
-
-	
-	
-<div data-filter='mp3' data-type='accordion-section'>
-<h3 data-type='accordion-section-title'>Mp3 Sever</h3>
-<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://banglaflix.com.bd/audio/&#39;)'>BanglaFlix</div>
-
-</div>	
-		
-</br>	
-Copyright © Bdix
-</br> 
- 
- <a href='https://www.symptoma.es/'>Síntomas</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=27fc10a90bf3350360c57a32414b4413251f974e'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/473735/t/1"></script>
-</br> </br>
-<script language='JavaScript' src='http://www.ipaddresslocation.org/my-ip-address.php' type='text/JavaScript'></script>
-
-
-</section>
-<script>
-//<![CDATA[	
-$(document).ready(function () {
-$("#accordion").accordion();
-});
-//]]>
-</script>
-</div>
-<div class='playerdiv'>
-<div id='ploader'>
-<iframe class='wrapper' sandbox="allow-same-origin allow-scripts allow-popups allow-forms"  data-autoplay='true' frameborder='0' height='100%' id='blockrandom' mozallowfullscreen='' name='iframe' scrolling='yes' src='http://www.youtube.com/embed/iHRwW41LmBw' style='height: 100%; margin-top: 0px; width: 100%;' width='100%'>
-</iframe></div>
-<script>
-	//<![CDATA[	
-		function loadPlayer(url) {
-			document.getElementById('blockrandom').setAttribute('src', url);
+		var ua = window.navigator.userAgent.toLowerCase();
+		if (/(ipod|iphone|ipad|macintosh|android)/.test(ua) && /^(?!.*chrome).*$/.test(ua) && /safari/.test(ua)) {
+			player = document.getElementById("player");
+			player.play()
+		} else {
+			function jsbridge(playerId, event, data) {
+				player = player || document.getElementById(playerId);
+			}
+			
+			var parameters = {
+				src: "http://boss.bdtv.live:8080/hls/2.m3u8",
+				autoPlay: true,
+				verbose: true,
+				controlBarAutoHide: true,
+				controlBarPosition: "bottom",
+				javascriptCallbackFunction: "jsbridge",
+				plugin_hls: "plugin/flashlsOSMF.swf",
+				hls_minbufferlength: -1,
+				hls_maxbufferlength: 300,
+				hls_lowbufferlength: 3,
+				hls_seekmode: "KEYFRAME",
+				hls_startfromlevel: -1,
+				hls_seekfromlevel: -1,
+				hls_live_flushurlcache: false,
+				hls_info: true,
+				hls_warn: true,
+				hls_error: true,
+				hls_fragmentloadmaxretry : -1,
+				hls_manifestloadmaxretry : -1,
+				hls_capleveltostage : false,
+				hls_maxlevelcappingmode : "downscale"
+			};
+			
+			swfobject.embedSWF(
+				"plugin/GrindPlayer.swf",
+				"player",
+				1280,
+				720,
+				"10.1.0",
+				"expressInstall.swf",
+				parameters,
+				{
+					allowFullScreen: "true"
+				},
+				{
+					name: "player"
+				}
+			);
 		}
-
-
-	//]]>
-</script>
-
-
-
-
-
-</div>
-</div>
-</div>
-
-</body>
+		</script>
+	</body>
 </html>
