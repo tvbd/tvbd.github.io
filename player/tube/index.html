@@ -37,6 +37,33 @@
 							<script src="js/video.min.js"></script>
 							<script src="js/youtube.min.js"></script>
 							<script src="js/resolution.js"></script>
+							
+							
+							
+							<script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+
+</script>
+<script>
+  var responseText = ''+sv+'';
+  urlArry = responseText.split(',');
+  start = true;
+  num_of_urlArry = urlArry.length;
+  index_of_urlArry = 0;
+</script>
+							
+							
+							
+							
+							
+							
 							<video id="video-player" class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9"   controls preload="auto"  playsInline  width="640" height="360" poster="img/thumb.jpg" data-setup='{}'>
 
 							  </video>
@@ -44,7 +71,7 @@
 									videojs('video-player', {
 										controls: true,
 										techOrder:  ["youtube"],
-										sources: [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=exjMt3v81tA"}],
+										sources: [{ "type": "video/youtube", "src": "'+sv+'"}],
 										plugins: {
 											videoJsResolutionSwitcher: {
 												default: 'low',
