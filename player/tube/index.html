@@ -31,7 +31,8 @@
     </head>
       
 
-  <style>     #video-player{
+  <style>     
+ #video-player{
 position: absolute;
 left: 0px;
 right: 0px;
@@ -45,7 +46,6 @@ background-origin: content-box;
 background-repeat: no-repeat;
 background-position: center;
 }
-
 </style>
 						
 							<script src="js/jquery.min.js"></script>
@@ -54,27 +54,7 @@ background-position: center;
 							<script src="js/resolution.js"></script>
 							
 							
-							
-							<script>
-function getParam ( sname )
-{
-  var params = location.search.substr(location.search.indexOf("?")+1);
-  var sval =  params.replace("sv=", "");
-  
-  return sval;
-}
-var sv = getParam("sv");
-
-</script>
-<script>
-  var responseText = ''+sv+'';
-  urlArry = responseText.split(',');
-  start = true;
-  num_of_urlArry = urlArry.length;
-  index_of_urlArry = 0;
-</script>
-							
-							
+			
 							
 							
 							
