@@ -73,7 +73,7 @@ var sv = getParam("sv");
 									videojs('video-player', {
 										controls: true,
 										techOrder:  ["youtube"],
-										sources: [{ "type": "video/youtube", "src": "'+sv+'"}],
+										sources: [{ "type": "video/youtube", "src": ""+sv+"""}],
 										plugins: {
 											videoJsResolutionSwitcher: {
 												default: 'low',
