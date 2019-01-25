@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<HTML dir='ltr' lang='en'>
+<head>
+
+<style>
+
+.post-body {
+    position: relative;
+    z-index: 1;
+ }
+.tbn_css_frame_wrap {
+    width: 100%;
+    max-width: ;
+    
+}
+.tbn_css_frame_wrap_inner {
+    position: relative;
+    padding-bottom: 61%;
+    height: 0;
+    background-color: #000 !important;
+    border: 15px solid #CACACA;
+}
+.tbn_css_frame_wrap_inner iframe,
+.tbn_css_frame_wrap_inner object,
+.tbn_css_frame_wrap_inner embed {
+    position:absolute;
+    top:0;
+    width:100%;
+    height:100%;
+}
+.bottomshadows
+{
+  position: relative;
+}
+.bottomshadows:before, .bottomshadows:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 0px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(-4deg);
+  -moz-transform: rotate(-4deg);
+  -o-transform: rotate(-4deg);
+  -ms-transform: rotate(-4deg);
+  transform: rotate(-4deg);
+}
+.bottomshadows:after
+{
+  -webkit-transform: rotate(4deg);
+  -moz-transform: rotate(4deg);
+  -o-transform: rotate(4deg);
+  -ms-transform: rotate(4deg);
+  transform: rotate(4deg);
+  right: 10px;
+  left: auto;
+}
+@media all and (max-width: 400px) {
+.tbn_css_frame_wrap_inner {
+    border: 7px solid #CACACA !important;
+}
+.bottomshadows:before, .bottomshadows:after {
+    bottom: 9px !important;
+} }
+
+</style>
+<style>
+.online_watch{position:relative;width:100%;height:100%;z-index:100;margin:px 0;-webkit-transition:all 0.5s ease-in-out;-moz-transition:all 0.5s ease-in-out;-ms-transition:all 0.5s ease-in-out;-o-transition:all 0.5s ease-in-out;transition:all 0.5s ease-in-out;clear:both}
+.two-sides,.two-sides .cover_online{height:640px;/* position:relative;*/}
+.cover_online{width:100%;height:576px;background-size:cover;background-position:center center;background-repeat:no-repeat;box-shadow:0 0 5px rgba(0,0,0,0.09);position:relative;overflow:hidden;z-index:1;background:#000}
+.server-not-av{display:block;text-align:center;background:rgba(0,0,0,0.38);line-height:37px;font-weight:normal;margin:120px auto!important;color:white;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;box-shadow:inset 0 0 5px rgba(0,0,0,0.37);font-size:16px}
+.cover_online .play_player{position:absolute;width:110px;height:110px;border-radius:50%;text-align:center;right:50%;margin-right:-55px;top:50%;margin-top:-55px;z-index:2}
+.cover_online .play_player i{display:block;line-height:110px;font-size:110px;color:#f55b2b;text-shadow:-1px 7px 5px rgba(0,0,0,0.47)}
+.servers-box{position:relative;padding-top:84px}
+.servers-box.episode{padding-top:150px}
+.server-viewport{margin-right:170px;position:relative;height:100%}
+.two-sides .server-viewport{margin-left:200px}
+.servers-tabs{display:inline-block;float:right;width:170px;overflow-y:auto;padding-top:5px;height:100%;direction:ltr;background:rgb(30,30,31)}
+.servers-tabs ul{}
+.0server-viewport iframe {width: 100%;height: 100%;z-index: +1;position: relative;}
+.0servers-tabs li{background:#7d7d7d;margin:0 5px;padding:5px 10px;margin-bottom:5px;text-align:right;color:#fff;cursor:pointer;-webkit-transition:all 0.35s ease-in-out;-moz-transition:all 0.35s ease-in-out;-ms-transition:all 0.35s ease-in-out;-o-transition:all 0.35s ease-in-out;transition:all 0.35s ease-in-out}
+.servers-tabs li:hover,.servers-tabs li.active{background:#e2081c}
+.servers-tabs h2{display:block;background:#e2081c;text-align:center;font-size:15px;border-bottom:2px #000 solid;padding:7px 8px}
+.servers-tabs i{margin-left:5px}
+.related-side{position:relative;position:absolute;left:0;top:0;width:200px;height:;/* overflow-y:hidden;*/
+ background:rgb(18,18,19)}
+.related-side h2{display:block;background:#e2081c;text-align:center;font-size:15px;border-bottom:2px #000 solid;padding:7px 8px}
+.related-side ul{height:calc( 100% - 43px );overflow-y:auto}
+.related-side a{display:block;position:relative;padding:5px 10px;background:#1f1f1f;color:#fff;margin:0 3px;margin-top:3px;font-size:12px;-webkit-transition:all 0.35s ease-in-out;-moz-transition:all 0.35s ease-in-out;-ms-transition:all 0.35s ease-in-out;-o-transition:all 0.35s ease-in-out;transition:all 0.35s ease-in-out}
+.related-side a:hover{background:rgb(226,8,28)}
+.related-side a.active{background:#000}
+.related-side ul::-webkit-scrollbar-track{background:#151515;margin-left:10px}
+.related-side ul::-webkit-scrollbar-thumb{background:#e2081c;border-radius:25px}
+@media screen and (max-width:768px){/* CSS CODE HERE FOR SMALL TABLETS ---*/.two-sides,.two-sides .cover_online,.online_watch,.online_watch .cover_online{height:initial;display:block;clear:both;padding:1px 0;/* padding:0;*/    margin:11px 0;background:#38393b!important}.servers-tabs{float:none;display:block;width:initial;height:initial}.server-viewport{margin:5px 0!important;clear:both;height:260px}.related-side{position:relative;display:block;width:initial}}
+
+div#sideleft {
+    display: none;
+}#sideright {
+    float: right;
+    padding: 0 0 0 10px;
+    width: 100%;
+}
+</style>
+
+<div class='online_watch two-sides' id='player-box'>
+<div class='container'>
+
+
+
+
+<div class='related-side'>
+<h2>LIST</h2>
+
+
+</div>
+</div>
+</div>
+
+</body>
+</HTML>
