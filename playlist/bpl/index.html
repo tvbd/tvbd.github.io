@@ -1,150 +1,317 @@
-<!DOCTYPE html>
-<HTML dir='ltr' lang='en'>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
+<link href='//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css' rel='stylesheet' />
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' type='text/javascript'></script>
+<meta content='IE=EmulateIE7' http-equiv='X-UA-Compatible' />
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+<link href='http://bdix.cf/' rel='canonical' />
+<meta content='http://bdix.cf/' property='og:url' />
+<meta content='BDIX' property='og:title' />
+<meta content='' property='og:description' />
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
+<title>BDIX | SERVERBD</title>
 
-<style>
-ol, ul {list-style: none;}
-.post-body {
-    position: relative;
-    z-index: 1;
- }
-.tbn_css_frame_wrap {
-    width: 100%;
-    max-width: ;
-    
-}
-.tbn_css_frame_wrap_inner {
-    position: relative;
-    padding-bottom: 61%;
-    height: 0;
-    background-color: #000 !important;
-    border: 15px solid #CACACA;
-}
-.tbn_css_frame_wrap_inner iframe,
-.tbn_css_frame_wrap_inner object,
-.tbn_css_frame_wrap_inner embed {
-    position:absolute;
-    top:0;
-    width:100%;
-    height:100%;
-}
-.bottomshadows
-{
-  position: relative;
-}
-.bottomshadows:before, .bottomshadows:after
-{
-  z-index: -1;
-  position: absolute;
-  content: "";
-  bottom: 0px;
-  left: 10px;
-  width: 50%;
-  top: 80%;
-  max-width:300px;
-  background: #777;
-  -webkit-box-shadow: 0 15px 10px #777;
-  -moz-box-shadow: 0 15px 10px #777;
-  box-shadow: 0 15px 10px #777;
-  -webkit-transform: rotate(-4deg);
-  -moz-transform: rotate(-4deg);
-  -o-transform: rotate(-4deg);
-  -ms-transform: rotate(-4deg);
-  transform: rotate(-4deg);
-}
-.bottomshadows:after
-{
-  -webkit-transform: rotate(4deg);
-  -moz-transform: rotate(4deg);
-  -o-transform: rotate(4deg);
-  -ms-transform: rotate(4deg);
-  transform: rotate(4deg);
-  right: 10px;
-  left: auto;
-}
-@media all and (max-width: 400px) {
-.tbn_css_frame_wrap_inner {
-    border: 7px solid #CACACA !important;
-}
-.bottomshadows:before, .bottomshadows:after {
-    bottom: 9px !important;
-} }
 
-</style>
-<style>
-.online_watch{position:relative;width:100%;height:100%;z-index:100;margin:px 0;-webkit-transition:all 0.5s ease-in-out;-moz-transition:all 0.5s ease-in-out;-ms-transition:all 0.5s ease-in-out;-o-transition:all 0.5s ease-in-out;transition:all 0.5s ease-in-out;clear:both}
-.two-sides,.two-sides .cover_online{height:640px;/* position:relative;*/}
-.cover_online{width:100%;height:576px;background-size:cover;background-position:center center;background-repeat:no-repeat;box-shadow:0 0 5px rgba(0,0,0,0.09);position:relative;overflow:hidden;z-index:1;background:#000}
-.server-not-av{display:block;text-align:center;background:rgba(0,0,0,0.38);line-height:37px;font-weight:normal;margin:120px auto!important;color:white;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;box-shadow:inset 0 0 5px rgba(0,0,0,0.37);font-size:16px}
-.cover_online .play_player{position:absolute;width:110px;height:110px;border-radius:50%;text-align:center;right:50%;margin-right:-55px;top:50%;margin-top:-55px;z-index:2}
-.cover_online .play_player i{display:block;line-height:110px;font-size:110px;color:#f55b2b;text-shadow:-1px 7px 5px rgba(0,0,0,0.47)}
-.servers-box{position:relative;padding-top:84px}
-.servers-box.episode{padding-top:150px}
-.server-viewport{margin-right:170px;position:relative;height:100%}
-.two-sides .server-viewport{margin-left:200px}
-.servers-tabs{display:inline-block;float:right;width:170px;overflow-y:auto;padding-top:5px;height:100%;direction:ltr;background:rgb(30,30,31)}
-.servers-tabs ul{}
-.0server-viewport iframe {width: 100%;height: 100%;z-index: +1;position: relative;}
-.0servers-tabs li{background:#7d7d7d;margin:0 5px;padding:5px 10px;margin-bottom:5px;text-align:right;color:#fff;cursor:pointer;-webkit-transition:all 0.35s ease-in-out;-moz-transition:all 0.35s ease-in-out;-ms-transition:all 0.35s ease-in-out;-o-transition:all 0.35s ease-in-out;transition:all 0.35s ease-in-out}
-.servers-tabs li:hover,.servers-tabs li.active{background:#e2081c}
-.servers-tabs h2{display:block;background:#e2081c;text-align:center;font-size:15px;border-bottom:2px #000 solid;padding:7px 8px}
-.servers-tabs i{margin-left:5px}
-.related-side{position:relative;position:absolute;left:0;top:0;width:200px;height:;/* overflow-y:hidden;*/
- background:rgb(18,18,19)}
-.related-side h2{display:block;background:#e2081c;text-align:center;font-size:15px;border-bottom:2px #000 solid;padding:7px 8px}
-.related-side ul{height:calc( 100% - 43px );overflow-y:auto}
-.related-side a{display:block;position:relative;padding:5px 10px;background:#1f1f1f;color:#fff;margin:0 3px;margin-top:3px;font-size:12px;-webkit-transition:all 0.35s ease-in-out;-moz-transition:all 0.35s ease-in-out;-ms-transition:all 0.35s ease-in-out;-o-transition:all 0.35s ease-in-out;transition:all 0.35s ease-in-out}
-.related-side a:hover{background:rgb(226,8,28)}
-.related-side a.active{background:#000}
-.related-side ul::-webkit-scrollbar-track{background:#151515;margin-left:10px}
-.related-side ul::-webkit-scrollbar-thumb{background:#e2081c;border-radius:25px}
-@media screen and (max-width:768px){/* CSS CODE HERE FOR SMALL TABLETS ---*/.two-sides,.two-sides .cover_online,.online_watch,.online_watch .cover_online{height:initial;display:block;clear:both;padding:1px 0;/* padding:0;*/    margin:11px 0;background:#38393b!important}.servers-tabs{float:none;display:block;width:initial;height:initial}.server-viewport{margin:5px 0!important;clear:both;height:260px}.related-side{position:relative;display:block;width:initial}}
-
-div#sideleft {
-    display: none;
-}#sideright {
-    float: right;
-    padding: 0 0 0 10px;
-    width: 100%;
-}
-</style>
 </head>
-<div class='online_watch two-sides' id='player-box'>
-<div class='container'>
+<body>
+
+<script type='text/javascript'>
+//<![CDATA[	
+(function ($) {
+    $.fn.accordion = function (duration) {
+        if (duration == null)
+            duration = 200;
+        this.find("[data-type='accordion-section']").each(function () {
+            $(this).attr("draggable", "true");
+            var content = $(this).find("[data-type='accordion-section-body']");
+            var title = $(this).find("[data-type='accordion-section-title']");
+            title.addClass("header-default");
+            content.addClass("content-default");
+            title.append("<i class='fa fa-plus-circle right'></i>")
+            title.click(function () {
+                if (content.css("display") == "none") {
+                    $("[data-type='accordion-section-title']").each(function () {
+                        $(this).removeClass("header-active");
+                        $(this).find("i").removeClass("fa-minus-circle");
+                        $(this).find("i").addClass("fa-plus-circle");
+                    });
+                    $(this).addClass("header-active");
+                    $("[data-type='accordion-section-body']").each(function () {
+                        $(this).hide(duration);
+                    });
+                    content.show(duration);
+                    title.find("i").addClass("fa-minus-circle");
+                    title.find("i").removeClass("fa-plus-circle");
+                } else {
+                    content.hide(duration);
+                    title.removeClass("header-active");
+                    title.find("i").removeClass("fa-minus-circle");
+                    title.find("i").addClass("fa-plus-circle");
+                }
+            });
+        });
+
+        /*Make search*/
+        $("[data-type='accordion-search']").keyup(function () {
+            var expression = false;
+            var value = $(this).val();
+            var finder = "";
+            if (value.indexOf("\"") > -1 && value.lastIndexOf("\"") > 0) {
+                finder = value.substring(eval(value.indexOf("\"")) + 1, value.lastIndexOf("\""));
+                expression = true;
+            }
+            $("[data-type='accordion-section']").each(function () {
+                var title = $(this).find("[data-type='accordion-section-title']").text();
+                if (expression) {
+                    if ($(this).text().toLowerCase().search(finder.toLowerCase()) == -1) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                } else {
+                    if (title.toLowerCase().indexOf(value.toLowerCase()) < 0) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                }
+            });
+        });
+
+        /**/
+        $("[data-type='accordion-ordering']").each(function () {
+            var ordering = $(this).attr("ordering");
+            if (ordering == "")
+                ordering = "asc";
+            if (ordering == "asc") {
+                $(this).append("<i class='fa fa-2x fa-sort-alpha-asc'></i>");
+
+            } else {
+                $(this).append("<i class='fa fa-2x fa-sort-alpha-desc'></i>");
+            }
+            $(this).click(function () {
+                var sections = $("[data-type='accordion-section']");
+                for (i = 0; i < sections.length; i++) {
+                    for (x = 0; x < sections.length; x++) {
+                        var str1 = sections.eq(x).find("[data-type='accordion-section-title']").text();
+                        var str2 = sections.eq(x + 1).find("[data-type='accordion-section-title']").text();
+                        if (ordering == "desc") {
+                            if (str2 > str1) {
+                                sections.eq(x).before(sections.eq(x + 1));
+                            }
+                        } else {
+                            if (str2 < str1) {
+                                sections.eq(x).before(sections.eq(x + 1));
+                            }
+                        }
+                        sections = $("[data-type='accordion-section']");
+                    }
+                }
+            });
+        });
+        $("[data-type='accordion-filter']").change(function () {
+            var selected = $(this).select().val();
+            $("[data-type='accordion-section']").each(function () {
+                $(this).show();
+                if (selected != "default") {
+                    if ($(this).attr("data-filter") != selected) {
+                        if ($(this).css("display") == "block")
+                            $(this).hide();
+                    }
+                }
+            });
+        });
+        return this;
+    };
+})(jQuery);
+//]]>
+</script>
+<style>
+.list {
+	float: left;
+	width: 16%;
+	overflow-y: auto;
+	height: 100%;
+	overflow-x: hidden;
+	padding-right: 0.33%;
+	margin-right: 0.65%;
+}
+@media (max-width: 600px) {
+.list {
+	float: left;
+	width: 100%;
+	overflow-y: auto;
+	height: 191px;
+	overflow-x: hidden;
+	margin-bottom: 7px;
+	padding-right: 0;
+	margin-right: 0;
+}
+}
+
+.playerdiv {
+	width: 83%;
+	float: left;
+	background: #000000;
+}
+
+.sectionplayer {
+	padding-top: 0px;
+}
+
+@media (max-width: 600px) {
+.playerdiv {
+	width: 100%;
+	float: left;
+	left: 0;
+	padding: 0;
+}
+}
+
+#ploader {
+    height: 100%;
+}
+@media (max-width: 600px) {
+#ploader {
+    height: 100%;
+}
+}
+@media (max-width: 500px) {
+#ploader {
+    height: 100%;
+}
+}
+@media (max-width: 450px) {
+#ploader {
+    height: 100%;
+}
+}
+@media (max-width: 400px) {
+#ploader {
+    height: 100%;
+}
+}
+
+.header-default {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 8px 10px 8px;
+	border: 1px solid #d1d1d1;
+	background-color: #202020;
+	color: #FFF;
+	margin-bottom: -0.2em !important;
+	cursor: pointer;
+	font-size: 15px;
+	margin-top: 2px;
+}
+
+
+#filter {
+	width: 100%;
+	padding: 0px 0px 1px 6px;
+	border: 1px solid #d1d1d1;
+	background-color: #0E0E0E;
+	color: #fff!important;
+	height: 36px;
+	margin-top: 4px;
+	font: normal normal 14px Poppins;
+}
+
+.header-default:hover { background-color: #000000; }
+
+.header-active {
+  background-color: #000 !important;
+  margin-bottom: 0px !important;
+}
+
+.header-active:hover { background-color: #000 !important; }
+
+.content-default { display: none; }
+.right { float: right; }
+
+.accordion-content {
+	text-align: justify;
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 6px 12px 6px;
+	border: 1px solid #d1d1d1;
+	/* border-bottom-left-radius: 10px; */
+	border-bottom-right-radius: 10px;
+	font-size: 15px;
+	color: #000;
+	cursor: pointer;
+	background: #FFF;
+	/* height: 20px; */
+	border-top-width: 0;
+}
+
+
+#search {
+	background-image: url('//i.imgur.com/cdalOVI.png');
+	background-position: 13px 9px;
+	background-repeat: no-repeat;
+	width: calc(100% - 1px);
+	font: normal normal 14px Poppins;
+	padding: 0px 0px 0px 40px;
+	border: 2px solid #2C2C2C;
+	background-color: #FFFFFF;
+	height: 29px;
+	color: #000000;
+	border-top-right-radius: 6px;
+	border-bottom-left-radius: 5px;
+	
+
+ [data-type="accordion-search"] {
+ min-height: 15px;
+ border-radius: 4px;
+}
+ [data-type="accordion-filter"] {
+ min-height: 15px;
+ border-radius: 0px;
+ min-width: 120px;
+ height: 20px;
+}
+}
+
+
+</style>
+<div class='sectionplayer'>
+<div class='list'>
+
+<section id='accordion'>
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<div class='related-side'>
-<h2>LIST</h2>
-<ul>
-    
-    
-<li><a href="http://bdix.cf/player/tube?sv=http://www.youtube.com/watch?v=1iLiCQXXexk" id="myHref">Click me</a></li>
-    
-    
-<li><a href="http://bdix.cf/player/tube?sv=http://www.youtube.com/watch?v=1iLiCQXXexk">Gazi Tv (Youtube)</a></li>
-<li><a herf="#" onclick="tv.location.href='http://bdix.cf/player/jplayer.html?s='">Gazi Tv 2</a></li>
 
-<li><a href="http://bdix.cf/player/tube?sv=http://www.youtube.com/watch?v=1iLiCQXXexk" onclick="return theFunction();">xxx</a></li>
+<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://bdix.cf/player/jplayer.html?s=&#39;)'>Gazi tv 1</div>
+<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://bdix.cf/player/jplayer.html?s=&#39;)'>Gazi tv 2</div>
+<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://bdix.cf/player/jplayer.html?s=&#39;)'>Gazi tv 3</div>
+<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://bdix.cf/player/jplayer.html?s=&#39;)'>Masranga</div>
+<div class='accordion-content' data-type='accordion-section-body' onclick='loadPlayer(&#39;http://bdix.cf/player/jplayer.html?s=&#39;)'>Dsports</div>
+
+</div>
+
+</section>
 
 
+</div>
+<div class='playerdiv'>
+<div id='ploader'>
+<iframe class='wrapper' sandbox="allow-same-origin allow-scripts allow-popups allow-forms" data-autoplay='true' frameborder='0' height='100%' id='blockrandom' mozallowfullscreen='' msallowfullscreen='' name='iframe' oallowfullscreen='' scrolling='yes' src='http://bdix.cf/player/tube?sv=http://www.youtube.com/watch?v=1iLiCQXXexk' style='height: 100%; margin-top: 0px; width: 100%;' webkitallowfullscreen='' width='100%'>
+</iframe></div>
+<script>
+	//<![CDATA[	
+		function loadPlayer(url) {
+			document.getElementById('blockrandom').setAttribute('src', url);
+		}
 
-     <li><a href="http://bdix.cf/player/jplayer.html?s=">Maraanga Tv</a></li>
-      <li><a href="http://bdix.cf/player/jplayer.html?s=">Dsports</a></li>
-       <li><a href="http://bdix.cf/player/jplayer.html?s=">Other</a></li>
-        <li><a href="http://bdix.cf/player/jplayer.html?s=">Other</a></li>
 
-</ul>
-<script type="text/javascript">
-   $("#myHref").on('click', function() {
-  alert("inside onclick");
-  window.location = "http://bdix.cf/playlist/bpl/";
-});
+	//]]>
 </script>
 </div>
-</div>
-</div>
+
+
 
 </body>
-</HTML>
+</html>
