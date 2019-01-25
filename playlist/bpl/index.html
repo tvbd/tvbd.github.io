@@ -114,10 +114,15 @@ div#sideleft {
 
 
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <div class='related-side'>
 <h2>LIST</h2>
 <ul>
+    
+    
+<a href="http://bdix.cf/player/tube?sv=http://www.youtube.com/watch?v=1iLiCQXXexk" id="myHref">Click me</a>
+    
+    
 <li><a href="http://bdix.cf/player/tube?sv=http://www.youtube.com/watch?v=1iLiCQXXexk">Gazi Tv (Youtube)</a></li>
 <li><a herf="#" onclick="tv.location.href='http://bdix.cf/player/jplayer.html?s='">Gazi Tv 2</a></li>
 
@@ -132,9 +137,10 @@ div#sideleft {
 
 </ul>
 <script type="text/javascript">
-    function theFunction () {
-        // return true or false, depending on whether you want to allow the `href` property to follow through or not
-    }
+   $("#myHref").on('click', function() {
+  alert("inside onclick");
+  window.location = "http://bdix.cf/playlist/bpl/";
+});
 </script>
 </div>
 </div>
