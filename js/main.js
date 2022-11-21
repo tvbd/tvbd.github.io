@@ -3,54 +3,58 @@ $(document).ready(function () {
 
     player.playlist([
         {
-            name: 'Channel 1',
+            name: 'Sports 18',
             autoplay: true,
             sources: [
                 {src: 'http://172.17.50.112/live/antbd1001/index.m3u8', type: 'application/x-mpegURL'},
             ]
         },
         {
-            name: 'Channel 2',
+            name: 'T-Sports 1',
             sources: [
                 {src: 'http://172.17.50.112/live/antbd1002/index.m3u8', type: 'application/x-mpegURL'},
             ]
         },
         {
-            name: 'Channel 3',
-            sources: [
-                {src: 'https://livecdn.fptplay.net/hda2/natgeohd_vhls.smil/chunklist_b5000000.m3u8', type: 'application/x-mpegURL'},
-            ]
-        },
-        {
-            name: 'Channel 4',
+            name: 'GTV1',
             sources: [
                 {src: 'http://172.17.50.112/live/antbd1004/index.m3u8', type: 'application/x-mpegURL'},
             ]
 		},
-		{
-            name: 'Channel 5',
+		{			
+            name: 'T-Sports2',
             sources: [
-                {src: 'https://livecdn.fptplay.net/hda2/animalplanet_hls.smil/chunklist.m3u8', type: 'application/x-mpegURL'},
+                {src: 'http://30.30.30.30/live/skyfeed1005/index.m3u8', type: 'application/x-mpegURL'},
             ]
-        	},
-		 {
-            name: 'Channel 6',
+        },
+	    {
+			
+            name: 'GTV2',
             sources: [
-                {src: 'http://221.120.204.4/zee-tv-LOCKLE/tracks-v1a1/mono.m3u8', type: 'application/x-mpegURL'},
+                {src: 'http://30.30.30.30/live/skyfeed2001/index.m3u8', type: 'application/x-mpegURL'},
             ]
-        	},
-		{
-            name: 'Channel 7',
+        },
+        {
+            name: 'GTV3',
             sources: [
-                {src: 'http://d2q8p4pe5spbak.cloudfront.net/bpk-tv/9XM/9XM.isml/9XM-audio_208482_und=208000-video=877600.m3u8', type: 'application/x-mpegURL'},
+                {src: 'http://30.30.30.30/live/skyfeed1006/index.m3u8', type: 'application/x-mpegURL'},
             ]
-                },
-		{
-            name: 'Channel 8',
+        },	    	    	    
+	    {
+            name: 'GTV4',
             sources: [
-                {src: 'https://livecdn.fptplay.net/hda1/hbo_hls.smil/chunklist.m3u8', type: 'application/x-mpegURL'},
+                {src: 'http://30.30.30.30/live/skyfeed2001/index.m3u8', type: 'application/x-mpegURL'},
             ]
-                }
+        },  
+           {
+            name: 'T-Sports3',
+            sources: [
+                {src: 'http://30.30.30.30/live/skyfeed2002/index.m3u8', type: 'application/x-mpegURL'},
+            ]
+        },
+	    
+
+	    
 		]);
 
 // Initialize the playlist-ui plugin with no option (i.e. the defaults).
