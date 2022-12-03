@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JW Player</title>
+</head>
+<body>
+
+
+<script data-cfasync="false" src="//content.jwplatform.com/libraries/wB8onOoh.js"></script>
+		
+<style type="text/css">  
+#iccjwplayer{height: 100vh;width:100vw; padding:0px;position:fixed!important;bottom:0;right:0;top:0;left:0;z-index:999!important;}
+</style>
+
+  <script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+
+</script>
+<script>
+  var responseText = ''+sv+'';
+  urlArry = responseText.split(',');
+  start = true;
+  num_of_urlArry = urlArry.length;
+  index_of_urlArry = 0;
+</script>
+  
+  
+<div style='position:fixed!important;;bottom:0;right:0;top:0;left:0;z-index:999!important;' id="iccjwplayer"></div>
+		<script type="text/javascript">
+			jwplayer("iccjwplayer").setup({
+				file: "'+sv+'",				
+				image: "",
+				aboutlink: '',
+				controls: 'true',
+				height: "100%",
+				width: "100%",
+				stretching: "exactfit",
+				flashplayer:"//cdn.jsdelivr.net/jwplayer/5.10/player.swf"
+				
+			});
+		</script>
+
+</body>
+</html>
