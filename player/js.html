@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Player JS</title>
+</head>
+<body>
+
+
+<style>
+  #player{width:100%!important;height:100vh!important;margin: 0px auto;padding:0;position:fixed!important;bottom:0;right:0;top:0;left:0;z-index:999}
+</style>
+
+<script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+
+</script>
+<script>
+  var responseText = ''+sv+'';
+  urlArry = responseText.split(',');
+  start = true;
+  num_of_urlArry = urlArry.length;
+  index_of_urlArry = 0;
+</script>
+<script src='/playerjs.js' type='text/javascript'></script>
+
+<div id="player">
+
+<script>
+   var player = new Playerjs({id:"player", file:""+sv+""});
+</script>
+
+</body>
+</html>
+
