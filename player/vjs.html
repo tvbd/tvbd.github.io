@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Player VJS</title>
+    
+    <link href="https://unpkg.com/video.js/dist/video-js.min.css" rel="stylesheet">
+<script src="https://unpkg.com/video.js/dist/video.min.js"></script>
+      <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+<!-- unpkg : use a specific version of Video.js (change the version numbers as necessary) -->
+<link href="https://unpkg.com/video.js@7.10.2/dist/video-js.min.css" rel="stylesheet">
+<script src="https://unpkg.com/video.js@7.10.2/dist/video.min.js"></script>
+<script src='https://vjs.zencdn.net/7.5.5/video.js'></script>
+<!-- cdnjs : use a specific version of Video.js (change the version numbers as necessary) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.10.2/video-js.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.10.2/video.min.js"></script>
+    <script src="https://www.vienaonline.com/js/nuevo/nuevo.js"></script>
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Rambla:400i');
+body {
+    font-family: "myriad pro", tahoma, verdana, arial, sans-serif;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    background: #000 url(/live/img/bgu.jpg) top center;
+    color: #00abff;
+}
+.tv-area { margin-top: 50px; }
+.channel-list { 
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+}
+.thumbnail-slider { margin:0; padding:0;  }
+.thumbnail-slider ul,.thumbnail-slider ul li {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.thumbnail-slider li{
+    width: 23%; 
+    height: 75px;
+    margin: 5px 1%;
+    list-style: none;
+}
+.thumbnail-slider li img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+}
+
+
+.channel-list::-webkit-scrollbar {
+    width: 12px;
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+.channel-list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #D62929;
+}
+
+/*[data-player] { position: relative; width: 100%; height: auto; margin: 0; }
+[data-player] .container[data-container] { width: 100%; height: auto; position: relative; }
+[data-player] .media-control[data-media-control] { top: 0; right: 0; bottom: 0; left: 0; }
+[data-player] video { position: relative; display: block; width: 100%; height: auto; }*/
+/*
+@media (max-width: 1199px) {
+    .channel-list { height: 425px; }
+}
+@media (max-width: 990px) {
+    .channel-list { padding: 10px 15px; height: auto !important; overflow-y: hidden; overflow-x: auto; }
+    .thumbnail-slider li { display: inline-block; margin: 0 5px 0 0; }
+    .thumbnail-slider li a { display: block; width: 80px; }
+}
+@media (max-width: 410px) {
+    .thumbnail-slider li a { width: 50px; }
+}*/
+    
+    </style>
+    
+    </head>
+ 
+
+        <script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+</script>
+  
+<script>
+  var responseText = ''+sv+'';
+  urlArry = responseText.split(',');
+  start = true;
+  num_of_urlArry = urlArry.length;
+  index_of_urlArry = 0;
+</script>
+
+
+
+<body>   
+    	<!--<video id="video_1" class="video-js vjs-fluid" controls preload="auto" width="640" height="360" poster="//www.domain.com/poster.jpg"></video>-->
+ <div class="container-fluid">
+            <div class="row justify-content-center" style="margin-top: 50px;">
+
+                <div class="col-12 col-lg-8">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <div id="player" class="embed-responsive-item">
+     <div align="center"> 
+    
+    
+       
+
+     <script type="text/javascript"> 
+  document.writeln("<video id=\"video_1\" class=\"video-js vjs-default-skin vjs-fluid\" poster=\"#\" width=\"640\" height=\"360\" controls autoplay preload=\"none\" data-setup='{ \"techOrder\": [\"html5\", \"flash\", \"youtube\"], \"sources\": [{ \"type\": \"application/x-mpegURL\", \"src\": \"+sv+\"}]}'></video></div>"); </script>
+       
+
+
+       
+      
+       
+       
+                       </div>
+     
+                    </div>
+                </div>
+            </div>
+            
+            
+            </div>
+        </div>
+ 
+	<script>
+	var player=videojs("video_1");
+	//player.playlist(myplaylist);
+
+	</script>
+  
+  
+  <script>
+var vgsPlayer, poster;
+vgsPlayer = videojs('video_1');
+vgsPlayer.poster('https://img.youtube.com/vi/aqz-KE-bpKQ/maxresdefault.jpg');
+
+/********* LOAD URL *********/
+$('#vidlink li a').on('click', function (e) {
+    e.preventDefault();
+    var vidlink = $(this).attr('href');
+    vsgLoadVideo(vidlink);
+    //$('#vsg-vurl').val(vidlink);  
+    //$('input[type=submit]').click();
+});
+
+jQuery(function ($) {
+
+
+    $("#vidlink li").css('display', 'none');
+    $("#vidlink .Bangla").css('display', '');
+
+    $(".channel-list .nav-link").click(function () {
+        $(".channel-list .nav-link").removeClass('active');
+
+        $(this).addClass('active');
+
+        var ShowClass = $(this).data('type');
+
+        $("#vidlink li").css('display', 'none');
+        $("#vidlink ." + ShowClass).css('display', '');
+    });
+
+    $("#vsg-loadvideo").submit(function (e) {
+        e.preventDefault();
+
+        var vidURL = $("#vsg-vurl").val();
+
+        vsgLoadVideo(vidURL);
+
+    });
+
+});
+
+
+function vsgLoadVideo(vidURL, poster) {
+    var type = getType(vidURL);
+
+    if (getId(vidURL))
+        poster = "http://img.youtube.com/vi/" + getId(vidURL) + "/hqdefault.jpg";
+
+    vgsPlayer.src({
+        "src": vidURL,
+        "type": type
+    });
+    if (poster)
+        vgsPlayer.poster(poster);
+    else
+        vgsPlayer.poster("//i.imgur.com/aE0LoTe.png");
+
+    // play seem to trigger to fast before Youtube is ready
+
+    //vgsPlayer.pause();
+//	vgsPlayer.load();
+    vgsPlayer.play();
+    /*   setTimeout(function() {
+     vgsPlayer.play();
+     }, 500); */
+
+    return false;
+
+}
+
+
+function ytVidId(url) {
+    //var p = /^(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/;
+    //var p = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var p = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+
+    if (url.match(p) || getId(url).length == 11)
+        return false;
+}
+
+/**/
+function getId(url) {
+    //var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+
+    if (match && match[2].length == 11) {
+        return match[2];
+    } else {
+        return false;
+    }
+}
+
+var rtmp_suffix = /^rtmp:\/\//;
+var hls_suffix = /\.m3u8/;
+var mp4_suffix = /\.(mp4|m4p|m4v|mov)/i;
+var hds_suffix = /\.f4m/;
+var dash_suffix = /\.mpd/;
+var flv_suffix = /\.flv/;
+var webm_suffix = /\.webm/;
+/* AUDIO */
+//var mp3_suffix = /\.mp3/;
+var mpeg_suffix = /\.(mp3|m4a)/i;
+var ogg_suffix = /\.ogg/;
+
+//var youtube_suffix = /\.youtube.com/;
+//var yt_suffix = /^(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/;
+var yt_suffix = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+var dm_suffix = /\.?dailymotion.com/;
+var vm_suffix = /\.?vimeo.com/;
+/* ADVANCED REGEX */
+//      var regVimeo = /^.*(vimeo.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/;
+//      var regDailymotion = /^.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/;
+//      var regMetacafe = /^.*(metacafe.com)(\/watch\/)(d+)(.*)/i;
+//      var youtube_suffix = /(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+
+function getType(url) {
+
+    /* AUDIO */
+    if (mpeg_suffix.test(url))
+        return 'audio/mpeg';
+    if (ogg_suffix.test(url))
+        return 'audio/ogg';
+    if (dash_suffix.test(url))
+        return 'application/dash+xml';
+    if (rtmp_suffix.test(url))
+        return 'rtmp/mp4';
+    if (hls_suffix.test(url))
+        return 'application/x-mpegurl';
+    if (mp4_suffix.test(url))
+        return 'video/mp4';
+    if (hds_suffix.test(url))
+        return 'application/adobe-f4m';
+    if (flv_suffix.test(url))
+        return 'video/flv';
+    if (webm_suffix.test(url))
+        return 'video/webm';
+    if (yt_suffix.test(url)) {
+        //alert(url.match(yt_suffix)[2]);
+        //player.poster(ytmaxres(url.match(yt_suffix)[2]));
+        //alert(ytmaxres(url.match(yt_suffix)[2]));
+        return 'video/youtube';
+    }
+    if (dm_suffix.test(url))
+        return 'video/dailymotion';
+    if (vm_suffix.test(url))
+        return 'video/vimeo';
+
+    console.log('could not guess link type: "' + url + '" assuming mp4');
+    return 'video/mp4';
+}
+;
+
+function getExt(ext) {
+
+    //if (ext == "youtube") ext = "mp4";
+    if (ext == "mp4" || ext == "m4v")
+        ext = "m4v";
+    if (ext == "ogg" || ext == "ogv")
+        ext = "oga";
+    if (ext == "webm")
+        ext = "webmv";
+
+    return ext;
+}
+</script>
+
+  
+  
+    </body>
+</html>
