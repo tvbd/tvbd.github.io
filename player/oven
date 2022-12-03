@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Oven Player</title>
+</head>
+<body>
+    <style type="text/css">  
+  #player{height: 100vh;width:100vw; padding:0px;position:fixed!important;bottom:0;right:0;top:0;left:0;z-index:999!important;}
+</style>
+
+     
+
+<script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+</script>
+<script>
+  var responseText = ''+sv+'';
+  urlArry = responseText.split(',');
+  start = true;
+  num_of_urlArry = urlArry.length;
+  index_of_urlArry = 0;
+</script>
+
+  
+
+
+
+<script src="https://unpkg.com/videojs-flash/dist/videojs-flash.js"></script>
+<script src="https://durbinlive.com/assets/player/ovenplayer/ovenplayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/ovenplayer/dist/ovenplayer.js"></script>
+
+<div style='position:fixed!important;;bottom:0;right:0;top:0;left:0;z-index:999!important;' id="player"></div>
+<script> function setUserAgent(window, userAgent) {
+    // Works on Firefox, Chrome, Opera and IE9+
+    if (navigator.__defineGetter__) {
+        navigator.__defineGetter__('userAgent', function () {
+            return userAgent;
+        });
+    } else if (Object.defineProperty) {
+        Object.defineProperty(navigator, 'userAgent', {
+            get: function () {
+                return userAgent;
+            }
+        });
+    }
+    // Works on Safari
+    if (window.navigator.userAgent !== userAgent) {
+        var userAgentProp = {
+            get: function () {
+                return userAgent;
+            }
+        };
+        try {
+            Object.defineProperty(window.navigator, 'userAgent', userAgentProp);
+        } catch (e) {
+            window.navigator = Object.create(navigator, {
+                userAgent: userAgentProp
+            });
+        }
+    }
+}
+setUserAgent(window, "exoplayer");
+
+player = OvenPlayer.create("player", { sources: [ { "file": ""+sv+"", "type": "hls"} ]});
+
+</script>
+
+</body>
+</html>
+
