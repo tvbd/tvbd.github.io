@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ply Player</title>
+</head>
+<body>
+
+ <script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+</script>
+<script>
+  var responseText = ''+sv+'';
+  urlArry = responseText.split(',');
+  start = true;
+  num_of_urlArry = urlArry.length;
+  index_of_urlArry = 0;
+</script>
+
+<style>.plyr{position:fixed!important;bottom:0;right:0;top:0;left:0;z-index:999!important;}</style>
+
+<link rel="stylesheet" href="//cdn.plyr.io/3.6.2/plyr.css" />
+<script type="text/javascript">
+ var tryCount = 0;
+ var minimalUserResponseInMiliseconds = 200;
+ function check() { before = new Date().getTime(); debugger; after = new Date().getTime(); if (after - before > minimalUserResponseInMiliseconds) { 
+document.write(" Alert!! Close Developer Tools Now... "); self.location.replace(window.location.protocol + 
+window.location.href.substring(window.location.protocol.length));
+}else{
+before = null; after = null; delete before; delete after;
+}
+setTimeout(check, 100);
+ }
+ check();
+ window.onload = function() { document.addEventListener("contextmenu", function(e){ e.preventDefault();
+}, false);
+document.addEventListener("keydown", function(e) { //document.onkeydown = function(e) { // "I" key if (e.ctrlKey && e.shiftKey && e.keyCode == 73) { 
+disabledEvent(e);
+}
+// "J" key if (e.ctrlKey && e.shiftKey && e.keyCode == 74) { disabledEvent(e);
+}
+// "S" key + macOS if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) { disabledEvent(e);
+}
+// "U" key if (e.ctrlKey && e.keyCode == 85) { disabledEvent(e);
+}
+// "F12" key if (event.keyCode == 123) { disabledEvent(e);
+}
+}, false);
+function disabledEvent(e){ if (e.stopPropagation){ e.stopPropagation();
+} else if (window.event){
+window.event.cancelBubble = true;
+}
+e.preventDefault(); return false;
+}
+ };
+</script> <script> document.addEventListener('DOMContentLoaded', () => {
+  const source = 
+''+sv+'';
+  const video = document.querySelector('video');
+  // For more options see: https://github.com/sampotts/plyr/#options
+  // captions.update is required for captions to work with hls.js
+  const player = new Plyr(video, { captions: { active: true, update: true, language: 'en' } });
+  if (!Hls.isSupported()) {
+    video.src = source;
+  } else {
+    // For more Hls.js options, see https://github.com/dailymotion/hls.js
+    const hls = new Hls();
+    hls.loadSource(source);
+    hls.attachMedia(video);
+    window.hls = hls;
+    // Handle changing captions
+    player.on('languagechange', () => {
+      // Caption support is still flaky. See: https://github.com/sampotts/plyr/issues/994
+      setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
+    });
+  }
+  // Expose player so it can be used from the console
+  window.player = player;
+});
+</script>
+
+ <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script> <script src="https://cdn.plyr.io/3.6.2/plyr.polyfilled.js"></script> 
+
+<video controls preload="metadata" style="--plyr-color-main:var(--linkB);" poster="https://blogger.googleusercontent.com/img/a/AVvXsEjSNw5gLSyR6kGpYC5LabxW2TiO5_b8dJjBGiG9ckbbqlDClxgi54labUooKCpB3b6evl8JcBYtjOmzns1EZudrjZuXgULhlFQpAr2kULFYaE31ELRKQfvjbY8TIEIV_FgywSk29NPuMVkj79jtU_8-5qtvGu_fQ8aiBBIGOKjiJrHoMXXtYXQ1cC5K"></video>
+
+
+</body>
+</html>
+
