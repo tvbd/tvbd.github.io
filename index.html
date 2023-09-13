@@ -141,7 +141,7 @@ $(document).ready(function(){$("#accordion").accordion()})
 <span class='w3-button w3-transparent w3-display-topleft w3-xlarge' id='openNav' onclick='w3_open()' style='display:none;color:#fff' title='open Sidebar'>&#9776;</span>
 <div class='playerdiv'>
 <div id='ploader'>
-<iframe allowfullscreen='yes' class='wrapper' data-autoplay='true' frameborder='0' height='100vh' id='blockrandom' mozallowfullscreen='yes' msallowfullscreen='yes' name='iframe' scrolling='yes' src='/p/home.html' style='margin-top: 0px; width: 100%; overflow: hidden;' webkitallowfullscreen='' width='100%'>
+<iframe allowfullscreen='yes' class='wrapper' data-autoplay='true' frameborder='0' height='100vh' id='blockrandom' mozallowfullscreen='yes' msallowfullscreen='yes' name='iframe' scrolling='yes' src='http://172.17.50.112' style='margin-top: 0px; width: 100%; overflow: hidden;' webkitallowfullscreen='' width='100%'>
 </iframe>
 </div>
 <script>
@@ -166,21 +166,6 @@ function w3_close() {
   document.getElementById("openNav").style.display = "inline-block";
 }
 </script>
-
-
-<!--[ No Internet Connection Pop-up ]-->
-<div class='tNtf' id='toastNotif'></div>
-<div class='popSc hidden' id='noInternet'>
-<div class='popBo'>
-<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><line x1='1' x2='23' y1='1' y2='23'></line><path d='M16.72 11.06A10.94 10.94 0 0 1 19 12.55'></path><path d='M5 12.55a10.94 10.94 0 0 1 5.17-2.39'></path><path d='M10.71 5.05A16 16 0 0 1 22.58 9'></path><path d='M1.42 9a15.91 15.91 0 0 1 4.7-2.88'></path><path d='M8.53 16.11a6 6 0 0 1 6.95 0'></path><line x1='12' x2='12.01' y1='20' y2='20'></line></svg>
-<h2>Oops! No Internet!</h2>
-<p>Looks like you are facing a temporary network interruption.<br/>Or check your network connection.</p>
-<button class='popBtn' onclick='pageReload()'><svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><polyline points='23 4 23 10 17 10'></polyline><path d='M20.49 15a9 9 0 1 1-2.12-9.36L23 10'></path></svg></button>
-</div>
-</div>
-<script>/*<![CDATA[*/ /* No Internet Connection Script */ function pageReload(){var n=document.querySelector("#noInternet .popBo .popBtn svg");null!=n&&n.classList.add("r"),setTimeout(function(){window.location.reload()},500)};window.addEventListener("offline",function(){document.querySelector("#noInternet").classList.remove("hidden"),document.querySelector("#toastNotif").innerHTML="<span>No internet connection!</span>"}),window.addEventListener("online",function(){document.querySelector("#noInternet").classList.add("hidden"),document.querySelector("#toastNotif").innerHTML="<span>Internet connection restored!</span>"}); /*]]>*/</script>
-
-
 
 
   </body>
