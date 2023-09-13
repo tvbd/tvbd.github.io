@@ -1,0 +1,122 @@
+<html lang="en">
+<head>
+<script src='//code.jquery.com/jquery-1.7.2.min.js'></script>
+<meta name="robots" content="noindex , nofollow" />
+<meta content='IE=EmulateIE7' http-equiv='X-UA-Compatible'/>
+<meta name="description" content="Exclusive Helping Site BD">
+<meta name="keywords" content="Bdix,Live Tv,Result bd,Torrent,Free MOVIE,Server">
+<meta name="author" content="Shawon Khan">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta content='100003868724945' property='fb:admins'/>
+<meta content='2558751744381240' property='fb:app_id'/>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<meta content='itbd' name='generator'/>
+<link href='favicon.ico' rel='icon' type='image/x-icon'/>
+<link href='' rel='canonical'/>
+<link rel="me" href="//facebook.com/shawonkhan123" />
+<meta content='' property='og:url'/>
+<meta content='' property='og:title'/>
+<meta content='' property='og:description'/>
+<title>Exclusive Helping Site BD</title>
+<style type='text/css'>html{overflow-x:hidden;scrollbar-width:thin;} body{-webkit-font-smoothing:antialiased;position:relative;top:0!important;margin:0;padding:0!important;width:100%;scrollbar-width: thin;} a{text-decoration:none}</style>
+
+</head>
+
+<body>
+
+<script src="m3u.js" type="text/javascript"></script>
+
+ <script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+</script>
+<script>
+  var responseText = ''+sv+'';
+  urlArry = responseText.split(',');
+  start = true;
+  num_of_urlArry = urlArry.length;
+  index_of_urlArry = 0;
+</script>
+
+<div id="player" class="player"></div>
+
+<script>
+var counter = 1;
+document.getElementById("player").addEventListener("init",SampleInit);var player = new Playerjs(
+	{id:"player", file:""+sv+"",dash:"https://cdnjs.cloudflare.com/ajax/libs/dashjs/4.3.0/dash.all.min.js",subtitle:""}
+		);
+					function SampleInit(){document.getElementById("sample_but").style.display="inline";}
+					function ThrowPlaylist(){
+						player.api("moveplaylist","playlist_container");
+						document.getElementById("sample_but").style.display="block";}
+					
+					function Screenshot(){var x = player.api("screenshot");
+						if(x){var img = document.createElement("img");
+							img.setAttribute("src", x);
+							//document.getElementById("screenshot").innerHTML="";
+							document.getElementById("screenshot").appendChild(img);
+							counter++;
+							var _text = counter+'';
+							img.setAttribute("id", "rmv");
+							img.setAttribute("class", "screen");
+							$('.screenshot').scrollTop($('.screenshot')[0].scrollHeight);
+							var matched = $(".screenshot img");
+							document.getElementById("slides").innerHTML = matched.length;
+							$(function() {
+							$('.screenshot img').watermark({
+							text: 'TVBD',
+							textWidth: 100,
+							gravity: 'e',
+							opacity: 1,
+							margin: 12
+  });
+});
+							}
+							}
+					function ScreenshotAuto(){
+						interval=setInterval(function(){
+							var x = player.api("screenshot");
+						if(x){var img = document.createElement("img");
+							img.setAttribute("src", x);
+							document.getElementById("screenshot").appendChild(img);
+							counter++;
+							var _text = counter+'';
+							img.setAttribute("id", "rmv");
+							img.setAttribute("class", "screen");
+							$('.screenshot').scrollTop($('.screenshot')[0].scrollHeight);
+							var matched = $(".screenshot img");
+							document.getElementById("slides").innerHTML = matched.length;
+						$(function() {
+							$('.screenshot img').watermark({
+							text: 'TVBD',
+							textWidth: 100,
+							gravity: 'e',
+							opacity: 1,
+							margin: 12
+  });
+});
+							}
+						},
+						
+						500);
+						$("#startauto").css({"background":"#007bff", "color":"#fff"});
+						$("#stopauto").css({"background":"#000", "color":"#007bff"});}
+					$("#stopauto").click(function ScreenshotStop(){
+							$("#stopauto").css({"background":"#007bff", "color":"#fff"});
+							$("#startauto").css({"background":"#000", "color":"#007bff"});
+							clearInterval(interval); // stop the interval
+        });
+							
+							
+</script>
+
+
+
+ </body>
+ </html>
