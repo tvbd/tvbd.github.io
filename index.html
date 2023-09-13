@@ -48,23 +48,11 @@ sections=$("[data-type='accordion-section']")}}})});$("[data-type='accordion-fil
 $(this).hide()}}})});return this}})(jQuery)   
 //]]>
 </script>
-<script type='text/javascript'>         
-//<![CDATA[    
-var ListBlogLink=window.location.hostname;var ListCount=500;var TitleCount=100;var ListLabel=" ";var ChrCount=0;var ImageSize=30;function mbtlist(json){document.write('');for(var i=0;i<ListCount;i++)
-{var listing=ListUrl=ListTitle=ListConten=ListContent=ListImage=thumbUrl=sk="";for(var j=0;j<json.feed.entry[i].link.length;j++){if(json.feed.entry[i].link[j].rel=='alternate'){break}}
-ListUrl="'"+json.feed.entry[i].link[j].href+"'";if(json.feed.entry[i].title!=null)
-{ListTitle=json.feed.entry[i].title.$t.substr(0,TitleCount)}
-ListConten=json.feed.entry[i].content.$t;ListContent=ListConten.replace(/(<([^>]+)>)/ig,"").substr(0,ChrCount);if(json.feed.entry[i].media$thumbnail)
-{thumbUrl=json.feed.entry[i].media$thumbnail.url;sk=thumbUrl.replace("/s72-c/","/s"+ImageSize+"/");ListImage="'"+sk.replace("?imgmax=800","")+"'"}
-else if(json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)!=null)
-{ListImage=json.feed.entry[i].content.$t.match(/src=(.+?[\.jpg|\.gif|\.png]")/)[1]}
-else{ListImage="'//4.bp.blogspot.com/-HALLtgFeep0/VfryhQ0C5oI/AAAAAAAAPcY/77mSGND4q84/s20/Icon.png'"}
-var listing="<div class=\'accordion-content\' data-type=\'accordion-section-body\'><a onclick=\"loadPlayer("+ListUrl+")\" ></a><a onclick=\"loadPlayer("+ListUrl+")\" ><a class=\"btn\" onclick=\"loadPlayer("+ListUrl+")\" >"+ListTitle+"</a></div>";document.write(listing)}
-document.write("")}   //]]></script>
+
 <div class='sectionplayer'>
 <div class='w3-sidebar w3-light-grey w3-card-4 w3-animate-left' id='mySidebar' style='width:250px'>
 <div class='w3-bar w3-dark-grey'>
-<span class='w3-bar-item w3-padding-16'><a onclick='loadPlayer(&#39;index.html&#39;)' style='padding:10;cursor:pointer;' title='Home'><i class='fa fa-home' style='font-size:20px;'></i></a></span>
+<span class='w3-bar-item w3-padding-16'><a href='index.html' style='padding:10;cursor:pointer;' title='Home'><i class='fa fa-home' style='font-size:20px;'></i></a></span>
 <a onClick='window.location.reload();'><i class='fa fa-refresh' style='font-size:20px;padding:10px;cursor:pointer;padding-left:50px'></i></a>
 <button class='w3-bar-item w3-button w3-right w3-padding-16' onclick='w3_close()' title='close Sidebar'><i class='fa fa-times' style='font-size:20px;'></i></button>
 </div>
