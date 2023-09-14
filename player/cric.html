@@ -1,0 +1,94 @@
+
+<html lang="en">
+<head>
+<script src='//code.jquery.com/jquery-1.7.2.min.js'></script>
+<meta name="robots" content="noindex , nofollow" />
+<meta content='IE=EmulateIE7' http-equiv='X-UA-Compatible'/>
+<meta name="description" content="Exclusive Helping Site BD">
+<meta name="keywords" content="Bdix,Live Tv,Result bd,Torrent,Free MOVIE,Server">
+<meta name="author" content="Shawon Khan">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta content='100003868724945' property='fb:admins'/>
+<meta content='2558751744381240' property='fb:app_id'/>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<meta content='itbd' name='generator'/>
+<link href='favicon.ico' rel='icon' type='image/x-icon'/>
+<link href='' rel='canonical'/>
+<link rel="me" href="//facebook.com/shawonkhan123" />
+<meta content='' property='og:url'/>
+<meta content='' property='og:title'/>
+<meta content='' property='og:description'/>
+<title>Player/title>
+<style>
+  .js-player,iframe{width:100%!important;height:100vh!important;margin: 0px!important;padding:0!important;overflow:hidden;}
+</style>
+  </head>
+
+<body>
+<script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+</script>
+<script>
+  var responseText = ''+sv+'';
+  urlArry = responseText.split(',');
+  start = true;
+  num_of_urlArry = urlArry.length;
+  index_of_urlArry = 0;
+</script>
+
+  <div style='position:fixed;bottom:0;right:0;top:0;left:0;z-index:999;scrollbar-width:thin' class="js-player"></div>
+
+<script>
+window.customPlayer = null;
+let player;
+
+const loadPlayer = () => {
+  const playerElm = document.querySelector(".js-player");
+
+  // build iframe
+  let iframe = document.createElement("iframe");
+  iframe.src = ""+sv+"";
+  iframe.width = 100;
+  iframe.height = 100;
+  iframe.frameborder = 0;
+
+  playerElm.append(iframe);
+
+  player = new playerjs.Player(iframe);
+  window.customPlayer = player;
+
+  console.log("iFrame Origin: " + player.origin);
+  console.log("Player is Ready: " + player.isReady);
+
+  player.on(playerjs.EVENTS.READY, (e) => {
+    console.log("Player is Ready", e);
+    player.on(playerjs.EVENTS.PLAY, (e) => console.log("Player is playing", e));
+    player.on(playerjs.EVENTS.PAUSE, (e) => console.log("Player is paused", e));
+    player.on(playerjs.EVENTS.ENDED, (e) => console.log("Player has ended", e));
+    player.on(playerjs.EVENTS.TIMEUPDATED, (e) =>
+      console.log("Player time had updated", e)
+    );
+    player.on(playerjs.EVENTS.PROGRESS, (e) =>
+      console.log("Player has progressed", e)
+    );
+    player.on(playerjs.EVENTS.ERROR, (e) =>
+      console.log("Player has an error", e)
+    );
+    player.setCurrentTime(100);
+  });
+};
+
+// Load the player
+loadPlayer();
+</script>
+
+
+   </body>
+ </html>
