@@ -7,9 +7,9 @@ player.playlist([
 	{ name: 'GTV', sources: [ {src: 'http://103.118.76.146:1935/dhakacdn/gtv.stream/playlist.m3u8', type: 'application/x-mpegURL'}, ] },
         { name: 'Starsports1 tamil', sources: [ {src: 'http://20.2.72.221/asiacup/index.m3u8', type: 'application/x-mpegURL'}, ] },		
         { name: 'T-Sports3', sources: [ {src: 'http://11plus.live/live/tsports/index.m3u8', type: 'application/x-mpegURL'}, ] },
-        { name: 'T-Sports5', sources: [ {src: 'http://172.16.128.2:8081/live/sky2002/playlist.m3u8', type: 'application/x-mpegURL'}, ] },
-	{ name: 'GTV4', sources: [ {src: 'http://172.16.128.2:8081/live/sky1011/playlist.m3u8', type: 'application/x-mpegURL'}, ] },
-	{ name: 'GTV5', sources: [ {src: 'http://172.16.128.2:8081/live/sky2001/playlist.m3u8', type: 'application/x-mpegURL'}, ] },
+        { name: 'T-Sport3', sources: [ {src: 'http://103.209.173.26/8.m3u8', type: 'application/x-mpegURL'}, ] },
+	{ name: 'GTV2', sources: [ {src: 'http://103.209.173.26/0.m3u8', type: 'application/x-mpegURL'}, ] },
+	{ name: 'PTV', sources: [ {src: 'http://103.209.173.26/4.m3u8', type: 'application/x-mpegURL'}, ] },
 	   ]);
 
 // Initialize the playlist-ui plugin with no option (i.e. the defaults).
