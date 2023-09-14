@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var player = videojs('video');
 player.playlist([
-        { name: 'Sports 18', autoplay: true, sources: [ {src: 'http://172.17.50.112/live/antbd1001/index.m3u8', type: 'application/x-mpegURL'},] },
+        { name: 'Star sports 1', autoplay: true, sources: [ {src: 'http://172.17.50.112/live/antbd1001/index.m3u8', type: 'application/x-mpegURL'},] },
         { name: 'T-Sports 1', sources: [  {src: 'http://172.17.50.112/live/antbd1002/index.m3u8', type: 'application/x-mpegURL'}, ] },
         { name: 'GTV1', sources: [ {src: 'http://172.17.50.112/live/antbd1004/index.m3u8', type: 'application/x-mpegURL'}, ] },
 	{ name: 'T-Sports2', sources: [ {src: 'http://30.30.30.30/live/skyfeed1005/index.m3u8', type: 'application/x-mpegURL'}, ] },
