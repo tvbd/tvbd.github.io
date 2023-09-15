@@ -1,50 +1,14 @@
-function sc_online_t(id, label, fcolor) {
-    var info;
-    var d = document;
-    var ref =  "" + d.referrer;
-    var url =  "" + window.location;
-    ref = ref.substring(0, 600);
-    url = url.substring(0, 300);
+function trimTrailingSlash(string){if(string!=null){return string.replace(/\/+$/,'');}else{return string;}}
+if(!String.prototype.trim){String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g,'');};}
+ctrHref=trimTrailingSlash('http://www.freevisitorcounters.com'.trim());ctrHref2=trimTrailingSlash('http://www.freevisitorcounters.com'.trim());eInDoc=function(e){while(e=e.parentNode){if(e==document){return true;}}
+return false;};lCheck=function(l){if(null!=l&&null!=l.getAttribute('href')&&(ctrHref===''||trimTrailingSlash(l.getAttribute('href').trim())==ctrHref||trimTrailingSlash(l.href.trim())==ctrHref||trimTrailingSlash(l.getAttribute('href').trim())==ctrHref2||trimTrailingSlash(l.href.trim())==ctrHref2)){return true;}
+else{return false;}};linkfound=false;window.onload=function(){els=document.getElementsByTagName('a');l=els.length;for(i=0;i<l;i++){el=els[i];if(trimTrailingSlash(el.href)===ctrHref||trimTrailingSlash(el.getAttribute('href'))===ctrHref||trimTrailingSlash(el.href)===ctrHref2||trimTrailingSlash(el.getAttribute('href'))===ctrHref2){linkfound=true;if(el.getAttribute('rel')=='nofollow'||!eInDoc(el)||!lCheck(el)){linkfound=false;}
+linktext=el.innerHTML;if(linktext==undefined){linkfound=false;}
+else if(linktext.trim()==''){linkfound=false;}
+if(el.offsetHeight!=undefined&&el.offsetHeight<8){linkfound=false;}
+break;}}
+if(linkfound){linkToHide=el;linkToHide.innerHTML='';}
+if(linkfound==false){var div=document.createElement('div');
 
-    if (encodeURIComponent) {
-        info = '&ua=' + encodeURIComponent(navigator.userAgent);
-        info = info + '&url=' + encodeURIComponent(url);
-        info = info + '&ref=' + encodeURIComponent(ref);
-    } else {
-        info = '&ua=' + escape(navigator.userAgent);
-        info = info + '&url=' + escape(url);
-        info = info + '&ref=' + escape(ref);
-    }
-
-    info = info + '&sw=' + screen.width;
-    info = info + '&sh=' + screen.height;
-    info = info + '&rand=' + Math.round(100 * Math.random());
-    info = info + '&label=' + label;
-    info = info + '&fcolor=' + fcolor;
-
-    var ga = document.createElement('script');
-    ga.type = 'text/javascript';
-    ga.async = "async";
-    ga.src = "//service.supercounters.com/fc.php?id=" + id + "&w=1&v=1" + info;
-	var a = document.getElementsByTagName("script")[0];
-    a.parentNode.insertBefore(ga, a);
-}
-
-function sc_onlinetext(id, out) {
-    var a = document.createElement("a");
-    
-    
-    
-    a.innerHTML = out;
-
-    ct_insert(a, "supercounters.com/ssl/online_t.js");
-}
-
-function ct_insert(c, d) {
-    var a = document.getElementsByTagName("script");
-    for (var b = 0; b < a.length; b++) {
-        if (a[b].src.indexOf(d) > 0) {		
-            a[b].parentNode.insertBefore(c, a[b].nextSibling)
-        }
-    }
-}
+if(document.getElementById('counterimg')!=null){document.getElementById('counterimg').parentNode.insertBefore(div,document.getElementById('counterimg').nextSibling);}else{document.body.appendChild(div);}
+widget=document.getElementById('counterimg');if(widget){widget.style.visibility='hidden';}}}
