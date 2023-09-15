@@ -337,7 +337,7 @@ function ancMedia() {
         }
     };
     this.load = function (x) {
-        if (x.indexOf(sv[0]) != -1){x = x.replace(/anc\.cric\/http/gi, "http");  obj = DBOj(x)[0]; } //embed ban
+        if (x.indexOf(sv[0]) != -1){x = x.replace(/anc\.cri\/http/gi, "http");  obj = DBOj(x)[0]; } //embed ban
         this.fu("anc_pl", obj)
     };
     var DBOj = function (x) {
