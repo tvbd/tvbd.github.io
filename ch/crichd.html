@@ -353,6 +353,36 @@ function ancMedia() {
 var M = new ancMedia;
 M.Play()
 //]]></script>
+<script>
+$(document).ready(function(){
+    $("#server-list-close").click(function(){
+        $("#server-list-contenta").show(500);
+  $("#server-list-content").hide(500);
+    });
+    $("#server-list-closea").click(function(){
+        $("#server-list-content").show(500);
+  $("#server-list-contenta").hide(500);
+  $('#server-list-content').delay(5000).hide(500);
+  $('#server-list-contenta').show(500);
+    });
+$('#server-list-content').delay(10000).hide(500);
+$('#server-list-contenta').show(500);
+
+});
+</script>
+
+
+<script>
+var menu = $('.menu-button'),
+    playlist = $('.playlist'),
+    current = $('.now-playing');
+
+menu.on('click', function() {
+  $(this).toggleClass('menu-active');
+  playlist.toggleClass('playlist-active');
+  current.toggleClass('now-playing-active');
+})
+</script>
 
  </body>
  </html>
