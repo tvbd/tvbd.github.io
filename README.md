@@ -1,1 +1,1 @@
-# tvbd.github.io
+# http://bit.ly/tvbds
