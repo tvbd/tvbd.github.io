@@ -29,11 +29,11 @@ html{overflow-x:hidden;scrollbar-width:thin;} body{-webkit-font-smoothing:antial
 
 <style>
 /* Pop-Up Box  */
-.popSc{position:fixed;top:0;bottom:0;left:0;right:0;padding:20px;background:rgba(255, 255, 255, 0.1);z-index:99980;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:flex;justify-content:center;align-items:center}
+.popSc{position:fixed;top:0;bottom:0;left:0;right:0;padding:20px;background:rgba(0, 0, 0, 0.1);z-index:99980;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:flex;justify-content:center;align-items:center}
 .popSc.hidden{display:none}
-.popSc .popBo{position:relative;background:rgba(255, 255, 255, 0.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);max-width:400px;display:flex;justify-content:center;align-items:center;flex-direction:column;padding:30px;border-radius:20px;box-shadow:0 5px 25px rgb(0 0 0 / 20%)}
-.popSc .popBo svg{display:block;width:50px;height:50px;fill:none !important;stroke:#08102b;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5}
-.popSc .popBo h2{margin:10px 0 15px 0;font-size:1.2rem;font-weight:800;color:#08102b}
+.popSc .popBo{position:relative;background:rgba(50, 50, 50, 0.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);max-width:400px;display:flex;justify-content:center;align-items:center;flex-direction:column;padding:30px;border-radius:20px;box-shadow:0 5px 25px rgb(0 0 0 / 20%)}
+.popSc .popBo svg{display:block;width:50px;height:50px;fill:none !important;stroke:#fefefe;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5}
+.popSc .popBo h2{margin:10px 0 15px 0;font-size:1.2rem;font-weight:800;color:#fefefe}
 .popSc .popBo p{margin:0;line-height:1.7em;font-size:0.9rem;color:#08102b}
 .popSc .popBo .popBtn{display:inline-flex;justify-content:center;align-items:center;height:50px;width:50px;outline:none;border:none;background:#482dff;border-radius:50%;margin-top:20px;transition:all .2s ease;-webkit-transition:all .2s ease}
 .popSc .popBo .popBtn:hover{transform:scale(1.05);-webkit-transform:scale(1.05)}
@@ -41,25 +41,18 @@ html{overflow-x:hidden;scrollbar-width:thin;} body{-webkit-font-smoothing:antial
 .popSc .popBo .popBtn svg.r{animation:rotateIcn 1.5s infinite linear;-webkit-animation:rotateIcn 1.5s infinite linear}
 .popSc{animation:popupBlur .3s ease-in; -webkit-animation:popupBlur .3s}
 .popSc >*{animation:popupScale .3s ease-in; -webkit-animation:popupScale .3s}
-.darkMode .popSc{background:rgba(0, 0, 0, 0.1)}
-.darkMode .popSc .popBo{background:rgba(50, 50, 50, 0.8)}
-.darkMode .popSc .popBo svg{stroke:#fefefe}
-.darkMode .popSc .popBo p, .darkMode .popSc .popBo h2{color:#fefefe}
 @keyframes popupBlur {from{opacity:0}to{opacity:1}}
 @-webkit-keyframes popupBlur{from{opacity:0}to{opacity:1}}
 @keyframes popupScale{from{transform:scale(0);animation-timing-function:ease-in;opacity:0}to{transform:scale(1);opacity:1}}
 @-webkit-keyframes popupScale{from{-webkit-transform:scale(0);-webkit-animation-timing-function: ease-in;opacity:0}to{-webkit-transform:scale(1);opacity:1}}
 @keyframes rotateIcn{from{transform:rotate(0deg)} to{transform:rotate(359deg)}}
 @-webkit-keyframes rotateIcn{from{-webkit-transform:rotate(0deg)} to{-webkit-transform:rotate(359deg)}}
-
 /* Toast Notification  */
-.tNtf span{position:fixed;left:24px;bottom:-70px;display:inline-flex;align-items:center;text-align:center;justify-content:center;margin-bottom:20px;z-index:99981;background:#323232;color:rgba(255,255,255,.8);font-size:14px;font-family:inherit;border-radius:3px;padding:13px 24px; box-shadow:0 5px 35px rgba(149,157,165,.3);opacity:0;transition:all .1s ease;animation:slideinwards 2s ease forwards;-webkit-animation:slideinwards 2s ease forwards}
+.tNtf span{position:fixed;left:24px;bottom:-70px;display:inline-flex;align-items:center;text-align:center;justify-content:center;margin-bottom:20px;z-index:99981;background:#323232;color:rgba(255,255,255,.8);font-size:14px;font-family:inherit;border-radius:3px;padding:13px 24px; box-shadow:0 10px 40px rgba(0,0,0,.2);opacity:0;transition:all .1s ease;animation:slideinwards 2s ease forwards;-webkit-animation:slideinwards 2s ease forwards}
 @media screen and (max-width:500px){.tNtf span{margin-bottom:20px;left:20px;right:20px;font-size:13px}}
 @keyframes slideinwards{0%{opacity:0}20%{opacity:1;bottom:0}50%{opacity:1;bottom:0}80%{opacity:1;bottom:0}100%{opacity:0;bottom:-70px;visibility:hidden}}
 @-webkit-keyframes slideinwards{0%{opacity:0}20%{opacity:1;bottom:0}50%{opacity:1;bottom:0}80%{opacity:1;bottom:0}100%{opacity:0;bottom:-70px;visibility:hidden}}
-.darkMode .tNtf span{box-shadow:0 10px 40px rgba(0,0,0,.2)}
 </style>
-
 
 <link href='//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet'/>
 
@@ -348,7 +341,7 @@ if (document.exitFullscreen) {
   <div class='popBo'>
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><line x1='1' x2='23' y1='1' y2='23'/><path d='M16.72 11.06A10.94 10.94 0 0 1 19 12.55'/><path d='M5 12.55a10.94 10.94 0 0 1 5.17-2.39'/><path d='M10.71 5.05A16 16 0 0 1 22.58 9'/><path d='M1.42 9a15.91 15.91 0 0 1 4.7-2.88'/><path d='M8.53 16.11a6 6 0 0 1 6.95 0'/><line x1='12' x2='12.01' y1='20' y2='20'/></svg>
     <h2>Oops! No Internet!</h2>
-    <p>Looks like you are facing a temporary network interruption.<br/>Or check your network connection.</p>
+    <center><p>Looks like you are facing a temporary network interruption.<br/>Or check your network connection.</p></center>
     <button class='popBtn' onclick='pageReload()'><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><polyline points='23 4 23 10 17 10'/><path d='M20.49 15a9 9 0 1 1-2.12-9.36L23 10'/></svg></button>
   </div>
 </div>
