@@ -53,12 +53,15 @@ $(this).hide()}}})});return this}})(jQuery)
 <div class='sectionplayer'>
 <div class='w3-sidebar w3-light-grey w3-card-4 w3-animate-left' id='mySidebar' style='width:250px'>
 <div class='w3-bar w3-dark-grey'>
-<span class='w3-bar-item'>
-<a href='//raw.githack.com/tvbd/tvbd.github.io/master/index.html'  title='Home'><i class="fa fa-home"></i></a>
-<a href="javascript:;"  id="fullScreen" onclick="fullScreen();" title='Full Screen'> <i class="fa fa-arrows-alt" style='font-size:20px'></i></a>
-<a href="javascript:;" style='display:none;' id="close-fullScreen" onclick="closefullScreen();" title='close Full Screen'><i class="fa fa-compress" style='font-size:20px'></i></a> 
-<a onClick='window.location.reload();' title='Refresh'><i class='fa fa-refresh' style='font-size:20px'></i></a>
-<button class='w3-bar-item w3-button w3-right w3-padding-16' onclick='w3_close()' title='close Sidebar'><i class='fa fa-times' style='font-size:20px'></i></button></span>
+<span class='w3-bar-item'> 
+<ul class='icon'>
+<li><a href='//raw.githack.com/tvbd/tvbd.github.io/master/index.html'  title='Home'><i class="fa fa-home"></i></a></li>
+<li><a href="javascript:;"  id="fullScreen" onclick="fullScreen();" title='Full Screen'> <i class="fa fa-arrows-alt" style='font-size:20px'></i></a>
+<li><a href="javascript:;" style='display:none;' id="close-fullScreen" onclick="closefullScreen();" title='close Full Screen'><i class="fa fa-compress" style='font-size:20px'></i></a> </li>
+<li><a onClick='window.location.reload();' title='Refresh'><i class='fa fa-refresh' style='font-size:20px'></i></a></li>
+<li><a class='w3-bar-item w3-button w3-right w3-padding-16' onclick='w3_close()' title='close Sidebar'><i class='fa fa-times' style='font-size:20px'></i></a></li>
+</ul>
+</span>
 </div>
 <div class='list'>
 <input data-type='accordion-search' id='search' name='search' placeholder='SEARCH...' type='text'/>
