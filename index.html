@@ -59,9 +59,9 @@ $(this).hide()}}})});return this}})(jQuery)
 <ul class='icon'>
 <li><a href='//raw.githack.com/tvbd/tvbd.github.io/master/index.html' title='Home' onclick='vibRate(50); clicksound.playclip()'><i class="fa fa-home" style='font-size:22px'></i></a></li>
 <li><a href="javascript:;"  id="fullScreen" onclick="fullScreen();" title='Full Screen'> <i class="fa fa-arrows-alt"></i></a>
-<li><a href="javascript:;" style='display:none;' id="close-fullScreen" onclick="closefullScreen();" title='close Full Screen'><i class="fa fa-compress" ></i></a> </li>
-<li><a onClick='window.location.reload();' title='Refresh'><i class='fa fa-refresh'></i></a></li>
-<li><a onclick='w3_close()' title='close Sidebar'><i class='fa fa-times' style='font-size:22px'></i></a></li>
+<li><a href="javascript:;" style='display:none;' id="close-fullScreen" onclick="closefullScreen(); vibRate(50); clicksound.playclip()" title='close Full Screen'><i class="fa fa-compress" ></i></a> </li>
+<li><a onClick='window.location.reload(); vibRate(50); clicksound.playclip()' title='Refresh'><i class='fa fa-refresh'></i></a></li>
+<li><a onclick='w3_close(); vibRate(50); clicksound.playclip()' title='close Sidebar' ><i class='fa fa-times' style='font-size:24px'></i></a></li>
 </ul>
 </span>
 </div>
@@ -207,7 +207,8 @@ $(document).ready(function(){$("#accordion").accordion()})
 </div>
 <div id='main' style='margin-left:220px'>
 <div class='w3-container w3-display-container'>
-<span class='w3-button w3-transparent w3-display-topleft w3-xlarge' id='openNav' onclick='w3_open()' style='display:none;color:#fff' title='open Sidebar'>&#9776;</span>
+<span class='w3-button w3-transparent w3-display-topleft w3-xlarge' id='openNav' onclick='w3_open(); vibRate(50); clicksound.playclip()'' style='display:none;' title='open Sidebar'><i class="fa fa-times"></i>
+</span>
 <div class='playerdiv'>
 <div id='ploader'>
 <iframe allowfullscreen='yes' class='wrapper' data-autoplay='true' frameborder='0' height='100vh' id='blockrandom' mozallowfullscreen='yes' msallowfullscreen='yes' name='iframe' scrolling='yes' src='playlist/playjs/index.html' style='margin-top: 0px; width: 100%; overflow: hidden;' webkitallowfullscreen='' width='100%'>
@@ -258,7 +259,7 @@ document.onkeydown=function(e){if(123==(e=e||window.event).keyCode||18==e.keyCod
 </script>
 <script type='text/javascript'> //<![CDATA[
 /* Vibrate */ function vibRate(e) {if ('vibrate' in navigator) {navigator.vibrate([e])}};
-/* sound */ function createsoundbite(e){var t=document.createElement("audio");if(t.canPlayType){for(var n=0;n<arguments.length;n++){var r=document.createElement("source");r.setAttribute("src",arguments[n]);if(arguments[n].match(/\.(\w+)$/i))r.setAttribute("type",html5_audiotypes[RegExp.$1]);t.appendChild(r)}t.load();t.playclip=function(){t.pause();t.currentTime=0;t.play()};return t}else{return{playclip:function(){throw new Error("Your browser doesn't support HTML5 audio unfortunately")}}}}var html5_audiotypes={mp3:"audio/mpeg",mp4:"audio/mp4",ogg:"audio/ogg",wav:"audio/wav"};var mouseoversound=createsoundbite("//cdn.jsdelivr.net/gh/shawonbd/shawonbd.github.io/assets/js/clicksound.ogg");var clicksound=createsoundbite("//cdn.jsdelivr.net/gh/shawonbd/shawonbd.github.io/assets/js/clicksound.ogg");
+/* sound */ function createsoundbite(e){var t=document.createElement("audio");if(t.canPlayType){for(var n=0;n<arguments.length;n++){var r=document.createElement("source");r.setAttribute("src",arguments[n]);if(arguments[n].match(/\.(\w+)$/i))r.setAttribute("type",html5_audiotypes[RegExp.$1]);t.appendChild(r)}t.load();t.playclip=function(){t.pause();t.currentTime=0;t.play()};return t}else{return{playclip:function(){throw new Error("Your browser doesn't support HTML5 audio unfortunately")}}}}var html5_audiotypes={mp3:"audio/mpeg",mp4:"audio/mp4",ogg:"audio/ogg",wav:"audio/wav"};var mouseoversound=createsoundbite("//raw.githack.com/shawonbd/shawonbd.github.io/master/assets/js/clicksound.ogg");var clicksound=createsoundbite("//raw.githack.com/shawonbd/shawonbd.github.io/master/assets/js/clicksound.ogg");
 //]]>
 </script>
  
