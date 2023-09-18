@@ -53,6 +53,12 @@ $(this).hide()}}})});return this}})(jQuery)
 <div class='w3-sidebar w3-light-grey w3-card-4 w3-animate-left' id='mySidebar' style='width:250px'>
 <div class='w3-bar w3-dark-grey'>
 <span class='w3-bar-item w3-padding-16'><a href='http://raw.githack.com/tvbd/tvbd.github.io/master/index.html' style='padding:10;cursor:pointer;' title='Home'><i class='fa fa-home' style='font-size:20px;'></i></a></span>
+
+<div class='fullscreen'>
+<a href="javascript:;" id="fullScreen" onclick="fullScreen();"> <span><i class="fa fa-arrows-alt" aria-hidden="true"></i></span></a>
+<a href="javascript:;" id="close-fullScreen" onclick="closefullScreen();" style="display: none;"><span><i class="fa fa-compress" aria-hidden="true"></i></span></a>
+</div>
+ 
 <a onClick='window.location.reload();'><i class='fa fa-refresh' style='font-size:20px;padding:10px;cursor:pointer;padding-left:50px'></i></a>
 <button class='w3-bar-item w3-button w3-right w3-padding-16' onclick='w3_close()' title='close Sidebar'><i class='fa fa-times' style='font-size:20px;'></i></button>
 </div>
@@ -244,6 +250,52 @@ window.addEventListener("keydown",function(h){!h.ctrlKey||65!=h.which&&66!=h.whi
 function disableSelection(e){void 0!==e.onselectstart?e.onselectstart=function(){return!1}:void 0!==e.style.MozUserSelect?e.style.MozUserSelect="none":e.onmousedown=function(){return!1},e.style.cursor="default"}window.onload=function(){disableSelection(document.body)};
 document.oncontextmenu=function(n){var t=n||window.event;if("A"!=(t.target||t.srcElement).nodeName)return!1},document.ondragstart=function(){return!1};
 document.onkeydown=function(e){if(123==(e=e||window.event).keyCode||18==e.keyCode)return!1};
+//]]>
+</script>
+
+<script>
+//<![CDATA[
+var elem = document.documentElement;
+var fullscrn = document.getElementById("fullScreen");
+var closefullscrn = document.getElementById("close-fullScreen");
+function fullScreen(){
+if (elem.requestFullscreen) {
+  elem.requestFullscreen(),
+    fullscrn.style.display = "none",
+    closefullscrn.style.display = "block";
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  fullscrn.style.display = "none",
+    closefullscrn.style.display = "block";
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+    elem.webkitRequestFullscreen();
+    fullscrn.style.display = "none",
+    closefullscrn.style.display = "block";
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+    fullscrn.style.display = "none",
+    closefullscrn.style.display = "block";
+  }
+};
+function closefullScreen(){
+if (document.exitFullscreen) {
+    document.exitFullscreen(),
+    fullscrn.style.display = "block",
+    closefullscrn.style.display = "none";
+  } else if (document.mozCancelFullScreen) { /* Firefox */
+    document.mozCancelFullScreen();
+    fullscrn.style.display = "block",
+    closefullscrn.style.display = "none";
+  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+    document.webkitExitFullscreen();
+    fullscrn.style.display = "block",
+    closefullscrn.style.display = "none";
+  } else if (document.msExitFullscreen) { /* IE/Edge */
+    document.msExitFullscreen();
+    fullscrn.style.display = "block",
+    closefullscrn.style.display = "none";
+  }
+};
 //]]>
 </script>
 
