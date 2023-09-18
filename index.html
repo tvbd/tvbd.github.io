@@ -362,6 +362,10 @@ if (document.exitFullscreen) {
   </div>
 </div>
 
+
+
+<script>/*<![CDATA[*/ /* No Internet Connection */ window.addEventListener("offline",function(){document.querySelector("#toastNotif").innerHTML="<span>No internet connection!</span>"}),window.addEventListener("online",function(){document.querySelector("#toastNotif").innerHTML="<span>Internet connection restored!</span>"}); /*]]>*/</script>
+
  
   </body>
     </html>
