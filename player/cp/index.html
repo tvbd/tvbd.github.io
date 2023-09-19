@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLAPPER</title> 
+<script type="text/javascript" src="jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="clappr.min.js"></script>  
+<script type="text/javascript" src="level-selector.min.js"></script>
+<meta name="robots" content="noindex,nofollow">
+<style>body,html {background-color:#000;margin:0px;padding:0px;width:100%;height:100%}
+body {overflow:hidden;}
+#player,object,video {position:relative;z-index:1;width:100%;height:100%} 
+@media only screen and (max-width: 450px){a{text-decoration:none}}
+@media only screen and (max-width: 703px) and (min-width: 450px){a{text-decoration:none}}
+@media screen and (min-width:703px) {a{text-decoration:none} iframe{padding:0;margin:0}}
+</style>
+
+</head>
+<body scroll="no" onload="player.play();">
+
+ <script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+</script>
+<script>
+  var responseText = ''+sv+'';
+  urlArry = responseText.split(',');
+  start = true;
+  num_of_urlArry = urlArry.length;
+  index_of_urlArry = 0;
+</script>
+
+
+
+<div id="player"></div>
+<script type="text/javascript" charset="utf-8"> 
+var player = new Clappr.Player({
+source: ''+sv+'',
+plugins: [Clappr.HLS,Clappr.FlasHLS,LevelSelector],
+watermark: '',
+position: 'top-right',
+watermarkLink: 'TVBD',
+autoPlay: true,
+mediacontrol: {seekbar:"#42BCEF",buttons:"#fff"},
+pause:true,
+parentId:"#player",  
+width:"100%",
+height:"100%"
+});   
+</script>
+
+</body></html>
