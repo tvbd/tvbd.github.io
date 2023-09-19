@@ -28,27 +28,8 @@ html{overflow-x:hidden;scrollbar-width:thin;} body{-webkit-font-smoothing:antial
 </style>
 
 <style>
-/* Pop-Up Box  */
-.popSc{position:fixed;top:0;bottom:0;left:0;right:0;padding:20px;background:rgba(0, 0, 0, 0.1);z-index:99980;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:flex;justify-content:center;align-items:center}
-.popSc.hidden{display:none}
-.popSc .popBo{position:relative;background:rgba(50, 50, 50, 0.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);max-width:400px;display:flex;justify-content:center;align-items:center;flex-direction:column;padding:30px;border-radius:20px;box-shadow:0 5px 25px rgb(0 0 0 / 20%)}
-.popSc .popBo svg{display:block;width:50px;height:50px;fill:none !important;stroke:#fefefe;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5}
-.popSc .popBo h2{margin:10px 0 15px 0;font-size:1.2rem;font-weight:800;color:#fefefe}
-.popSc .popBo p{margin:0;line-height:1.7em;font-size:0.9rem;color:#fefefe}
-.popSc .popBo .popBtn{display:inline-flex;justify-content:center;align-items:center;height:50px;width:50px;outline:none;border:none;background:#482dff;border-radius:50%;margin-top:20px;transition:all .2s ease;-webkit-transition:all .2s ease}
-.popSc .popBo .popBtn:hover{transform:scale(1.05);-webkit-transform:scale(1.05)}
-.popSc .popBo .popBtn svg{width:24px;height:24px;stroke:#fff;flex-shrink:0}
-.popSc .popBo .popBtn svg.r{animation:rotateIcn 1.5s infinite linear;-webkit-animation:rotateIcn 1.5s infinite linear}
-.popSc{animation:popupBlur .3s ease-in; -webkit-animation:popupBlur .3s}
-.popSc >*{animation:popupScale .3s ease-in; -webkit-animation:popupScale .3s}
-@keyframes popupBlur {from{opacity:0}to{opacity:1}}
-@-webkit-keyframes popupBlur{from{opacity:0}to{opacity:1}}
-@keyframes popupScale{from{transform:scale(0);animation-timing-function:ease-in;opacity:0}to{transform:scale(1);opacity:1}}
-@-webkit-keyframes popupScale{from{-webkit-transform:scale(0);-webkit-animation-timing-function: ease-in;opacity:0}to{-webkit-transform:scale(1);opacity:1}}
-@keyframes rotateIcn{from{transform:rotate(0deg)} to{transform:rotate(359deg)}}
-@-webkit-keyframes rotateIcn{from{-webkit-transform:rotate(0deg)} to{-webkit-transform:rotate(359deg)}}
-/* Toast Notification  */
-.tNtf span{position:fixed;left:24px;bottom:-70px;display:inline-flex;align-items:center;text-align:center;justify-content:center;margin-bottom:20px;z-index:99981;background:#323232;color:rgba(255,255,255,.8);font-size:14px;font-family:inherit;border-radius:3px;padding:13px 24px; box-shadow:0 10px 40px rgba(0,0,0,.2);opacity:0;transition:all .1s ease;animation:slideinwards 2s ease forwards;-webkit-animation:slideinwards 2s ease forwards}
+/* Pop-Up Box */ .popSc{position:fixed;top:0;bottom:0;left:0;right:0;padding:20px;background:rgba(0,0,0,0.1);z-index:99980;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:flex;justify-content:center;align-items:center}.popSc.hidden{display:none}.popSc .popBo{position:relative;background:rgba(50,50,50,0.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);max-width:400px;display:flex;justify-content:center;align-items:center;flex-direction:column;padding:30px;border-radius:20px;box-shadow:0 5px 25px #000}.popSc .popBo svg{display:block;width:50px;height:50px;fill:none!important;stroke:#fefefe;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5}.popSc .popBo h2{margin:10px 0 15px;font-size:1.2rem;font-weight:800;color:#fefefe}.popSc .popBo p{margin:0;line-height:1.7em;font-size:.9rem;color:#fefefe}.popSc .popBo .popBtn{display:inline-flex;justify-content:center;align-items:center;height:50px;width:50px;outline:none;border:none;background:#482dff;border-radius:50%;margin-top:20px;transition:all .2s ease;-webkit-transition:all .2s ease}.popSc .popBo .popBtn:hover{transform:scale(1.05);-webkit-transform:scale(1.05)}.popSc .popBo .popBtn svg{width:24px;height:24px;stroke:#fff;flex-shrink:0}.popSc .popBo .popBtn svg.r{animation:rotateIcn 1.5s infinite linear;-webkit-animation:rotateIcn 1.5s infinite linear}.popSc{animation:popupBlur .3s ease-in;-webkit-animation:popupBlur .3s}.popSc >*{animation:popupScale .3s ease-in;-webkit-animation:popupScale .3s}@keyframes popupBlur{from{opacity:0}to{opacity:1}}@-webkit-keyframes popupBlur{from{opacity:0}to{opacity:1}}@keyframes popupScale{from{transform:scale(0);animation-timing-function:ease-in;opacity:0}to{transform:scale(1);opacity:1}}@-webkit-keyframes popupScale{from{-webkit-transform:scale(0);-webkit-animation-timing-function:ease-in;opacity:0}to{-webkit-transform:scale(1);opacity:1}}@keyframes rotateIcn{from{transform:rotate(0deg)}to{transform:rotate(359deg)}}@-webkit-keyframes rotateIcn{from{-webkit-transform:rotate(0deg)}to{-webkit-transform:rotate(359deg)}}
+/* Toast Notification */  .tNtf span{position:fixed;left:24px;bottom:-70px;display:inline-flex;align-items:center;text-align:center;justify-content:center;margin-bottom:20px;z-index:99981;background:#323232;color:rgba(255,255,255,.8);font-size:14px;font-family:inherit;border-radius:3px;padding:13px 24px; box-shadow:0 10px 40px rgba(0,0,0,.2);opacity:0;transition:all .1s ease;animation:slideinwards 2s ease forwards;-webkit-animation:slideinwards 2s ease forwards}
 @media screen and (max-width:500px){.tNtf span{margin-bottom:20px;left:20px;right:20px;font-size:13px}}
 @keyframes slideinwards{0%{opacity:0}20%{opacity:1;bottom:0}50%{opacity:1;bottom:0}80%{opacity:1;bottom:0}100%{opacity:0;bottom:-70px;visibility:hidden}}
 @-webkit-keyframes slideinwards{0%{opacity:0}20%{opacity:1;bottom:0}50%{opacity:1;bottom:0}80%{opacity:1;bottom:0}100%{opacity:0;bottom:-70px;visibility:hidden}}
@@ -82,11 +63,11 @@ $(this).hide()}}})});return this}})(jQuery)
 <div class='w3-bar w3-dark-grey'>
 <span class='w3-bar-item'> 
 <ul class='icon'>
-<li><a href='http://raw.githack.com/tvbd/tvbd.github.io/master/index.html' title='Home' onclick='vibRate(50); clicksound.playclip()'><i class="fa fa-home" style='font-size:25px'></i></a></li>
+<li><a href='http://raw.githack.com/tvbd/tvbd.github.io/master/index.html' title='Home' onclick='vibRate(50); clicksound.playclip()'><i class="fa fa-home" style='font-size:22px'></i></a></li>
 <li><a href="javascript:;"  id="fullScreen" onclick="fullScreen(); vibRate(50); clicksound.playclip()" title='Full Screen'> <i class="fa fa-arrows-alt"></i></a>
 <li><a href="javascript:;" style='display:none;' id="close-fullScreen" onclick="closefullScreen(); vibRate(50); clicksound.playclip()" title='close Full Screen'><i class="fa fa-compress" ></i></a> </li>
 <li><a onClick='window.location.reload(); vibRate(50); clicksound.playclip()' title='Refresh'><i class='fa fa-refresh'></i></a></li>
-<li><a onclick='w3_close(); vibRate(50); clicksound.playclip()' title='close Sidebar' ><i class='fa fa-times' style='font-size:25px'></i></a></li>
+<li><a onclick='w3_close(); vibRate(50); clicksound.playclip()' title='close Sidebar' ><i class='fa fa-times' style='font-size:22px'></i></a></li>
 </ul>
 </span>
 </div>
@@ -240,31 +221,17 @@ $(document).ready(function(){$("#accordion").accordion()})
 <iframe allowfullscreen='yes' class='wrapper' data-autoplay='true' frameborder='0' height='100vh' id='blockrandom' mozallowfullscreen='yes' msallowfullscreen='yes' name='iframe' scrolling='yes' src='playlist/playjs/index.html' style='margin-top: 0px; width: 100%; overflow: hidden;' webkitallowfullscreen='' width='100%'>
 </iframe>
 </div>
-<script>
- //<![CDATA[ 
-  function loadPlayer(url) {document.getElementById('blockrandom').setAttribute('src', url); }
- //]]>
-</script>
+<script>//<![CDATA[ 
+ function loadPlayer(url) {document.getElementById('blockrandom').setAttribute('src', url); }
+ //]]> </script>
 </div>
 </div>
 </div>
 </div>
-<script>
-function w3_open() {
-  document.getElementById("main").style.marginLeft = "220px";
-  document.getElementById("mySidebar").style.width = "220px";
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("openNav").style.display = 'none';
-}
-function w3_close() {
-  document.getElementById("main").style.marginLeft = "0px";
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("openNav").style.display = "inline-block";
-}
-</script>
-
-
-
+ 
+<script>//<![CDATA[ 
+function w3_open(){document.getElementById("main").style.marginLeft="220px",document.getElementById("mySidebar").style.width="220px",document.getElementById("mySidebar").style.display="block",document.getElementById("openNav").style.display="none"}function w3_close(){document.getElementById("main").style.marginLeft="0px",document.getElementById("mySidebar").style.display="none",document.getElementById("openNav").style.display="inline-block"}
+ //]]> </script>
 
 
 <!-- nocopy-->
@@ -286,54 +253,11 @@ document.onkeydown=function(e){if(123==(e=e||window.event).keyCode||18==e.keyCod
 <script type='text/javascript'> //<![CDATA[
 /* Vibrate */ function vibRate(e) {if ('vibrate' in navigator) {navigator.vibrate([e])}};
 /* sound */ function createsoundbite(e){var t=document.createElement("audio");if(t.canPlayType){for(var n=0;n<arguments.length;n++){var r=document.createElement("source");r.setAttribute("src",arguments[n]);if(arguments[n].match(/\.(\w+)$/i))r.setAttribute("type",html5_audiotypes[RegExp.$1]);t.appendChild(r)}t.load();t.playclip=function(){t.pause();t.currentTime=0;t.play()};return t}else{return{playclip:function(){throw new Error("Your browser doesn't support HTML5 audio unfortunately")}}}}var html5_audiotypes={mp3:"audio/mpeg",mp4:"audio/mp4",ogg:"audio/ogg",wav:"audio/wav"};var mouseoversound=createsoundbite("//raw.githack.com/shawonbd/shawonbd.github.io/master/assets/js/clicksound.ogg");var clicksound=createsoundbite("//raw.githack.com/shawonbd/shawonbd.github.io/master/assets/js/clicksound.ogg");
-//]]>
-</script>
+//]]></script>
  
-<script>
-//<![CDATA[
-var elem = document.documentElement;
-var fullscrn = document.getElementById("fullScreen");
-var closefullscrn = document.getElementById("close-fullScreen");
-function fullScreen(){
-if (elem.requestFullscreen) {
-  elem.requestFullscreen(),
-    fullscrn.style.display = "none",
-    closefullscrn.style.display = "block";
-  } else if (elem.mozRequestFullScreen) { /* Firefox */
-    elem.mozRequestFullScreen();
-  fullscrn.style.display = "none",
-    closefullscrn.style.display = "block";
-  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-    elem.webkitRequestFullscreen();
-    fullscrn.style.display = "none",
-    closefullscrn.style.display = "block";
-  } else if (elem.msRequestFullscreen) { /* IE/Edge */
-    elem.msRequestFullscreen();
-    fullscrn.style.display = "none",
-    closefullscrn.style.display = "block";
-  }
-};
-function closefullScreen(){
-if (document.exitFullscreen) {
-    document.exitFullscreen(),
-    fullscrn.style.display = "block",
-    closefullscrn.style.display = "none";
-  } else if (document.mozCancelFullScreen) { /* Firefox */
-    document.mozCancelFullScreen();
-    fullscrn.style.display = "block",
-    closefullscrn.style.display = "none";
-  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-    document.webkitExitFullscreen();
-    fullscrn.style.display = "block",
-    closefullscrn.style.display = "none";
-  } else if (document.msExitFullscreen) { /* IE/Edge */
-    document.msExitFullscreen();
-    fullscrn.style.display = "block",
-    closefullscrn.style.display = "none";
-  }
-};
-//]]>
-</script>
+<script type='text/javascript'> //<![CDATA[
+ var elem=document.documentElement,fullscrn=document.getElementById("fullScreen"),closefullscrn=document.getElementById("close-fullScreen");function fullScreen(){elem.requestFullscreen?(elem.requestFullscreen(),fullscrn.style.display="none",closefullscrn.style.display="block"):elem.mozRequestFullScreen?(elem.mozRequestFullScreen(),fullscrn.style.display="none",closefullscrn.style.display="block"):elem.webkitRequestFullscreen?(elem.webkitRequestFullscreen(),fullscrn.style.display="none",closefullscrn.style.display="block"):elem.msRequestFullscreen&&(elem.msRequestFullscreen(),fullscrn.style.display="none",closefullscrn.style.display="block")}function closefullScreen(){document.exitFullscreen?(document.exitFullscreen(),fullscrn.style.display="block",closefullscrn.style.display="none"):document.mozCancelFullScreen?(document.mozCancelFullScreen(),fullscrn.style.display="block",closefullscrn.style.display="none"):document.webkitExitFullscreen?(document.webkitExitFullscreen(),fullscrn.style.display="block",closefullscrn.style.display="none"):document.msExitFullscreen&&(document.msExitFullscreen(),fullscrn.style.display="block",closefullscrn.style.display="none")}
+//]]> </script>
 
 <!--[ No Internet Connection Pop-up  ]-->
 <div id='toastNotif' class='tNtf'></div>
