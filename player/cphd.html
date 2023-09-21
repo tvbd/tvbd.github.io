@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Clapper HD Player</title>
+</head>
+<body>
+
+<script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+</script>
+<script>
+  var responseText = ''+sv+'';
+  urlArry = responseText.split(',');
+  start = true;
+  num_of_urlArry = urlArry.length;
+  index_of_urlArry = 0;
+</script>
+
+<div style='position:fixed;bottom:0;right:0;top:0;left:0;z-index:999;' id="player">
+
+  <script src='//cdn.jsdelivr.net/npm/clappr/dist/clappr.min.js'></script>
+<script src='//cdn.jsdelivr.net/npm/clappr-stats/dist/clappr-stats.min.js'></script>
+<script src='//cdn.jsdelivr.net/npm/clappr-nerd-stats/dist/clappr-nerd-stats.min.js'></script>
+<script src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
+<script src='//cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js'></script>
+<script src='//cdn.jsdelivr.net/npm/dash-shaka-playback@latest/dist/dash-shaka-playback.min.js'></script>
+ <script src='//cdn.jsdelivr.net/npm/clappr-playback-rate-plugin@latest/dist/clappr-playback-rate-plugin.min.js'></script>
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@clappr/hlsjs-playback@latest/dist/hlsjs-playback.min.js"></script>
+<script src="//cdn.jsdelivr.net/clappr.chromecast-plugin/latest/clappr-chromecast-plugin.js"></script>
+ <script type="text/javascript" src="//cdn.jsdelivr.net/npm/clappr-markers-plugin@latest/dist/clappr-markers-plugin.js"></script>    
+    <!--script src="//cdn.jsdelivr.net/npm/clappr-capture-plugin@latest/dist/clappr-capture-plugin.js"></script--> 
+  
+   <script>
+      var markerInfo = [
+			[300, "first"],
+			[1200, "middle"],
+			[5700, "last"]
+		];
+		var markers = [];
+		for (var i = 0; i < markerInfo.length; i++) {
+			var info = markerInfo[i];
+			markers.push(new ClapprMarkersPlugin.StandardMarker(info[0], info[1]));
+		}
+    
+         window.onload = function() {
+             var player = new Clappr.Player({
+                source: ""+sv+"",
+                 parentId: '#player',
+   plugins: [ClapprNerdStats, ClapprStats, ClapprMarkersPlugin, LevelSelector, ChromecastPlugin, ClapprPip.PipButton, ClapprPip.PipPlugin, DashShakaPlayback, Clappr.MediaControl, PlaybackRatePlugin, //ClapprCapturePlugin 
+            ],
+        
+         markersPlugin: {
+				markers: markers,
+				tooltipBottomMargin: 17 // optional
+			},       
+                
+          
+                 clapprNerdStats: {
+    // Optional: provide multiple combination of keyboard shortcuts to show/hide the statistics.
+    // For reference, visit: https://github.com/ccampbell/mousetrap.
+    // Default: ['command+shift+s', 'ctrl+shift+s']
+    shortcut: ['command+shift+s', 'ctrl+shift+s'],
+
+    // Optional: position of the icon to show/hide the statistics.
+    // Values: 'top-right', 'top-left', 'bottom-right', 'bottom-left', 'none'
+    // Default: 'top-right'
+    iconPosition: 'top-right' },
+        
+                 
+                 events: {onReady: function() {var plugin = this.getPlugin('click_to_pause'); plugin && plugin.disable();},},
+                 height: '100vh',
+                 width: '100vw',
+                 autoPlay: true,
+               poster: "",
+                 shakaConfiguration: {
+                 manifest: {retryParameters: {maxAttempts: Infinity}},
+                 streaming: {retryParameters: {maxAttempts: Infinity}},
+                 drm: {retryParameters: {maxAttempts: Infinity}},
+                 },
+                 playbackRateConfig: {
+                 defaultValue: '1.00x',
+                 options: [
+                 {value: '0.10', label: '0.10x'},
+                 {value: '0.25', label: '0.25x'},
+                 {value: '0.50', label: '0.50x'},
+                 {value: '0.75', label: '0.75x'},
+                 {value: '1.00', label: '1.00x'},
+                 {value: '1.25', label: '1.25x'},
+                 {value: '1.50', label: '1.50x'},
+                 {value: '1.75', label: '1.75x'},
+                 {value: '2.00', label: '2.00x'},
+                 ]
+                 },
+           
+          });
+
+/*var player = new Clappr.Player(
+player.core.mediaControl.on('capture:base64', (b64) => {
+  var myWindow = window.open("", "PictureWindow");
+  myWindow.document.write(`<img src="${b64}" />`);
+    })); */
+
+
+
+};
+
+
+
+      </script>
+ 
+
+
+
+</body>
+</html>
+
