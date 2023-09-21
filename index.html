@@ -76,6 +76,7 @@ $(this).hide()}}})});return this}})(jQuery)
 <select data-type='accordion-filter' id='filter' name='filter'>
 <option value='default'>CATEGORY</option>
 <option value='Tv'>TV</option>
+<option value='Bdix'>TV</option>
 <option value='Movies'>Movies</option>
 <option value='FTP'>FTP</option>
 <option value='Android'>Android</option>
@@ -132,16 +133,25 @@ $(this).hide()}}})});return this}})(jQuery)
  </span>
 </div>
 
+<div data-filter='BDIX' data-type='accordion-section'><h3 data-type='accordion-section-title'>BDIX Site</h3>
+<span id='recents'>
+ <div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//ihub.live/&#39;)'>Ihub</a></div>
+ <div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//sunplex.net/&#39;)'>Sunplex</a></div>
+<div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//mybdix.com/&#39;)'>Mybdix</a></div>
+<div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//dflix.discoveryftp.net/login/demo&#39;)'>Dflix</a></div>
+<div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//cinemacity.live&#39;)'>Cinemacity</a></div>
+<div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//aliflailabd.com&#39;)'>Aliflailabd</a></div>
+ </span>
+</div>
+
+ 
 <div data-filter='FTP' data-type='accordion-section'><h3 data-type='accordion-section-title'>FTP Site</h3>
 <span id='recents'>
 <div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//drive1.morbiustd.workers.dev/&#39;)'>Morbiustd Drive</a></div>
  <div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//no1.hub4u.workers.dev/0:/&#39;)'>Hub4u Drive</a></div>
  <div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//ftp.timepassbd.live/&#39;)'>Timepassbd</a></div>
-  <div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//ihub.live/&#39;)'>Ihub</a></div>
- <div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//sunplex.net/&#39;)'>Sunplex</a></div>
-<div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//mybdix.com/&#39;)'>Mybdix</a></div>
-<div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//dflix.discoveryftp.net/login/demo&#39;)'>Dflix</a></div>
-<div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//cinemacity.live&#39;)'>Cinemacity</a></div>
+ <div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//aliflailabd.com&#39;)'>Aliflailabd</a></div>
+ <div class='accordion-content' data-type='accordion-section-body'><a class='btn' onclick='loadPlayer(&#39;//ftp1.aliflailabd.com&#39;)'>ftpaliflailabd</a></div>
 </span>
 </div>
 
