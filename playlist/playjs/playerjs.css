@@ -34,7 +34,7 @@ main {
 }
 
 #channels {
-    flex: 30%;
+    flex: 24.8%;
     background-color: #fff;
     max-height: 100vh;
     overflow-y: scroll;
