@@ -17,8 +17,6 @@
 <div class="channel" onclick="play('http://172.17.50.112/live/antbd1001/index.m3u8')"> <img alt="Star Sports 1" src="img/sp1.jpg"/><p>Star Sports 1</p></div>
 <div class="channel" onclick="play('http://172.17.50.112/live/fifa2022/index.m3u8')"> <img alt="Star Sports 2" src="img/sp2.jpg"/><p>Star Sports 2</p></div>
 <div class="channel" onclick="play('http://172.17.50.112/live/antbd1002/index.m3u8')"> <img alt="Tsports" src="img/tp.jpg"/><p>Tsports</p></div>				
-
-
 </div>
 			
             
@@ -42,17 +40,24 @@
             
           
             <h2 class="category">103.209.173.26</h2>
-			<div class="channel_collapse">
-			
- <div class="channel" onclick="play('http://103.209.173.26/8.m3u8')"> <img alt="Tsports" src="img/tp.jpg"/><p>Tsports</p></div>			
-<div class="channel" onclick="play('http://103.209.173.26/0.m3u8')"> <img alt="ptv" src="img/ptv.jpg"/><p>PTv</p></div>
- <div class="channel" onclick="play('http://103.209.173.26/0.m3u8')"> <img alt="Gtv" src="img/gtv.jpg"/><p>Gtv</p></div>
+<div class="channel_collapse">
+<div class="channel" onclick="play('http://103.209.173.26/8.m3u8')"> <img alt="Tsports" src="img/tp.jpg"/><p>Tsports</p></div>			
+<div class="channel" onclick="play('http://103.209.173.26/0.m3u8')"> <img alt="ptv" src="img/ptv.jpg"/><p>PTv</p></div> 
+<div class="channel" onclick="play('http://103.209.173.26/0.m3u8')"> <img alt="Gtv" src="img/gtv.jpg"/><p>Gtv</p></div>
             </div>
+
+
+ <h2 class="category">103.175.242.10</h2>
+<div class="channel_collapse">
+<div class="channel" onclick="play('http://103.175.242.10:8080/live/tsports/tracks-v1a1/mono.m3u8')"> <img alt="Tsports" src="img/tp.jpg"/><p>Tsports</p></div>			
+<div class="channel" onclick="play('http://103.175.242.10:8080/live/gtv/tracks-v1a1/mono.m3u8')"> <img alt="Gtv" src="img/gtv.jpg"/><p>Gtv</p></div>
+            </div>
+
 		
 			</div>
        	<div id="player"></div>
     </main>
-<script>var player = new Playerjs({id:"player", file:"http://172.17.50.112/live/antbd1002/index.m3u8", poster:"//imgur.com/zydwEnM.jpg"});</script>
+<script>var player = new Playerjs({id:"player", file:"http://172.17.50.112/live/antbd1002/index.m3u8", poster:"img/icc.webp"});</script>
 <script>
 	var coll = document.getElementsByClassName("category");
 	var i;
