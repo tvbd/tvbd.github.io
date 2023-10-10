@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JW 2 Player</title>
+</head>
+<body>
+
+
+<script data-cfasync="false" src="js/jw2.js"></script>
+		
+<style type="text/css">  
+#iccjwplayer{height: 100vh;width:100vw; padding:0px;position:fixed!important;bottom:0;right:0;top:0;left:0;z-index:999!important;}
+</style>
+
+  <script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+
+</script>
+<script>
+  var responseText = ''+sv+'';
+  urlArry = responseText.split(',');
+  start = true;
+  num_of_urlArry = urlArry.length;
+  index_of_urlArry = 0;
+</script>
+  
+  
+<div style='position:fixed!important;;bottom:0;right:0;top:0;left:0;z-index:999!important;' id="jwplayerDiv"></div>
+
+
+            <script type = "text/JavaScript">
+            
+            jwplayer("jwplayerDiv").setup({
+                autostart: true,
+                pipIcon: "enabled",
+                title: "Live",
+                logo: {
+                    file: "",
+                    hide: "true"
+                },
+                file: ""+sv+"",
+                drm: {
+                    clearkey: {
+                         "keyId": "0003f2a72d21efd159d45a3a74decd84",
+
+                        "key": "df0ec40586d641f3d4728ab5fd62adc3"
+                      
+
+                    }
+                }
+            }); </script>
+
+
+
+</body>
+</html>
