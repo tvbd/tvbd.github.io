@@ -63,7 +63,7 @@ main {
     width: 95%;
     color: #fff;
     background-color: #000;
-    padding: 10px;
+    padding: 8px;
     border-bottom: solid 2px rgb(229, 238, 238);
     cursor: pointer;
     font-size: 20px;
@@ -113,10 +113,13 @@ main {
     overflow: hidden;
     padding: 2px;
     cursor: pointer; 
-    
+    color:#fff;
+    font-size:10px;
+    text-align: center;
+        
 }
 
-.channel p {font-size:12px; text-align: center; margin-top: 5px;}
+.channel p {font-size:12px; text-align: center; margin-top: 1px;color:#fff}
 
 .channel:active {
     animation: press 0.2s 1 linear;
