@@ -35,10 +35,10 @@ main {
 
 #channels {
     flex: 24.8%;
-    background-color: #fff;
+    background-color: #000;
     max-height: 100vh;
     overflow-y: scroll;
-    margin-top: 0px;
+    margin-top: 50px;
     margin-left: 0px;
     overflow-x: hidden;
    scrollbar-width:thin; 
