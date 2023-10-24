@@ -3,40 +3,44 @@ $(document).ready(function () {
 
     player.playlist([
         {
-            name: 'Channel 1',
+            name: 'Ptv',
             autoplay: true,
             sources: [
-                {src: 'http://172.28.28.112/live/antbd1001/index.m3u8', type: 'application/x-mpegURL'},
+                {src: 'http://11plus.live/live/ptv/index.m3u8', type: 'application/x-mpegURL'},
             ]
         },
         {
-            name: 'Channel 2',
+            name: 'TSports',
             sources: [
-                {src: 'http://172.28.28.112/live/antbd1002/index.m3u8', type: 'application/x-mpegURL'},
+                {src: 'http://11plus.live/live/tsports/index.m3u8', type: 'application/x-mpegURL'},
             ]
         },
         {
-            name: 'Channel 3',
+            name: 'Star Sports 1',
             sources: [
-                {src: 'http://172.28.28.112/live/antbd1003/index.m3u8', type: 'application/x-mpegURL'},
+                {src: 'http://11plus.live/live/stersports1hd/index.m3u8', type: 'application/x-mpegURL'},
+            ]
+        },
+  {
+            name: 'Star Sports 1',
+            autoplay: true,
+            sources: [
+                {src: 'http://172.17.50.112/live/fifa2022/index.m3u8', type: 'application/x-mpegURL'},
             ]
         },
         {
-            name: 'Channel 4',
+            name: 'Star Sports 1',
+            autoplay: true,
             sources: [
-                {src: 'http://172.28.28.112/live/antbd1004/index.m3u8', type: 'application/x-mpegURL'},
-            ]
-		},
-		{
-            name: 'Channel 5',
-            sources: [
-                {src: 'http://172.28.28.112/live/antbd1005/index.m3u8', type: 'application/x-mpegURL'},
+                {src: 'http://172.17.50.112/live/antbd1001/index.m3u8', type: 'application/x-mpegURL'},
             ]
         },
-		{
-            name: 'Channel 6',
+        {
+            name: 'TSports',
             sources: [
-                {src: 'http://172.28.28.112/live/antbd1006/index.m3u8', type: 'application/x-mpegURL'},
+                {src: 'http://172.17.50.112/live/antbd1002/index.m3u8', type: 'application/x-mpegURL'},
+            ]
+        },
             ]
         }]);
 
