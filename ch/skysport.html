@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SKY SPORTS</title>
+    <meta name="robots" content="noindex,nofollow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .jwplayer {
+            position: absolute !important;
+        }
+
+        .jwplayer.jw-flag-aspect-mode {
+            min-height: 100%;
+            max-height: 100%;
+        }
+
+        .jw-logo-container {
+            position: absolute;
+            top: 2%;
+            right: 55%;
+        }
+    </style>
+</head>
+
+<body>
+
+<script src="https://content.jwplatform.com/libraries/IDzF9Zmk.js"></script>
+<script>
+    jwplayer.defaults = jwDefaults;
+</script>
+
+<div id="myPlayer" class="jwplayer jw-reset jw-state-idle" style="width:100%;height:100%;"></div>
+
+<div id="jwplayerDiv"></div>
+<script type="text/javascript" defer>
+    fetch('path.json')
+        .then(response => response.json())
+        .then(data => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const channelId = urlParams.get('id');
+
+            // Check if the requested channel ID exists in the JSON data
+            if (data.hasOwnProperty(channelId)) {
+                const channelData = data[channelId].drm_info;
+                const drmK1 = channelData.k1;
+                const drmK2 = channelData.k2;
+                const url = channelData.url;
+
+                // Setup JWPlayer with the extracted data
+                if (window.self !== window.top) {
+                    jwplayer("jwplayerDiv").setup({
+                        autostart: true,
+                        volume: "100",
+                        mute: false,
+                        pipIcon: "disabled",
+                        title: "STARPLAY",
+                        logo: {
+                            file: "",
+                            hide: false,
+                            position: "top-right",
+                        },
+                        file: url,
+                        drm: {
+                            clearkey: {
+                                "keyId": drmK1,
+                                "key": drmK2
+                            }
+                        }
+                    });
+                } else {
+                    document.body.innerHTML = "<h2 class='access-denied'>Access Denied</h2>";
+                }
+            } else {
+                document.body.innerHTML = "<h2 class='access-denied'>Channel not found</h2>";
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching JSON:', error);
+            // Handle error if JSON fetch fails
+        });
+</script>
+</body>
+</html>
