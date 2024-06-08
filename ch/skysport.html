@@ -29,7 +29,7 @@
 
 <body>
 
-<script src="https://content.jwplatform.com/libraries/IDzF9Zmk.js"></script>
+<script src="//content.jwplatform.com/libraries/IDzF9Zmk.js"></script>
 <script>
     jwplayer.defaults = jwDefaults;
 </script>
@@ -38,7 +38,7 @@
 
 <div id="jwplayerDiv"></div>
 <script type="text/javascript" defer>
-    fetch('path.json')
+    fetch('https://3rd-delta.vercel.app/new/watch/path.json')
         .then(response => response.json())
         .then(data => {
             const urlParams = new URLSearchParams(window.location.search);
