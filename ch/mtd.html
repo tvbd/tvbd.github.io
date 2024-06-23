@@ -1,0 +1,45 @@
+
+<html>
+<head>
+<title>Euro</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" type="text/css" href="/api/clap.css">
+<script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+<script type="text/javascript"src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@clappr/hlsjs-playback@1.2.0/dist/hlsjs-playback.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@c3voc/clappr-audio-track-selector@0.2.4/dist/audio-track-selector.min.js"></script>
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+<div id="player" style="height: 100%; width: 100%;"></div>
+</head>  
+<body> 
+ <script>
+     
+
+        // Initialize Clappr player with the source URL
+        var player = new Clappr.Player({
+            source: '',
+            plugins: [HlsjsPlayback, LevelSelector, AudioTrackSelector],
+            width: '100%',
+            height: '100%',
+            autoPlay: true,
+            mimeType: "application/x-mpegURL",
+            mediacontrol: { seekbar: "#ff0000", buttons: "#eee" },
+            parentId: "#player",
+            hlsUseNextLevel: false,
+            hlsMinimumDvrSize: 60,
+            hlsRecoverAttempts: 16,
+            hlsPlayback: {
+                preload: true,
+                customListeners: [],
+            },
+            playback: {
+                extrapolatedWindowNumSegments: 2,
+                triggerFatalErrorOnResourceDenied: false,
+                hlsjsConfig: {
+                    // hls.js specific options
+                },
+            },
+        });
+    </script>
+    </body>
+</html>
