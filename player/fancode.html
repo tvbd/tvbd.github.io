@@ -69,7 +69,7 @@ async function loadPlayer(){
   if(!matchId){ alert("Match ID not found"); return; }
 
   try{
-    const res = await fetch(""+sv+"");
+    const res = await fetch("https://raw.githubusercontent.com/bdiptv24/h2so4-sports/refs/heads/main/matches.json");
     const data = await res.json();
     const match = data.matches.find(m=>m.match_id==matchId);
     if(!match){ alert("Match not found"); return; }
