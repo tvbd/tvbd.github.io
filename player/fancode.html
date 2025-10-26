@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fancode Player</title>
+<style>
+        body {
+            margin: 0;
+        }
+
+        .jwplayer {
+            position: absolute !important;
+        }
+
+        .jwplayer.jw-flag-aspect-mode {
+            min-height: 100%;
+            max-height: 100%;
+        }
+
+        .jw-logo-container {
+            position: absolute;
+            top: 2%;
+            right: 55%;
+        }
+
+html{overflow-x:hidden;scrollbar-width:thin;} body{-webkit-font-smoothing:antialiased;position:relative;top:0!important;margin:0;padding:0!important;width:100%;scrollbar-width: thin;background:#000} a{text-decoration:none}
+#match-player{height: 100vh;width:100vw; padding:0px;position:fixed!important;bottom:0;right:0;top:0;left:0;z-index:999!important;}
+
+
+
+  
+    </style>
+<script src="https://content.jwplatform.com/libraries/IDzF9Zmk.js"></script>
+</head>
+<body>
+  <div style='position:fixed!important;;bottom:0;right:0;top:0;left:0;z-index:999!important;' id="match-player"></div>
+
+ <script>
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
+}
+var sv = getParam("sv");
+
+</script>
+<script>
+  var responseText = ''+sv+'';
+  urlArry = responseText.split(',');
+  start = true;
+  num_of_urlArry = urlArry.length;
+  index_of_urlArry = 0;
+</script>
+
+  
+<script>
+// Get query params
+function getParam(name){
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+async function loadPlayer(){
+  const matchId = getParam("match_id");
+  const serverIndex = parseInt(getParam("server") || 0);
+
+  if(!matchId){ alert("Match ID not found"); return; }
+
+  try{
+    const res = await fetch(""+sv+"");
+    const data = await res.json();
+    const match = data.matches.find(m=>m.match_id==matchId);
+    if(!match){ alert("Match not found"); return; }
+
+    if(!match.servers || match.servers.length<=serverIndex){ alert("Server not found"); return; }
+
+    const server = match.servers[serverIndex];
+    if(server.type !== "dash"){ alert("Only DASH supported here"); return; }
+
+    jwplayer("match-player").setup({
+      file: server.link,
+      drm:{clearkey:{keyId:server.keyId, key:server.key}},
+      autostart:true,
+      title:match.title,
+      volume:100,
+      mute:false,
+      pipIcon:"disabled",
+      logo:{
+        file:"https://imgtr.ee/images/2023/12/26/1ce485d929f0c4b3bdef1810f915a21d.png",
+        hide:false,
+        position:"top-right"
+      }
+    });
+
+  }catch(err){
+    console.error(err);
+    alert("Failed to load match data.");
+  }
+}
+
+loadPlayer();
+</script>
+</body>
+</html>
