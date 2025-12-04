@@ -4,17 +4,17 @@
   "playlists": [
 {
       "name": "Bangla",
-      "url": "https://tvbd.github.io/radio/api/m3u/Bangla.json",
+      "url": "https://tvbd.github.io/radio/api/m3u/Bangla.m3u",
       "count": 16
     },
     {
       "name": "Bangladesh",
-      "url": "https://tvbd.github.io/radio/api/m3u/Bangladesh.json",
+      "url": "https://tvbd.github.io/radio/api/m3u/Bangladesh.m3u",
       "count": 32
     },
     {
       "name": "Bangladeshi_music",
-      "url": "https://tvbd.github.io/radio/api/m3u/Bangladeshi-music.json",
+      "url": "https://tvbd.github.io/radio/api/m3u/Bangladeshi-music.m3u",
       "count": 7
     }
 ]
