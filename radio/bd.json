@@ -4,17 +4,17 @@
   "playlists": [
 {
       "name": "Bangla",
-      "url": "playlists/bangla.m3u",
+      "url": "playlists/bangla.json",
       "count": 16
     },
     {
       "name": "Bangladesh",
-      "url": "playlists/bangladesh.m3u",
+      "url": "playlists/bangladesh.json",
       "count": 32
     },
     {
       "name": "Bangladeshi_music",
-      "url": "playlists/bangladeshi-music.m3u",
+      "url": "playlists/bangladeshi-music.json",
       "count": 7
     }
 ]
