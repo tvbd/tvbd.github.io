@@ -1,0 +1,8 @@
+{
+  "name": "radio-api-pages",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node scripts/build.js"
+  }
+}
