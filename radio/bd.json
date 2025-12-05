@@ -4,17 +4,17 @@
   "playlists": [
 {
       "name": "Bangla",
-      "url": "radio/playlists/Bangla.json",
+      "url": "playlists/bangla.json",
       "count": 16
     },
     {
       "name": "Bangladesh",
-      "url": "radio/playlists/Bangladesh.json",
+      "url": "playlists/bangladesh.json",
       "count": 32
     },
     {
       "name": "Bangladeshi_music",
-      "url": "radio/playlists/Bangladeshi-music.json",
+      "url": "playlists/bangladeshi-music.json",
       "count": 7
     }
 ]
