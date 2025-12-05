@@ -1,0 +1,72 @@
+{
+  "name": "bangla",
+  "sourceFile": "playlists/bangla.m3u",
+  "count": 16,
+  "generatedAt": "2025-10-27T11:03:49.282Z",
+  "items": [
+    {
+      "name": "Quran er Alo",
+      "url": "http://66.45.232.131:9994/"
+    },
+    {
+      "name": "IWI FM",
+      "url": "http://s2.myradiostream.com:29270/"
+    },
+    {
+      "name": "FM Kuthi Bari",
+      "url": "https://listen.radioking.com/radio/1743/stream/125"
+    },
+    {
+      "name": "Hello Dhaka Shongkolpo",
+      "url": "http://108.163.245.230:8001/high"
+    },
+    {
+      "name": "Radio Gaan Baksho",
+      "url": "https://listen.openstream.co/5013/audio"
+    },
+    {
+      "name": "Radio Janjot",
+      "url": "http://streaming.radionomy.com/RadioJanjot?type=.mp3"
+    },
+    {
+      "name": "Roots Air BD",
+      "url": "http://live64.zeilsteen.com:7054/"
+    },
+    {
+      "name": "Radio Rong tk",
+      "url": "http://streaming.radionomy.com/--RadioRong--?type=.mp3"
+    },
+    {
+      "name": "SS FM BD",
+      "url": "http://myradiostream.com/41/31728"
+    },
+    {
+      "name": "Bangla Al-Quran",
+      "url": "https://radio.radioquraan.com:9994/"
+    },
+    {
+      "name": "Allahu Akbar",
+      "url": "http://66.45.232.132:9996/"
+    },
+    {
+      "name": "Peoples Radio",
+      "url": "http://s3.myradiostream.com:14498/"
+    },
+    {
+      "name": "Radio4indiacom",
+      "url": "http://myradio4.listen2myradio.com"
+    },
+    {
+      "name": "Washington Bangla Radio The 1 Bengali Streaming Internet Web Radio",
+      "url": "http://supratim.sanyal.org/washington_bangla_radio.m3u/stream/1"
+    },
+    {
+      "name": "Weaver Radio Bangla Station",
+      "url": "http://weaverradio.listen2myradio.com/"
+    },
+    {
+      "name": "Dhaka 88.8 FM",
+      "url": "http://as3.digitalsynapsebd.com:8263/"
+    }
+  ]
+}
