@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="ENJOY FREE LIVE IPTV">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>IPTV: Watch Modern LiveTV for free</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.6.2/dist/plyr.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/plyr@3.6.12/dist/plyr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.1.4/dist/hls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.0/build/qrcode.min.js"></script>
+	<link rel="stylesheet" href="css/iptv.css" />
+  </head>
+<body>
+    
+    <div id="global-loading">
+        <div class="spinner"></div>
+    </div>
+
+ <div id='global-loading'>
+        <div class='spinner'/>
+    </div>
+     <div id='app'>
+        <div class='loading' id='loading'>
+            <div class='loading-text'>
+                <span class='loading-text-words'>Powered By XNIPTV</span>
+            </div>
+        </div>
+        <div id='notification'/>
+        <div id='main-content'>
+            <div id='video-container'>
+                <div class='time-display' id='time-display'/>
+        
+       <video autoplay='true' controls='true' crossorigin='anonymous' id='player' playsinline='' poster='//i.imgur.com/1hiDhP0.gif'><source src='https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8' type='application/vnd.apple.mpegurl'/>
+                </video>
+            </div>
+        </div>
+        <button class='sidebar-toggle' title='Toggle Menu'><i class='fas fa-bars'/></button>
+        <div id='sidebar'> 
+          
+          
+  
+     <a expr:href='data:blog.homepageUrl'> <i class='fas fa-home'/> Home </a> 
+          
+      
+          
+          <div class='4tipsbd'> 
+<div class='upload-panel' data-tab='Bdix'><select id='sidebar-default-playlist' onchange='location = this.value;'> <option value=''>Select Playlist</option>                                                <script type='text/javascript'>// <![CDATA[  
+document.write("<script src='/feeds/posts/default/-/BDIX?published&alt=json-in-script&callback=mbtlist'></"+"script>");     
+// ]]> </script> </select></div>            
+<div class='upload-panel' data-tab='Global'><select id='sidebar-default-playlist' onchange='location = this.value;'><option value=''>Select Playlist</option>                                             <script type='text/javascript'>// <![CDATA[  
+document.write("<script src='/feeds/posts/default/-/GLOBAL?published&alt=json-in-script&callback=mbtlist'></"+"script>");     
+// ]]> </script>  </select></div> 
+<div class='upload-panel' data-tab='Other'><select id='sidebar-default-playlist' onchange='location = this.value;'><option value=''>Select Playlist</option>                                                        
+ <script type='text/javascript'>// <![CDATA[  
+document.write("<script src='/feeds/posts/default/-/OTHER?published&alt=json-in-script&callback=mbtlist'></"+"script>");     
+// ]]> </script>  </select></div> 
+<div class='upload-panel' data-tab='Cctv'> <select id='sidebar-default-playlist' onchange='location = this.value;'><option value=''>Select Playlist</option>
+<script type='text/javascript'>// <![CDATA[  
+document.write("<script src='/feeds/posts/default/-/CCTV?published&alt=json-in-script&callback=mbtlist'></"+"script>");       
+ // ]]> </script> </select> </div>
+ 
+<div class='upload-panel' data-tab='Add'>
+  <input accept='.m3u,.json,.txt,.m3u' id='sidebar-file-upload' type='file'/>
+                <input id='sidebar-url-upload' placeholder='Enter playlist URL' type='url'/>
+                <button onclick='uploadPlaylist()'>Upload</button> 
+            </div>                
+       </div>
+          
+ <div class='search-panel'><input id='channel-search' oninput='searchChannels()' placeholder='Search channels...' type='text'/> </div>        
+ <div class='category-panel'><div class='category-slider' id='category-slider'/></div>     
+            <div class='playlist-panel'>
+                <div id='playlist-items'/>
+                <div class='channel-status'>
+                    <div class='status-buttons'>
+                        <button class='status-btn active' onclick='filterChannels(&apos;all&apos;)'>Total: <span id='total-channels'>0</span></button>
+                        <button class='status-btn' onclick='filterChannels(&apos;online&apos;)'>Online: <span id='online-channels'>0</span></button>
+                        <button class='status-btn' onclick='filterChannels(&apos;offline&apos;)'>Offline: <span id='offline-channels'>0</span></button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class='theme-toggle' onclick='toggleTheme()' title='Theme'>
+            <i class='fas fa-moon'/>
+        </button>
+        <button class='favorite-toggle' onclick='toggleFavorites()' title='Favorites'>
+            <i class='fas fa-heart'/>
+        </button>
+        <button class='history-toggle' onclick='toggleHistory()' title='History'>
+            <i class='fas fa-history'/>
+        </button>
+        <button class='fullscreen-toggle' onclick='toggleFullscreen()' title='Fullscreen'>
+            <i class='fas fa-expand'/>
+        </button>
+        <button class='settings-toggle' onclick='toggleSettings()' title='Settings'>
+            <i class='fas fa-cog'/>
+        </button>
+        <button class='app-info-toggle' onclick='toggleAppInfo()' title='Info'>
+            <i class='fas fa-info-circle'/>
+        </button>
+        <div id='settings-panel'>
+            <button class='settings-btn resync-btn' onclick='resyncOfflineChannels(false)'><i class='fas fa-redo'/> Resync Offline</button>
+            <button class='settings-btn delete-all-history-btn' onclick='deleteAllHistory()'><i class='fas fa-trash'/> Delete History</button>
+            <button class='settings-btn shortcuts-btn' onclick='showShortcuts()'><i class='fas fa-keyboard'/> Keyboard Shortcuts</button>
+        </div>
+        <div id='app-info-panel'>
+            <button class='settings-btn' onclick='showPopupPage(&apos;about&apos;)'>About App</button>
+            <button class='settings-btn' onclick='showPopupPage(&apos;uses&apos;)'>Uses &amp; Disclaimer</button>
+            <!--button class='settings-btn' onclick='showPopupPage(&apos;donate&apos;)'>Donate Us</button-->
+        </div>
+        <div class='popup-page' id='about-page'/>
+        <div class='popup-page' id='uses-page'/>
+        <div class='popup-page' id='donate-page'/>
+    </div>  
+
+  <script type='text/javascript'>
+//<![CDATA[
+(function(a){a.fn.simpleTab=function(b){b=jQuery.extend({active:1,fx:null,showSpeed:400,hideSpeed:400,showEasing:null,hideEasing:null,show:function(){},hide:function(){},change:function(){}},b);return this.each(function(){var e=a(this),c=e.children("[data-tab]"),d=b.active-1;e.addClass("simpleTab").prepend('<ul class="tab-wrappers"></ul>');c.addClass("tab-content").each(function(){a(this).hide();e.find(".tab-wrappers").append('<li><a href="#">'+a(this).data("tab")+"</a></li>")}).eq(d).show();e.find(".tab-wrappers a").on("click",function(){var f=a(this).parent().index();a(this).closest(".tab-wrappers").find(".activeTabs").removeClass("activeTabs");a(this).addClass("activeTabs");if(b.fx=="slide"){if(c.eq(f).is(":hidden")){c.slideUp(b.hideSpeed,b.hideEasing,function(){b.hide.call(e)}).eq(f).slideDown(b.showSpeed,b.showEasing,function(){b.show.call(e)})}}else{if(b.fx=="fade"){if(c.eq(f).is(":hidden")){c.hide().eq(f).fadeIn(b.showSpeed,b.showEasing,function(){b.show.call(e)})}}else{if(b.fx=="fancyslide"){if(c.eq(f).is(":hidden")){c.slideUp(b.hideSpeed,b.hideEasing,function(){b.hide.call(e)}).eq(f).delay(b.hideSpeed).slideDown(b.showSpeed,b.showEasing,function(){b.show.call(e)})}}else{if(c.eq(f).is(":hidden")){c.hide().eq(f).show()}}}}b.change.call(e);return false}).eq(d).addClass("activeTabs")})}})(jQuery);
+//]]>
+</script>
+<script class='jshilang' type='text/javascript'>
+//<![CDATA[
+$('.4tipsbd').simpleTab({
+active: 1,
+fx: "fade",
+showSpeed: 400,
+hideSpeed: 400
+});
+//]]>
+</script>    
+   
+
+
+
+
+   <script src="js/iptv.js"></script>
+</body>
+</html>
