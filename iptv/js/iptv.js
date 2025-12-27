@@ -969,3 +969,26 @@
                 }
             }
         }    
+
+
+ async function loadDefaultFallback() {
+            const defaultUrl = "https://raw.githubusercontent.com/MRM3UK/New-try/refs/heads/main/fanzone.m3u";
+            console.log('Loading default fallback playlist:', defaultUrl);
+            const success = await fetchPlaylist(defaultUrl, false, "Default Playlist");
+            if (success && playlistItems.length > 0) {
+                setTimeout(() => {
+                    videovisible();
+                    initializePlayer();
+                    displayPlaylist(playlistItems);
+                }, 1000);
+            } else {
+                // If even fallback fails, just show the UI empty
+                videovisible();
+                initializePlayer();
+            }
+        }
+
+
+
+
+
