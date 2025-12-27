@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LUT Generator Pro</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #1a1a1a; color: #fff; min-height: 100vh; }
+        .app-container { display: flex; min-height: 100vh; }
+        .controls-panel { width: 350px; background: #2d2d2d; padding: 20px; overflow-y: auto; border-right: 1px solid #444; }
+        .controls-panel h1 { color: #4fc3f7; margin-bottom: 20px; font-size: 24px; padding-bottom: 10px; border-bottom: 2px solid #4fc3f7; }
+        .upload-area { border: 3px dashed #4fc3f7; border-radius: 10px; padding: 25px; text-align: center; margin: 20px 0; cursor: pointer; background: rgba(79, 195, 247, 0.05); transition: all 0.3s; }
+        .upload-area:hover { background: rgba(79, 195, 247, 0.1); border-color: #29b6f6; }
+        .upload-area h3 { color: #4fc3f7; margin-bottom: 10px; }
+        .upload-area p { color: #aaa; font-size: 14px; }
+        .control-group { margin: 25px 0; }
+        .control-group label { display: block; color: #e0e0e0; margin-bottom: 8px; font-weight: bold; }
+        .slider-container { display: flex; align-items: center; gap: 15px; margin: 10px 0; }
+        .slider { flex: 1; height: 6px; -webkit-appearance: none; background: #444; border-radius: 3px; outline: none; cursor: pointer; }
+        .slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #4fc3f7; cursor: pointer; border: 2px solid #2d2d2d; }
+        .slider-value { min-width: 45px; text-align: center; background: #444; padding: 4px 8px; border-radius: 4px; color: #fff; font-weight: bold; }
+        .control-hint { color: #888; font-size: 12px; margin-top: 5px; font-style: italic; }
+        .button-group { display: flex; flex-direction: column; gap: 10px; margin: 25px 0; }
+        button { padding: 12px; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .primary-btn { background: #4fc3f7; color: #000; }
+        .primary-btn:hover:not(:disabled) { background: #29b6f6; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(41, 182, 246, 0.3); }
+        .secondary-btn { background: #555; color: #fff; }
+        .secondary-btn:hover:not(:disabled) { background: #666; transform: translateY(-1px); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+        .preview-panel { flex: 1; display: flex; flex-direction: column; background: #000; position: relative; }
+        .preview-header { padding: 15px 20px; background: #2d2d2d; border-bottom: 1px solid #444; display: flex; justify-content: space-between; align-items: center; }
+        .preview-title { color: #fff; font-size: 18px; display: flex; align-items: center; gap: 10px; }
+        .preview-actions { display: flex; gap: 10px; }
+        .icon-btn { background: #444; color: #fff; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .icon-btn:hover { background: #555; transform: scale(1.1); }
+        .preview-container { flex: 1; display: flex; position: relative; overflow: hidden; }
+        .preview-split { flex: 1; position: relative; overflow: hidden; }
+        .preview-label { position: absolute; top: 15px; left: 15px; background: rgba(0, 0, 0, 0.7); color: #fff; padding: 8px 15px; border-radius: 4px; font-weight: bold; z-index: 10; border-left: 3px solid #4fc3f7; }
+        .preview-image { width: 100%; height: 100%; object-fit: contain; display: none; }
+        .preview-divider { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: rgba(255, 255, 255, 0.3); z-index: 5; }
+        .stats-panel { background: rgba(0, 0, 0, 0.8); padding: 15px; margin-top: 15px; border-radius: 8px; display: none; }
+        .stats-title { color: #4fc3f7; margin-bottom: 10px; font-size: 16px; }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 13px; }
+        .stat-item { background: rgba(255, 255, 255, 0.1); padding: 8px; border-radius: 4px; }
+        .stat-label { color: #aaa; font-size: 12px; }
+        .stat-value { color: #fff; font-weight: bold; }
+        .status-message { position: fixed; bottom: 20px; right: 20px; padding: 12px 20px; border-radius: 6px; background: #4caf50; color: white; font-weight: bold; z-index: 1000; display: none; animation: slideIn 0.3s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); }
+        .status-error { background: #f44336; }
+        .status-warning { background: #ff9800; }
+        .status-info { background: #2196f3; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .loader { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none; }
+        .spinner { width: 40px; height: 40px; border: 4px solid rgba(255, 255, 255, 0.1); border-top: 4px solid #4fc3f7; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @media (max-width: 1024px) { .app-container { flex-direction: column; } .controls-panel { width: 100%; max-height: 50vh; } }
+        #applyBtn { margin-top: 10px; background: #9c27b0; }
+        #applyBtn:hover:not(:disabled) { background: #7b1fa2; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="controls-panel">
+            <h1>LUT Generator Pro</h1>
+            
+            <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                <h3>Upload Photo</h3>
+                <p>Drag & drop or click to select</p>
+                <p>JPG, PNG, WebP (max 15MB)</p>
+                <input type="file" id="fileInput" accept="image/*" hidden>
+            </div>
+            
+            <div class="control-group">
+                <label>Color Balance Strength</label>
+                <div class="slider-container">
+                    <input type="range" id="balanceStrength" class="slider" min="0" max="100" value="70">
+                    <span id="balanceValue" class="slider-value">70%</span>
+                </div>
+                <div class="control-hint">Automated color correction (prevents blue cast)</div>
+            </div>
+            
+            <div class="control-group">
+                <label>Temperature (Warm / Cool)</label>
+                <div class="slider-container">
+                    <input type="range" id="temperature" class="slider" min="-50" max="50" value="0">
+                    <span id="tempValue" class="slider-value">0</span>
+                </div>
+                <div class="control-hint">Manual fine-tuning: left (cool/blue), right (warm/yellow)</div>
+            </div>
+            
+            <div class="control-group">
+                <label>Tint (Green / Magenta)</label>
+                <div class="slider-container">
+                    <input type="range" id="tint" class="slider" min="-30" max="30" value="0">
+                    <span id="tintValue" class="slider-value">0</span>
+                </div>
+                <div class="control-hint">Manual fine-tuning: left (green), right (magenta)</div>
+            </div>
+            
+            <div class="control-group">
+                <label>Contrast (S-Curve)</label>
+                <div class="slider-container">
+                    <input type="range" id="sCurveStrength" class="slider" min="0" max="100" value="30">
+                    <span id="curveValue" class="slider-value">30%</span>
+                </div>
+                <div class="control-hint">Adds soft contrast to midtones</div>
+            </div>
+
+            <div class="control-group">
+                <label>LUT Grid Size</label>
+                <select id="lutSize" style="width:100%; padding:8px; background:#444; color:#fff; border:none; border-radius:4px;">
+                    <option value="16">16x16x16 (Fast)</option>
+                    <option value="32" selected>32x32x32 (Recommended)</option>
+                    <option value="64">64x64x64 (High Quality)</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <button id="applyBtn" class="primary-btn" disabled onclick="schedulePreviewUpdate()">Apply Settings & Update Preview</button>
+            </div>
+            
+            <div class="button-group">
+                <button class="primary-btn" id="analyzeBtn" onclick="createLUT()">
+                    <span>Create LUT File</span>
+                </button>
+                <button class="secondary-btn" id="downloadBtn" onclick="downloadLUT()" disabled>
+                    <span>Download .cube File</span>
+                </button>
+            </div>
+            
+            <div class="stats-panel" id="statsPanel">
+                <div class="stats-title">Image Analysis</div>
+                <div class="stats-grid" id="statsContent"></div>
+            </div>
+        </div>
+        
+        <div class="preview-panel">
+            <div class="preview-header">
+                <div class="preview-title">
+                    <span>Photo Preview</span>
+                </div>
+                <div class="preview-actions">
+                    <button class="icon-btn" onclick="zoomIn()">+</button>
+                    <button class="icon-btn" onclick="zoomOut()">-</button>
+                    <button class="icon-btn" onclick="resetZoom()">?</button>
+                </div>
+            </div>
+            
+            <div class="preview-container" id="previewContainer">
+                <div class="preview-split" id="originalPreview">
+                    <div class="preview-label">ORIGINAL</div>
+                    <img class="preview-image" id="previewOriginal" alt="Original">
+                </div>
+                <div class="preview-split" id="correctedPreview">
+                    <div class="preview-label">WITH LUT</div>
+                    <img class="preview-image" id="previewCorrected" alt="Corrected">
+                </div>
+                <div class="preview-divider"></div>
+                <div class="loader" id="loader">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="status-message" id="statusMessage"></div>
+
+    <script>
+        let originalImage = null;
+        let originalImageData = null;
+        let lutArray = null;
+        let fileName = '';
+        let analysisResults = null;
+        let previewCanvas = null;
+        let previewCtx = null;
+        let zoomLevel = 1.0;
+        let updateTimeout = null;
+        const MAX_PREVIEW_SIZE = 1200;
+
+        window.onload = function() {
+            previewCanvas = document.createElement('canvas');
+            previewCtx = previewCanvas.getContext('2d');
+            
+            document.getElementById('balanceStrength').addEventListener('input', function() {
+                document.getElementById('balanceValue').textContent = this.value + '%';
+            });
+            document.getElementById('temperature').addEventListener('input', function() {
+                document.getElementById('tempValue').textContent = this.value;
+            });
+            document.getElementById('tint').addEventListener('input', function() {
+                document.getElementById('tintValue').textContent = this.value;
+            });
+            document.getElementById('sCurveStrength').addEventListener('input', function() {
+                document.getElementById('curveValue').textContent = this.value + '%';
+            });
+        };
+
+        document.getElementById('fileInput').addEventListener('change', async function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            if (file.size > 15 * 1024 * 1024) {
+                showStatus('File is too large. Maximum size is 15MB.', 'error');
+                return;
+            }
+            fileName = file.name.replace(/\.[^/.]+$/, "");
+            try {
+                showLoader(true);
+                const img = await loadImage(file);
+                originalImage = img;
+                previewCanvas.width = img.width;
+                previewCanvas.height = img.height;
+                previewCtx.drawImage(img, 0, 0);
+                originalImageData = previewCtx.getImageData(0, 0, previewCanvas.width, previewCanvas.height);
+                const originalPreview = document.getElementById('previewOriginal');
+                originalPreview.src = img.src;
+                originalPreview.style.display = 'block';
+                originalPreview.style.transform = `scale(${zoomLevel})`;
+                document.getElementById('analyzeBtn').disabled = false;
+                document.getElementById('applyBtn').disabled = false;
+                analyzeImage();
+                updatePreview();
+                showStatus('Photo loaded. Adjust settings and click "Apply".', 'info');
+            } catch (error) {
+                showStatus('Error loading image: ' + error.message, 'error');
+            } finally {
+                showLoader(false);
+            }
+        });
+
+        function loadImage(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() { resolve(img); };
+                    img.onerror = reject;
+                    img.src = e.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function schedulePreviewUpdate() {
+            if (updateTimeout) clearTimeout(updateTimeout);
+            showStatus('Updating preview...', 'info');
+            updateTimeout = setTimeout(updatePreview, 100);
+        }
+
+        function analyzeImage() {
+            if (!originalImageData) return;
+            const data = originalImageData.data;
+            const rValues = [], gValues = [], bValues = [];
+            const step = Math.max(1, Math.floor(data.length / 100000));
+            for (let i = 0; i < data.length; i += step * 4) {
+                rValues.push(data[i]);
+                gValues.push(data[i + 1]);
+                bValues.push(data[i + 2]);
+            }
+            const medianR = calculateMedian(rValues);
+            const medianG = calculateMedian(gValues);
+            const medianB = calculateMedian(bValues);
+            const targetGreen = medianG;
+            let factorR = targetGreen / medianR;
+            let factorB = targetGreen / medianB;
+            const factorG = 1.0;
+            const maxBlueBoostRelativeToRed = 1.1;
+            if (factorB > factorR * maxBlueBoostRelativeToRed) {
+                factorB = factorR * maxBlueBoostRelativeToRed;
+            }
+            const absoluteMaxBoost = 1.6;
+            factorR = Math.min(factorR, absoluteMaxBoost);
+            factorB = Math.min(factorB, absoluteMaxBoost);
+            analysisResults = { medianR, medianG, medianB, factorR, factorG, factorB };
+            document.getElementById('statsPanel').style.display = 'block';
+            document.getElementById('statsContent').innerHTML = `
+                <div class="stat-item"><div class="stat-label">Red Median</div><div class="stat-value">${medianR.toFixed(0)}</div></div>
+                <div class="stat-item"><div class="stat-label">Green Median</div><div class="stat-value">${medianG.toFixed(0)}</div></div>
+                <div class="stat-item"><div class="stat-label">Blue Median</div><div class="stat-value">${medianB.toFixed(0)}</div></div>
+                <div class="stat-item"><div class="stat-label">Red Factor</div><div class="stat-value">?${factorR.toFixed(2)}</div></div>
+                <div class="stat-item"><div class="stat-label">Green Factor</div><div class="stat-value">?${factorG.toFixed(2)}</div></div>
+                <div class="stat-item"><div class="stat-label">Blue Factor</div><div class="stat-value">?${factorB.toFixed(2)}</div></div>
+            `;
+        }
+
+        function calculateMedian(arr) {
+            if (arr.length === 0) return 0;
+            const sorted = arr.slice().sort((a, b) => a - b);
+            const mid = Math.floor(sorted.length / 2);
+            return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
+        }
+
+        function updatePreview() {
+            if (!originalImageData || !analysisResults) return;
+            showLoader(true);
+            const balanceStrength = parseInt(document.getElementById('balanceStrength').value) / 100;
+            const temperature = parseInt(document.getElementById('temperature').value);
+            const tint = parseInt(document.getElementById('tint').value);
+            const sCurveStrength = parseInt(document.getElementById('sCurveStrength').value) / 100;
+            const { factorR, factorG, factorB } = analysisResults;
+            const finalR = 1.0 + (factorR - 1.0) * balanceStrength;
+            const finalG = 1.0 + (factorG - 1.0) * balanceStrength;
+            const finalB = 1.0 + (factorB - 1.0) * balanceStrength;
+            const tempData = new ImageData(
+                new Uint8ClampedArray(originalImageData.data),
+                originalImageData.width,
+                originalImageData.height
+            );
+            const data = tempData.data;
+            for (let i = 0; i < data.length; i += 4) {
+                let r = data[i] / 255;
+                let g = data[i + 1] / 255;
+                let b = data[i + 2] / 255;
+                r = Math.pow(r, 1.0 / finalR);
+                g = Math.pow(g, 1.0 / finalG);
+                b = Math.pow(b, 1.0 / finalB);
+                if (temperature !== 0) {
+                    const tempAdjust = temperature * 0.01;
+                    if (tempAdjust > 0) {
+                        r += tempAdjust * 0.1;
+                        b -= tempAdjust * 0.05;
+                    } else {
+                        r += tempAdjust * 0.05;
+                        b -= tempAdjust * 0.1;
+                    }
+                }
+                if (tint !== 0) {
+                    const tintAdjust = tint * 0.01;
+                    g -= tintAdjust * 0.1;
+                }
+                if (sCurveStrength > 0) {
+                    r = applySoftSCurve(r, sCurveStrength);
+                    g = applySoftSCurve(g, sCurveStrength);
+                    b = applySoftSCurve(b, sCurveStrength);
+                }
+                r = Math.min(1.0, Math.max(0.0, r));
+                g = Math.min(1.0, Math.max(0.0, g));
+                b = Math.min(1.0, Math.max(0.0, b));
+                data[i] = Math.min(255, Math.max(0, r * 255));
+                data[i + 1] = Math.min(255, Math.max(0, g * 255));
+                data[i + 2] = Math.min(255, Math.max(0, b * 255));
+            }
+            const correctedCanvas = document.createElement('canvas');
+            correctedCanvas.width = tempData.width;
+            correctedCanvas.height = tempData.height;
+            const correctedCtx = correctedCanvas.getContext('2d');
+            correctedCtx.putImageData(tempData, 0, 0);
+            const previewCanvasSmall = document.createElement('canvas');
+            let targetWidth = correctedCanvas.width;
+            let targetHeight = correctedCanvas.height;
+            if (targetWidth > MAX_PREVIEW_SIZE || targetHeight > MAX_PREVIEW_SIZE) {
+                const scale = MAX_PREVIEW_SIZE / Math.max(targetWidth, targetHeight);
+                targetWidth = Math.floor(targetWidth * scale);
+                targetHeight = Math.floor(targetHeight * scale);
+            }
+            previewCanvasSmall.width = targetWidth;
+            previewCanvasSmall.height = targetHeight;
+            const previewCtxSmall = previewCanvasSmall.getContext('2d');
+            previewCtxSmall.drawImage(correctedCanvas, 0, 0, targetWidth, targetHeight);
+            const compressedDataUrl = previewCanvasSmall.toDataURL('image/jpeg', 0.85);
+            const correctedPreview = document.getElementById('previewCorrected');
+            correctedPreview.src = compressedDataUrl;
+            correctedPreview.style.display = 'block';
+            correctedPreview.style.transform = `scale(${zoomLevel})`;
+            showLoader(false);
+            showStatus('Preview updated.', 'info');
+        }
+
+        function applySoftSCurve(value, strength) {
+            if (strength === 0) return value;
+            return value + strength * (value - value * value) * 0.4;
+        }
+
+        function createLUT() {
+            if (!originalImageData) {
+                showStatus('Please upload a photo first.', 'error');
+                return;
+            }
+            showLoader(true);
+            const balanceStrength = parseInt(document.getElementById('balanceStrength').value) / 100;
+            const temperature = parseInt(document.getElementById('temperature').value);
+            const tint = parseInt(document.getElementById('tint').value);
+            const sCurveStrength = parseInt(document.getElementById('sCurveStrength').value) / 100;
+            const lutSize = parseInt(document.getElementById('lutSize').value);
+            lutArray = generateLUT(lutSize, balanceStrength, temperature, tint, sCurveStrength);
+            document.getElementById('downloadBtn').disabled = false;
+            showStatus(`LUT created! Size: ${lutSize}?`, 'info');
+            showLoader(false);
+        }
+
+        function generateLUT(size, balanceStrength, temperature, tint, sCurveStrength) {
+            const lut = [];
+            const step = 1.0 / (size - 1);
+            const { factorR, factorG, factorB } = analysisResults;
+            const finalR = 1.0 + (factorR - 1.0) * balanceStrength;
+            const finalG = 1.0 + (factorG - 1.0) * balanceStrength;
+            const finalB = 1.0 + (factorB - 1.0) * balanceStrength;
+            for (let b = 0; b < size; b++) {
+                for (let g = 0; g < size; g++) {
+                    for (let r = 0; r < size; r++) {
+                        let Rin = r * step;
+                        let Gin = g * step;
+                        let Bin = b * step;
+                        Rin = Math.pow(Rin, 1.0 / finalR);
+                        Gin = Math.pow(Gin, 1.0 / finalG);
+                        Bin = Math.pow(Bin, 1.0 / finalB);
+                        if (temperature !== 0) {
+                            const tempAdjust = temperature * 0.01;
+                            if (tempAdjust > 0) {
+                                Rin += tempAdjust * 0.1;
+                                Bin -= tempAdjust * 0.05;
+                            } else {
+                                Rin += tempAdjust * 0.05;
+                                Bin -= tempAdjust * 0.1;
+                            }
+                        }
+                        if (tint !== 0) {
+                            const tintAdjust = tint * 0.01;
+                            Gin -= tintAdjust * 0.1;
+                        }
+                        if (sCurveStrength > 0) {
+                            Rin = applySoftSCurve(Rin, sCurveStrength);
+                            Gin = applySoftSCurve(Gin, sCurveStrength);
+                            Bin = applySoftSCurve(Bin, sCurveStrength);
+                        }
+                        lut.push([
+                            Math.min(1.0, Math.max(0.0, Rin)),
+                            Math.min(1.0, Math.max(0.0, Gin)),
+                            Math.min(1.0, Math.max(0.0, Bin))
+                        ]);
+                    }
+                }
+            }
+            return lut;
+        }
+
+        function downloadLUT() {
+            if (!lutArray) {
+                showStatus('Please create a LUT first.', 'error');
+                return;
+            }
+            const lutSize = parseInt(document.getElementById('lutSize').value);
+            const balanceStr = document.getElementById('balanceStrength').value;
+            const tempStr = document.getElementById('temperature').value;
+            const tintStr = document.getElementById('tint').value;
+            const curveStr = document.getElementById('sCurveStrength').value;
+            let cubeContent = `# LUT Generated with LUT Generator Pro
+# Source: ${fileName}
+# Settings: Balance=${balanceStr}%, Temp=${tempStr}, Tint=${tintStr}, S-Curve=${curveStr}%
+TITLE "LUT_${fileName}"
+LUT_3D_SIZE ${lutSize}
+DOMAIN_MIN 0.0 0.0 0.0
+DOMAIN_MAX 1.0 1.0 1.0\n`;
+            lutArray.forEach(color => {
+                cubeContent += `${color[0].toFixed(6)} ${color[1].toFixed(6)} ${color[2].toFixed(6)}\n`;
+            });
+            const blob = new Blob([cubeContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `LUT_${fileName}_${lutSize}.cube`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showStatus(`LUT downloaded: ${a.download}`, 'info');
+        }
+
+        function zoomIn() { zoomLevel = Math.min(zoomLevel + 0.1, 3.0); applyZoom(); }
+        function zoomOut() { zoomLevel = Math.max(zoomLevel - 0.1, 0.1); applyZoom(); }
+        function resetZoom() { zoomLevel = 1.0; applyZoom(); }
+        function applyZoom() {
+            const originalPreview = document.getElementById('previewOriginal');
+            const correctedPreview = document.getElementById('previewCorrected');
+            if (originalPreview.style.display === 'block') {
+                originalPreview.style.transform = `scale(${zoomLevel})`;
+                correctedPreview.style.transform = `scale(${zoomLevel})`;
+            }
+        }
+        function showLoader(show) {
+            document.getElementById('loader').style.display = show ? 'block' : 'none';
+        }
+        function showStatus(message, type) {
+            const statusEl = document.getElementById('statusMessage');
+            statusEl.textContent = message;
+            statusEl.className = 'status-message';
+            if (type === 'error') statusEl.classList.add('status-error');
+            else if (type === 'warning') statusEl.classList.add('status-warning');
+            else statusEl.classList.add('status-info');
+            statusEl.style.display = 'block';
+            setTimeout(() => { statusEl.style.display = 'none'; }, 3000);
+        }
+        const uploadArea = document.querySelector('.upload-area');
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.backgroundColor = 'rgba(79, 195, 247, 0.15)';
+        });
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.backgroundColor = 'rgba(79, 195, 247, 0.05)';
+        });
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.backgroundColor = 'rgba(79, 195, 247, 0.05)';
+            if (e.dataTransfer.files.length) {
+                document.getElementById('fileInput').files = e.dataTransfer.files;
+                const event = new Event('change');
+                document.getElementById('fileInput').dispatchEvent(event);
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === '+') { e.preventDefault(); zoomIn(); }
+            if (e.ctrlKey && e.key === '-') { e.preventDefault(); zoomOut(); }
+            if (e.ctrlKey && e.key === '0') { e.preventDefault(); resetZoom(); }
+        });
+    </script>
+</body>
+</html>
