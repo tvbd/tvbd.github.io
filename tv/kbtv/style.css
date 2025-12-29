@@ -1,4 +1,4 @@
-    <style>
+
        
         :root { 
             --green: #0f0; 
@@ -83,4 +83,3 @@
         ::-webkit-scrollbar { width:4px; background:#000; } ::-webkit-scrollbar-thumb { background:var(--green); }
         @keyframes blink { 50% { opacity:0; } }
     
-    </style>
