@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRIC FLIXS Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.6/controls.min.css">
+    <style>
+        body, html {
+            margin: 0; padding: 0; background: #000;
+            height: 100%; width: 100%;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden;
+        }
+
+        #player-container {
+            width: 100%; height: 100%;
+            position: relative; background: #000;
+        }
+
+        video.shaka-video {
+            width: 100%; height: 100%; object-fit: contain;
+        }
+
+        /* Seek Bar Customization - Red Color */
+        .shaka-seek-bar-container .shaka-range-element {
+            --shaka-main-color: #ff0000 !important;
+        }
+
+        .shaka-spinner-container { display: none !important; }
+
+        /* Overlay Styles for Logo & Watermark */
+        .overlay-logo {
+            position: absolute;
+            z-index: 50;
+            top: 20px;
+            right: 20px;
+            max-width: 100px;
+            pointer-events: none;
+        }
+        
+        .overlay-text {
+            position: absolute;
+            z-index: 50;
+            bottom: 60px; /* Kept above controls */
+            left: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: sans-serif;
+            font-weight: bold;
+            pointer-events: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+    </style>
+</head>
+<body>
+
+<div id="player-container">
+    <video id="video" autoplay muted playsinline class="shaka-video"></video>
+    
+    <img id="overlayLogo" class="overlay-logo" style="display: none;">
+    <div id="overlayText" class="overlay-text" style="display: none;"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.6/shaka-player.ui.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const video = document.getElementById('video');
+    const container = document.getElementById('player-container');
+    const overlayLogo = document.getElementById('overlayLogo');
+    const overlayText = document.getElementById('overlayText');
+
+    // 1. Get Data from URL Parameters
+    const params = new URLSearchParams(window.location.search);
+    const streamUrl = params.get('url');
+    const keyId = params.get('keyId');
+    const keyValue = params.get('keyValue');
+    
+    const logoOn = params.get('logoOn') === '1';
+    const logoUrl = params.get('logo');
+    const logoOpacity = (params.get('logoOpacity') || 90) / 100;
+
+    const wmOn = params.get('wmOn') === '1';
+    const wmText = params.get('wm');
+    const wmOpacity = (params.get('wmOpacity') || 75) / 100;
+
+    // 2. Initialize Shaka Player
+    const player = new shaka.Player(video);
+    const ui = new shaka.ui.Overlay(player, container, video);
+
+    ui.configure({
+        controlPanelElements: ['play_pause', 'mute', 'volume', 'spacer', 'settings', 'quality', 'picture_in_picture', 'fullscreen'],
+        seekBarColors: {
+            base: 'rgba(255, 255, 255, 0.3)',
+            buffered: 'rgba(255, 255, 255, 0.5)',
+            played: 'rgb(255, 0, 0)',
+        }
+    });
+
+    // 3. DRM Configuration
+    if (keyId && keyValue) {
+        player.configure({
+            drm: {
+                clearKeys: { [keyId]: keyValue }
+            }
+        });
+    }
+
+    player.configure({
+        streaming: {
+            bufferingGoal: 10,
+            lowLatencyMode: true,
+            rebufferingGoal: 2
+        }
+    });
+
+    // 4. Set Overlays
+    if (logoOn && logoUrl) {
+        overlayLogo.src = decodeURIComponent(logoUrl);
+        overlayLogo.style.display = 'block';
+        overlayLogo.style.opacity = logoOpacity;
+    }
+
+    if (wmOn && wmText) {
+        overlayText.textContent = decodeURIComponent(wmText);
+        overlayText.style.display = 'block';
+        overlayText.style.opacity = wmOpacity;
+    }
+
+    // 5. Orientation Management (Auto-Landscape on Fullscreen)
+    async function lockLandscape() {
+        if (screen.orientation && screen.orientation.lock) {
+            try { await screen.orientation.lock('landscape'); } catch(e) {}
+        }
+    }
+
+    container.addEventListener('fullscreenchange', () => {
+        if (document.fullscreenElement) {
+            lockLandscape();
+        } else {
+            if (screen.orientation && screen.orientation.unlock) {
+                screen.orientation.unlock();
+            }
+        }
+    });
+
+    // 6. Load Stream
+    try {
+        if (streamUrl) {
+            await player.load(decodeURIComponent(streamUrl));
+        } else {
+            console.error("No Stream URL provided!");
+        }
+    } catch (e) {
+        console.error("Error loading stream:", e);
+    }
+});
+</script>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5c1f4231395540e98bbdf2d17ad36a29"}'></script><!-- Cloudflare Pages Analytics --></body>
+</html>
