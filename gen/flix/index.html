@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRIC FLIXS - Premium Player Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body class="py-10 px-4">
+
+    <div class="text-center mb-12">
+        <h1 class="text-5xl font-extrabold tracking-[0.2em] text-cyan-400 drop-shadow-[0_0_15px_rgba(0,242,255,0.5)]">CRIC FLIXS</h1>
+        <p class="text-gray-500 mt-3 text-sm uppercase tracking-[0.3em]">Advanced Streaming Solutions</p>
+    </div>
+
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+        
+        <div class="glass-card p-8 rounded-[2rem]">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-2 h-8 bg-cyan-500 rounded-full"></div>
+                <h2 class="text-2xl font-semibold uppercase tracking-wider">Configuration</h2>
+            </div>
+            
+            <div class="space-y-5">
+                <div>
+                    <label class="block text-xs uppercase text-cyan-500 font-bold mb-2 ml-1">Stream URL (DASH/M3U8)</label>
+                    <input type="text" id="videoUrl" oninput="autoDetectDRM()" class="w-full rounded-xl px-5 py-3" placeholder="Paste link with |drmLicense= here...">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase text-gray-500 mb-2 ml-1">DRM Key ID</label>
+                        <input type="text" id="keyId" class="w-full rounded-xl px-5 py-3" placeholder="ClearKey ID">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase text-gray-500 mb-2 ml-1">DRM Key Value</label>
+                        <input type="text" id="keyValue" class="w-full rounded-xl px-5 py-3" placeholder="ClearKey Value">
+                    </div>
+                </div>
+
+                <hr class="border-white/5 my-6">
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase text-gray-500 mb-2 ml-1">Logo Image URL</label>
+                        <input type="text" id="logoUrl" class="w-full rounded-xl px-5 py-3" placeholder="Link to logo">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase text-gray-500 mb-2 ml-1">Logo Opacity (%)</label>
+                        <input type="number" id="logoOpacity" value="90" min="0" max="100" class="w-full rounded-xl px-5 py-3">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase text-gray-500 mb-2 ml-1">Watermark Text</label>
+                        <input type="text" id="wmText" class="w-full rounded-xl px-5 py-3" placeholder="e.g. @CricFlixs">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase text-gray-500 mb-2 ml-1">Text Opacity (%)</label>
+                        <input type="number" id="wmOpacity" value="75" min="0" max="100" class="w-full rounded-xl px-5 py-3">
+                    </div>
+                </div>
+
+                <div class="flex gap-4 pt-6">
+                    <button onclick="generatePlayer()" class="flex-[2] btn-glow bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-4 rounded-2xl transition-all duration-300 uppercase tracking-widest text-sm">
+                        🚀 Generate Player
+                    </button>
+                    <button onclick="resetForm()" class="flex-1 bg-white/5 hover:bg-red-500/20 text-gray-400 hover:text-red-400 border border-white/10 hover:border-red-500/50 rounded-2xl transition-all duration-300 text-sm font-semibold">
+                        Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-8">
+            <div class="glass-card rounded-[2.5rem] overflow-hidden shadow-2xl">
+                <div class="bg-white/5 px-8 py-4 border-b border-white/10 flex justify-between items-center">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-400">Live Player Preview</span>
+                    <div id="statusIndicator" class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-gray-600"></div>
+                        <span class="text-[10px] uppercase text-gray-500">Standby</span>
+                    </div>
+                </div>
+                <div class="aspect-video bg-black relative">
+                    <iframe id="previewIframe" class="w-full h-full border-0" src="about:blank" allow="autoplay; fullscreen; encrypted-media"></iframe>
+                    <div id="previewPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center bg-[#05060a]">
+                        <div class="w-16 h-16 rounded-full bg-cyan-500/5 flex items-center justify-center mb-4">
+                            <svg class="w-8 h-8 text-cyan-500/20" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/></svg>
+                        </div>
+                        <p class="text-[10px] uppercase tracking-[0.3em] text-gray-600">Configure stream to play</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card p-8 rounded-[2rem]">
+                <label class="block text-xs uppercase text-cyan-500 font-bold mb-4 ml-1 tracking-widest">Player Embed URL</label>
+                <div class="flex p-1 rounded-2xl bg-black/40 border border-white/5">
+                    <input id="embed-url" readonly class="w-full px-5 py-3 bg-transparent text-gray-400 text-sm border-none !important focus:ring-0" placeholder="https://cricflixs.com/player.html?..." />
+                    <button onclick="copyLink(this)" class="bg-cyan-600 hover:bg-cyan-500 px-8 py-3 text-white font-bold rounded-xl transition-all duration-300 text-sm shrink-0">
+                        Copy
+                    </button>
+                </div>
+                <p class="text-[10px] text-gray-600 mt-4 text-center">Use this URL to embed the player in your website or share directly.</p>
+            </div>
+        </div>
+    </div>
+
+<script src="app.js" type="text/javascript"></script>	
+</html>
