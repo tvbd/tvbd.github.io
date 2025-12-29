@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Card Generator by Aminul</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Merriweather:wght@400;700&family=Noto+Sans+Bengali:wght@400;600&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500;700&family=Baloo+Da+2:wght@400;500;600;700&family=Mina:wght@400;700&family=Galada&family=Anek+Bangla:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&family=Lato:wght@400;700&family=Montserrat:wght@400;600;700&family=Oswald:wght@400;500;700&family=Lora:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <button id="toggleSettings" class="mobile-toggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z"/>
+            </svg>
+            Settings
+        </button>
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>Photo Card Generator</h1>
+                <p>Generate visuals using HTML templates</p>
+                <button id="closeSettings" class="close-btn mobile-only">&times;</button>
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label>Select Template</label>
+                    <select id="templateSelect"></select>
+                    <p id="templateDesc" class="help-text"></p>
+                </div>
+
+                <div class="section-title">Content</div>
+                
+                <div id="dynamicContent">
+                    <!-- Dynamic inputs will be generated here -->
+                </div>
+
+                <div class="section-title">Media</div>
+                
+                <div class="control-group">
+                    <label>Main Image</label>
+                    <input type="file" id="imageInput" accept="image/*">
+                    <div style="margin: 5px 0; font-size: 12px; text-align: center; color: #666;">OR</div>
+                    <input type="text" id="imageUrlInput" placeholder="Enter Image URL">
+                </div>
+                
+                <div class="control-group">
+                    <label>Logo</label>
+                    <input type="file" id="logoInput" accept="image/*">
+                    <div style="margin: 5px 0; font-size: 12px; text-align: center; color: #666;">OR</div>
+                    <input type="text" id="logoUrlInput" placeholder="Enter Logo URL">
+                </div>
+
+                <div class="control-group">
+                    <label>Ad Image (Bottom)</label>
+                    <input type="file" id="adImageInput" accept="image/*">
+                    <div style="margin: 5px 0; font-size: 12px; text-align: center; color: #666;">OR</div>
+                    <input type="text" id="adImageUrlInput" placeholder="Enter Ad Image URL">
+                </div>
+
+                <div class="section-title">Style</div>
+                
+                <div class="control-group">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                        <label style="margin-bottom: 0;">Font</label>
+                        <button id="loadSystemFontsBtn" class="text-btn" style="display: none;">Load Installed Fonts</button>
+                    </div>
+                    <select id="fontInput">
+                        <option value="" placeholder>Search fonts...</option>
+                    </select>
+                </div>
+
+                <div class="dual-inputs">
+                    <div class="control-group">
+                        <label>Accent Color</label>
+                        <input type="color" id="accentColorInput" value="#D9232D">
+                    </div>
+                    <div class="control-group">
+                        <label>Background</label>
+                        <input type="color" id="bgColorInput" value="#ffffff">
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label>Text Color</label>
+                    <input type="color" id="textColorInput" value="#111827">
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="resetBtn" class="secondary-btn">Reset</button>
+                <button id="downloadBtn" class="primary-btn">Download Image</button>
+            </div>
+        </aside>
+        
+        <main class="preview-area">
+            <div class="canvas-wrapper">
+                <div id="renderTarget">
+                    <!-- Template will be injected here -->
+                </div>
+            </div>
+            <div class="zoom-controls">
+                <span class="zoom-hint">Preview scaled to fit. Output is 1080x1080.</span>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
