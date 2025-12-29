@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ExtenderMax</title>
+    
+    <script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shaka-player@4.3.4/dist/controls.css">
+    <script src="https://cdn.jsdelivr.net/npm/mux.js@6.3.0/dist/mux.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/shaka-player@4.3.4/dist/shaka-player.ui.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-body: #f8f0fc;
+            --bg-sidebar: #ffffff;
+            --accent: #d53f8c; 
+            --accent-soft: #fbb6ce;
+            --text-main: #44337a;
+            --text-light: #805ad5;
+        }
+
+        * { box-sizing: border-box; }
+        
+        body { 
+            margin: 0; padding: 0;
+            background: var(--bg-body); 
+            color: var(--text-main); 
+            font-family: 'Quicksand', sans-serif; 
+            height: 100vh; display: flex; overflow: hidden; 
+        }
+
+        #welcome-popup {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 245, 250, 0.98);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 9999; transition: opacity 0.6s ease, visibility 0.6s;
+        }
+        .popup-card {
+            text-align: center; padding: 40px; background: white;
+            border-radius: 30px; box-shadow: 0 20px 50px rgba(213, 63, 140, 0.15);
+            border: 2px solid #fce7f3;
+        }
+        .popup-card h1 { margin: 0; color: var(--accent); font-size: 28px; }
+        .popup-card p { margin: 10px 0 0; color: var(--text-light); font-weight: 600; font-size: 16px; }
+        .popup-icon { font-size: 50px; margin-bottom: 10px; display: block; }
+        .hide-popup { opacity: 0; visibility: hidden; }
+
+        .sidebar {
+            width: 350px; background: var(--bg-sidebar);
+            border-right: 1px solid #e9d8fd;
+            display: flex; flex-direction: column;
+            z-index: 20; box-shadow: 2px 0 10px rgba(0,0,0,0.02);
+        }
+
+        .playlist-bar {
+            padding: 10px; display: flex; gap: 8px; overflow-x: auto;
+            border-bottom: 1px solid #f3e8ff; background: #fffafa;
+        }
+        .playlist-bar::-webkit-scrollbar { height: 0; width: 0; }
+        
+        .tab {
+            padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700;
+            background: #f3e8ff; color: var(--text-light); text-decoration: none;
+            white-space: nowrap; transition: 0.2s;
+        }
+        .tab.active { background: var(--accent); color: white; }
+
+        /* --- UPDATED SCROLL CSS --- */
+        .scroll-container {
+            width: 100%; 
+            overflow: hidden; 
+            background: var(--text-main);
+            color: white; 
+            padding: 8px 0;
+            font-size: 14px; 
+            font-weight: 600;
+            position: relative;
+        }
+        .scroll-text {
+            display: inline-block;
+            white-space: nowrap;
+            will-change: transform;
+            /* Animation is now handled by JS for perfect length calculation */
+        }
+        /* -------------------------- */
+
+        .search-area { padding: 10px; background: white; }
+        .search-input {
+            width: 100%; padding: 10px 15px; border-radius: 8px; border: 1px solid #e9d8fd;
+            background: #faf5ff; color: var(--text-main); font-family: inherit; font-weight: 600;
+            outline: none;
+        }
+        .search-input:focus { border-color: var(--accent); }
+
+        .channel-list { flex: 1; overflow-y: auto; padding: 0 10px 10px 10px; }
+        
+        .item {
+            display: flex; align-items: center; padding: 8px; margin-top: 8px;
+            background: white; border-radius: 10px; cursor: pointer;
+            border: 1px solid #f0e6ff; transition: 0.2s;
+        }
+        .item:hover { background: #fff5f7; border-color: var(--accent-soft); }
+        .item.active { background: var(--text-main); color: white; border-color: var(--text-main); }
+        .item.active .cat { color: #b794f4; }
+        .item.active .name { color: white; }
+
+        .logo-box {
+            width: 40px; height: 40px; background: white; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            margin-right: 10px; padding: 2px; flex-shrink: 0; border: 1px solid #eee;
+        }
+        .logo-img { width: 100%; height: 100%; object-fit: contain; }
+
+        .info { overflow: hidden; }
+        .name { font-weight: 700; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .cat { font-size: 10px; color: var(--text-light); margin-top: 2px; font-weight: 600; }
+
+        .main { 
+            flex: 1; background: #000; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; position: relative; 
+        }
+        
+        #player-container { width: 100%; height: 100%; max-height: 100vh; }
+        
+        .shaka-video-container { width: 100%; height: 100%; }
+        .shaka-controls-button-panel { color: white; }
+
+        @media (max-width: 800px) {
+            body { flex-direction: column; height: auto; overflow: visible; }
+            .main { 
+                order: 1; position: sticky; top: 0; width: 100%; aspect-ratio: 16/9; 
+                height: auto; z-index: 100; display: block; 
+            }
+            .sidebar { 
+                order: 2; width: 100%; height: auto; flex: none; border: none; 
+                box-shadow: none; background: var(--bg-body); padding-bottom: 50px; 
+            }
+            .channel-list {
+                display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); 
+                gap: 8px; padding: 10px; overflow-y: visible;
+            }
+            .item { flex-direction: column; text-align: center; padding: 12px 5px; margin-top: 0; }
+            .logo-box { margin: 0 0 6px 0; width: 45px; height: 45px; }
+            .name { font-size: 12px; white-space: normal; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; }
+            .cat { display: none; }
+            .playlist-bar { padding: 12px 10px; background: white; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid #eee; }
+            .search-area { display: block; padding: 10px; background: white; border-bottom: 1px solid #eee; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="welcome-popup">
+        <div class="popup-card">
+            <span class="popup-icon">🔥</span>
+            <h1>Loading...</h1>
+            <h2>ExtenderMax</h2>
+            <p>This Page By ExtenderMax,<br>Feel The Thrills of Sports</p>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="playlist-bar">
+            <a href="?pl=manual" class="tab ">⭐ Hot'S</a>
+                            <a href="?pl=0" class="tab ">
+                    XFireFlix                </a>
+                            <a href="?pl=1" class="tab active">
+                    BPL26🔥                </a>
+                            <a href="?pl=2" class="tab ">
+                    Liv+                </a>
+                    </div>
+        
+        <div class="scroll-container">
+            <div class="scroll-text">
+                Welcome to ExtenderMax! Select a channel to start watching. Some DRM channels take upto 30 seconds to play. More Updates coming soon! Stay Tuned!!!
+            </div>
+        </div>
+
+        <div class="search-area">
+            <input type="text" id="search" class="search-input" placeholder="🔍 Find Channel...">
+        </div>
+
+        <div class="channel-list" id="list"></div>
+    </div>
+
+    <div class="main">
+        <div id="player-container"></div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const popup = document.getElementById('welcome-popup');
+            setTimeout(() => { popup.classList.add('hide-popup'); }, 1500); 
+
+            // Initialize Marquee
+            startMarquee();
+        });
+
+        // --- NEW SCROLL LOGIC ---
+        function startMarquee() {
+            const text = document.querySelector('.scroll-text');
+            const container = document.querySelector('.scroll-container');
+            
+            if (!text || !container) return;
+
+            // 1. Calculate Widths
+            const textWidth = text.offsetWidth;
+            const containerWidth = container.offsetWidth;
+
+            // 2. Define Speed (Pixels per second)
+            // Adjust this value to make it faster (higher) or slower (lower)
+            const speedPxPerSec = 50; 
+
+            // 3. Calculate Total Distance (Enter from right -> Exit to left)
+            const totalDistance = containerWidth + textWidth;
+
+            // 4. Calculate Duration dynamically
+            const duration = (totalDistance / speedPxPerSec) * 1000;
+
+            // 5. Create Animation
+            if (text.marqueeAnim) text.marqueeAnim.cancel();
+
+            text.marqueeAnim = text.animate([
+                { transform: `translateX(${containerWidth}px)` }, // Start off-screen right
+                { transform: `translateX(-${textWidth}px)` }      // End off-screen left
+            ], {
+                duration: duration,
+                iterations: Infinity,
+                easing: 'linear'
+            });
+        }
+
+        // Recalculate on resize (responsive)
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(startMarquee, 100);
+        });
+        // ------------------------
+
+        const channels = [{"name":"T Sports","logo":"https:\/\/encrypted-tbn0.gstatic.com\/images?q=tbn:ANd9GcSNoRTQBtjGlMCjMXhwKV3COXy4njZjxwq9SUqdJ1LjLQ&s","category":"BPL","player":"jw","url":"https:\/\/tvsen7.aynaott.com\/tsportshd\/index.m3u8"},{"name":"T Sports","logo":"https:\/\/encrypted-tbn0.gstatic.com\/images?q=tbn:ANd9GcSNoRTQBtjGlMCjMXhwKV3COXy4njZjxwq9SUqdJ1LjLQ&s","category":"BPL","player":"jw","url":"https:\/\/live20.bozztv.com\/giatv\/giatv-tsports\/tsports\/chunks.m3u8"},{"name":"Willow AQ","logo":"","category":"DRM","player":"jw","drm":"e6c657cf59c36f050d3c065a05415118:00abdaaafb9cae9efbb7f5ec53841c3f","url":"https:\/\/a166aivottlinear-a.akamaihd.net\/OTTB\/sin-nitro\/live\/clients\/dash\/enc\/bhuhr4rfjk\/out\/v1\/897cf67b309b4fe1ae5441e401bece4c\/cenc.mpd"},{"name":" Sharjah Warriorz vs Desert Vipers (DP World ILT20 2025-26)","logo":"https:\/\/www.fancode.com\/skillup-uploads\/cms-media\/138650_5786_SWR_DV_FC-Web.jpg","category":"Live Event","player":"jw","url":"https:\/\/bd-mc-fdlive.fancode.com\/mumbai\/138650_english_hls_c89917539b71833_1ta-di_h264\/index.m3u8"},{"name":"Willow HD","logo":"https:\/\/abusaeeidx.github.io\/Tv-Channel-Logo\/CricHD\/runded\/38-by-xfireflix.png","category":"Sports","player":"jw","url":"https:\/\/d9.merichunidya.com:1686\/hls\/willowusa.m3u8?md5=HcOgLx5SW_3yvyRFK-0YuA&expires=1766778075"},{"name":"A Sports HD","logo":"https:\/\/abusaeeidx.github.io\/Tv-Channel-Logo\/CricHD\/runded\/12-by-xfireflix.png","category":"Sports","player":"jw","url":"https:\/\/d5.merichunidya.com:1686\/hls\/asportshd.m3u8?md5=nNz5OC6oAf5uH9X3NUkYLA&expires=1766778076"},{"name":"t sports","logo":"http:\/\/tvassets.roarzone.info\/images\/102.png","category":"sports","player":"jw","url":"https:\/\/edge2.roarzone.info:8444\/roarzone\/edge2\/tsports\/index.m3u8?token=b1d74d2dec3e13ae1c79fde505ba6e46ea6fe24b-33e950a69b45adbb9694db778657ae10-1766775393-1766771793"},{"name":"Willow Sports","logo":"","category":"Cricket","player":"jw","url":"http:\/\/xxip9.top:8080\/live\/7656691303\/chrisbolden765%40icloud.com\/58847.m3u8"},{"name":"A SPORTS","logo":"","category":"Unknown","player":"jw","url":"http:\/\/163.61.227.29:8000\/play\/a03t\/index.m3u8"}];
+        const list = document.getElementById('list');
+        const container = document.getElementById('player-container');
+        let jw = null;
+        let shakaPlayer = null;
+        let shakaUi = null;
+
+        function clearContainer() {
+            if (jw) { jw.remove(); jw = null; }
+            if (shakaUi) { shakaUi.destroy(); shakaUi = null; }
+            if (shakaPlayer) { shakaPlayer.destroy(); shakaPlayer = null; }
+            container.innerHTML = '<div id="player"></div>';
+        }
+
+        async function loadPlayer(url, drm, engine) {
+            clearContainer();
+
+            if (engine === 'jw') {
+                const config = { 
+                    file: url, width: "100%", height: "100%", autostart: true,
+                    stretching: "uniform", preload: "auto", 
+                    type: url.includes('.mpd') ? 'dash' : 'hls',
+                    dash: { 
+                        suggestedPresentationDelay: 0, 
+                        ignoreMinBufferTime: true, 
+                        minBufferTime: 0.2,
+                        liveTimeout: 0
+                    },
+                    hls: { minBufferLength: 2 }
+                };
+
+                if(drm && drm.includes(':')) {
+                    let p = drm.split(':');
+                    config.drm = { clearkey: { keyId: p[0], key: p[1] } };
+                }
+                jw = jwplayer("player").setup(config);
+
+            } else {
+                container.innerHTML = '';
+                const videoContainer = document.createElement('div');
+                videoContainer.setAttribute('data-shaka-player-container', '');
+                videoContainer.style.width = '100%'; videoContainer.style.height = '100%';
+                
+                const video = document.createElement('video');
+                video.setAttribute('data-shaka-player', ''); video.setAttribute('autoplay', '');
+                video.style.width = '100%'; video.style.height = '100%';
+                
+                videoContainer.appendChild(video);
+                container.appendChild(videoContainer);
+
+                shakaPlayer = new shaka.Player(video);
+                shakaUi = new shaka.ui.Overlay(shakaPlayer, videoContainer, video);
+                
+                const config = {
+                    streaming: { 
+                        bufferingGoal: 15, 
+                        rebufferingGoal: 2, 
+                        bufferBehind: 15,
+                        jumpLargeGaps: true,
+                        safeSeekOffset: 2,
+                        retryParameters: { maxAttempts: 2, timeout: 3000 }
+                    },
+                    manifest: {
+                        dash: { ignoreMinBufferTime: true, autoCorrectDrift: true }
+                    },
+                    abr: { 
+                        enabled: true,
+                        defaultBandwidthEstimate: 500000, 
+                        switchInterval: 1, 
+                        bandwidthDowngradeTarget: 0.8 
+                    }
+                };
+
+                if (drm && drm.includes(':')) {
+                    let p = drm.split(':');
+                    config.drm = { clearKeys: { [p[0]]: p[1] } };
+                }
+
+                shakaPlayer.configure(config);
+                try { await shakaPlayer.load(url); } catch (e) { console.error('Shaka Error:', e); }
+            }
+        }
+
+        function render(filter='') {
+            list.innerHTML = '';
+            let term = filter.toLowerCase();
+            
+            if(channels.length === 0) {
+                list.innerHTML = '<div style="padding:20px;text-align:center;opacity:0.6;">No channels available</div>';
+                return;
+            }
+
+            channels.forEach(ch => {
+                if(ch.name.toLowerCase().includes(term) || (ch.category && ch.category.toLowerCase().includes(term))) {
+                    let div = document.createElement('div');
+                    div.className = 'item';
+                    let logo = (ch.logo && ch.logo.length > 5) ? ch.logo : 'https://cdn-icons-png.flaticon.com/512/777/777242.png';
+                    div.innerHTML = `
+                        <div class="logo-box">
+                            <img src="${logo}" class="logo-img" loading="lazy" onerror="this.src='https://cdn-icons-png.flaticon.com/512/777/777242.png'">
+                        </div>
+                        <div class="info">
+                            <div class="name">${ch.name}</div>
+                            <div class="cat">${ch.category || 'General'}</div>
+                        </div>
+                    `;
+                    div.onclick = () => {
+                        document.querySelectorAll('.item').forEach(e=>e.classList.remove('active'));
+                        div.classList.add('active');
+                        if(window.innerWidth < 800) window.scrollTo({top:0, behavior:'auto'});
+                        loadPlayer(ch.url, ch.drm, ch.player || 'jw');
+                    };
+                    list.appendChild(div);
+                }
+            });
+        }
+
+        document.getElementById('search').addEventListener('input', (e)=>render(e.target.value));
+        render();
+        
+        if(channels.length > 0) {
+            loadPlayer(channels[0].url, channels[0].drm, channels[0].player || 'jw');
+        }
+    </script>
+</body>
+</html>
