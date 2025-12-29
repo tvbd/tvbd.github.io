@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KB TV PRO</title>
+    
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+     <link href="style.css" rel="stylesheet" />
+</head>
+<body oncontextmenu="return false;">
+
+    <header>
+        <div class="logo" onclick="location.reload()">KB TV PRO</div>
+        <div class="search-wrap"><input type="text" class="search" placeholder="SEARCH..." onkeyup="search(this.value)"></div>
+    </header>
+
+    <div class="container">
+        <!-- PLAYER -->
+        <div class="player-wrap" id="playerTarget">
+            <div class="video-container">
+                <div class="aspect-ratio">
+                    <video-js id="vid" class="video-js vjs-big-play-centered" controls preload="auto" playsinline data-setup='{"fluid":true}'></video-js>
+                </div>
+            </div>
+            <div class="info-bar">
+                <div class="ch-info">
+                    <h2><span class="live-badge">ON</span> <span id="chName">SELECT CHANNEL</span></h2>
+                </div>
+                <div id="watermark"></div>
+            </div>
+        </div>
+
+        <!-- LIST -->
+        <div class="list-wrap">
+            <marquee class="marquee" id="noticeText" scrollamount="4">LOADING...</marquee>
+            <div class="cat-bar" id="catMenu">
+                <button class="cat-btn active" onclick="setCat('All')">ALL</button>
+            </div>
+            <div class="list-items" id="chList"></div>
+        </div>
+    </div>
+
+    <footer>
+        <span>VISITORS: 141</span>
+        <span>STATUS: <span style="color:var(--green)">ONLINE</span></span>
+    </footer>
+     <script src="app.js"></script>
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    
+</body>
+</html>
