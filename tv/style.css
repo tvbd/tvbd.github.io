@@ -1,0 +1,9 @@
+html{overflow-x:hidden;scrollbar-width:thin;} body{-webkit-font-smoothing:antialiased;position:relative;top:0!important;margin:0;padding:0!important;width:100%;scrollbar-width: thin;}
+@keyframes blink {0%{opacity: 1;} 50%{opacity:0;} 100% {opacity:1;}} 
+#appHeader {background-color: #1D232A; padding: 20px; text-align: center; border-radius:15px; margin-bottom: 20px; } 
+#appHeader h1 {color:white; font-size:36 px; font-weight: bold; margin-bottom: 20 px; animation: blink 2.5 s infinite; text-shadow: 3 px 3 px 6 px rgba(0, 0, 0, 0.3); } 
+#appHeader.buttons { display:flex; justify-content:center; } 
+#appHeader button {padding:15px 30px; font-size: 18 px; border:none; color:white; cursor:pointer;border-radius: 15px;margin: 10px; background: linear-gradient(145 deg,#34373a,#272 a2d); box-shadow: 5px 5px 8px #1d1f21, -5px -5px 8px #404447; transition: all 0.3sease; } 
+#appHeader button: hover { box-shadow: 4px 4px 4px #1d1f21, -4px -4px 8px #404447; } #appHeader #whatsapp { background-color: #25d366; } 
+#appHeader #whatsapp: hover { background-color: #128C7E;} #appHeader #telegrambutton { background-color: #0088cc; } 
+#appHeader #telegrambutton: hover {background-color: #005f6b;} 
