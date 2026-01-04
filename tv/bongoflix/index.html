@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>𝐁𝐨𝐧𝐠𝐨 𝐅𝐥𝐢𝐱</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+
+
+<div id="preloader">
+    <div class="loader-content">
+        <img src="https://cdn.dribbble.com/users/626506/screenshots/2661024/800600.gif" class="loader-logo">
+        <h1 class="loader-title">𝐁𝐎𝐍𝐆𝐎 <span style="color:red">𝐅𝐋𝐈𝐗</span></h1>
+    </div>
+</div>
+
+
+
+<div class="wrapper">
+    <div class="app-container">
+        <div class="player-area">
+            <div class="video-box">
+                <iframe id="tvPlayer" src="" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="tab-wrapper">
+                                    <div class="tab-btn active" onclick="openTab(event, 'cat_0')">Sports</div>
+                                    <div class="tab-btn " onclick="openTab(event, 'cat_1')">Bangla</div>
+                                    <div class="tab-btn " onclick="openTab(event, 'cat_2')">Indian</div>
+                                    <div class="tab-btn " onclick="openTab(event, 'cat_3')">Hindi</div>
+                                    <div class="tab-btn " onclick="openTab(event, 'cat_4')">Kids</div>
+                                    <div class="tab-btn " onclick="openTab(event, 'cat_5')">Music</div>
+                                    <div class="tab-btn " onclick="openTab(event, 'cat_6')">Others</div>
+                            </div>
+            
+            <div class="channel-container">
+                                    <div id="cat_0" class="channel-grid active">
+                                                    <div class="channel-card item-box" onclick="loadChannel('tsports', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/VL5yTtwr/20250707_141739.png" alt="Tsports"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('nagorik', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/8zQ0DYBH/20250720_201346.png" alt="Nagorik"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('tencricket', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/fWV00yP8/tencricket.png" alt="Ten Cricket"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('starsports1', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/N0sYHFDj/20251002_230032.png" alt="Star Sports 1"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('starsports2', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/yNvbVTHy/20250702_032050.png" alt="Star Sports 2"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('eurosports', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/K89SfFWN/20251208_221926.png" alt="Euro Sports"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('starselect1', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/50ykjF9d/20250702_032238.png" alt="Select 1"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('starselect2', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/DzvFX06y/20251002_225947.png" alt="Select 2"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('dubaisports', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/CxvT7Y24/20251208_222149.png" alt="Dubai Sports"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('ten1', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/cH2Cc7zX/20250529_122631.png" alt="Ten 1"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('ten2', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/x12k7R1Z/20250529_122855.png" alt="Ten 2"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('ten5', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/kMLRN93q/20250529_123147.png" alt="Ten 5"></div>
+                            </div>
+                                            </div>
+                                    <div id="cat_1" class="channel-grid ">
+                                                    <div class="channel-card item-box" onclick="loadChannel('btv', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/JnWdHSrq/20250529-071604.png" alt="B TV"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('jamuna', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/L4D0hyrt/20250529-071035.png" alt="Jamuna"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('somoy', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/Qxn4JFNV/20250529-071147.png" alt="Somoy"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('channel24', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/nLmPznJr/20250529-071852.png" alt="Channel 24"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('ekattor', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/D0xCDZqj/20250529-071258.png" alt="Ekattor"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('atnnews', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/4NBkk4fT/20250529-102724.png" alt="ATN News"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('banglavision', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/JzGFfbYb/20250529-072833.png" alt="Bangla Vision"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('ntv', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/kgzHqBLL/20250529-072107.png" alt="N TV"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('atnbangla', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/FHBMzPkW/20250529-102502.png" alt="ATN Bangla"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('channeli', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/J47vqwbY/20250529-101717.png" alt="Channel i"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('gtv', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/jjKGfnW8/20250704_201040.png" alt="G TV"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('deepto', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/9XPHbts0/20250529-103607.png" alt="Deepto"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('maasranga', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/WbnjN67C/20250529-104926.png" alt="Maasranga"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('ekushetv', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/L6R2F0jj/20250529_105209.png" alt="Ekushe TV"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('rtv', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/8kmxMkrr/20250529_101852.png" alt="R TV"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('mytv', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/HxGF4V2b/20250529_103226.png" alt="MY TV"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('moviebangla', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/wBN1BtXk/20251127_095813.png" alt="Movie Bangla"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('metv', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/j2hVjtyP/20250529-103904.png" alt="ME TV"></div>
+                            </div>
+                                            </div>
+                                    <div id="cat_2" class="channel-grid ">
+                                                    <div class="channel-card item-box" onclick="loadChannel('starjalsha', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/hvRgj26W/20250529-105408.png" alt="Star Jalsha"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('zeebangla', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/ry5MbLR8/20250529-105712.png" alt="Zee Bangla"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('colorsbangla', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/HLdjn6zR/20250602_220804.png" alt="Colors Bangla"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('enterr10', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/LX122cy3/20250529-111624.png" alt="Enterr 10"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('sonyaath', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/ZqgJkbLq/20250529-111438.png" alt="Sony Aath"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('akashbangla', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/PJ5V7VsN/20250711_062758.png" alt="Akash Bangla"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('ruposhibangla', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/pLs2ZYhz/20250529_111853.png" alt="Ruposhi Bangla"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('jalshamovies', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/T2nGNxc8/20250707_053157.png" alt="Jalsha Movies"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('zeebanglacinema', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/Zq0JDBpg/20250529_110358.png" alt="Zee Bangla Cinema"></div>
+                            </div>
+                                            </div>
+                                    <div id="cat_3" class="channel-grid ">
+                                                    <div class="channel-card item-box" onclick="loadChannel('colors', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/pdy3k1qZ/20251202_090150.png" alt="Colors"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('andtv', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/bJzsJNt9/20250529_133255.png" alt="And TV"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('andpicture', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/k5N2qtB5/20250529_133459.png" alt="And Picture"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('starmovies', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/TYcpKMDZ/20251222_213635.png" alt="Star Movies"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('starplus', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/q7gWQZjw/20251202_090307.png" alt="Star Plus"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('stargold', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/PqN0KF2M/20251202_090224.png" alt="Star Gold"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('zeetv', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/1z18kKRT/20250529_133622.png" alt="Zee TV"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('zeecinema', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/nhDsSWxB/20250529_133753.png" alt="Zee Cinema"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('zeebollywood', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/52SzwQF1/20251222_220548.png" alt="Zee Bollywood"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('hum', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/RFXqn515/20250529_132912.png" alt="Hum"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('b4umovie', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/13nLvxQx/20250630_050504.png" alt="B4U Movie"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('sonytelevision', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/0yDQ0JGC/20250529_131726.png" alt="Sony TV"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('sonymax', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/zX9vhkhB/20250529_131834.png" alt="Sony Max"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('sonymaxhd', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/zX9vhkhB/20250529_131834.png" alt="Sony Max HD"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('sonymax2', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/KYbYqvJh/20250529_132238.png" alt="Sony Max 2"></div>
+                            </div>
+                                            </div>
+                                    <div id="cat_4" class="channel-grid ">
+                                                    <div class="channel-card item-box" onclick="loadChannel('duronto', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/s2WM2BPR/20251127_095726.png" alt="Duronto"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('nick', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/5y5VX5t9/20250707_053227.png" alt="Nick"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('pogo', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/W3FbtF4r/20250529_115709.png" alt="Pogo"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('discoverykids', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/pXdcjfHg/20250529_115821.png" alt="Disc. Kids"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('cartoonnetwork', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/zvTzSsKG/20250529-115440.png" alt="CN"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('sonyyay', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/wBbj6c9g/20250529_115914.png" alt="Sony Yay"></div>
+                            </div>
+                                            </div>
+                                    <div id="cat_5" class="channel-grid ">
+                                                    <div class="channel-card item-box" onclick="loadChannel('sangeetbangla', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/pdddb1bs/20250529_120025.png" alt="Sangeet Bangla"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('9xm', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/P5yq7ncL/20250529_120144.png" alt="9Xm"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('zoom', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/7hz6tG8D/20250529_121941.png" alt="Zoom"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('yrfmusic', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/hPFhzrTG/20250529_121624.png" alt="Yrf Music"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('showbox', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/MKyHyQmm/20250529_120709.png" alt="Show Box"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('b4umusic', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/ZqfCWzxk/20250529_122103.png" alt="B4U Music"></div>
+                            </div>
+                                            </div>
+                                    <div id="cat_6" class="channel-grid ">
+                                                    <div class="channel-card item-box" onclick="loadChannel('discoveryhd', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/k4xxp7zh/20251002_232031.png" alt="Discovery HD"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('animalplanet', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/qR885pSD/20251002_231959.png" alt="Animal Planet"></div>
+                            </div>
+                                                    <div class="channel-card item-box" onclick="loadChannel('natgeo', this)">
+                                <div class="inner-card"><img src="https://i.postimg.cc/Zn4KK0kW/20251031_210443.png" alt="Nat Geo"></div>
+                            </div>
+                                            </div>
+                            </div>
+        </div>
+    </div>
+
+    <footer class="footer-fixed">
+        <p class="footer-text">© 2026 <span style="color:red">𝐁𝐎𝐍𝐆𝐎 𝐅𝐋𝐈𝐗</span></p>
+    </footer>
+</div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
