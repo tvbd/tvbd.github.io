@@ -1,0 +1,81 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:radial-gradient(circle at top,#111,#000);
+  color:#fff;
+  font-family:system-ui,-apple-system,sans-serif;
+}
+
+/* HEADER */
+header{
+  padding:16px;
+  text-align:center;
+  font-size:22px;
+  font-weight:700;
+  background:linear-gradient(90deg,#00e0ff,#00ff9c);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* MATCH SECTION */
+.section{
+  margin:16px;
+  padding:14px;
+  background:rgba(255,255,255,.05);
+  border-radius:18px;
+  backdrop-filter:blur(8px);
+}
+
+/* MATCH TITLE */
+.section h2{
+  font-size:17px;
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.live-dot{
+  width:8px;
+  height:8px;
+  background:#00ff9c;
+  border-radius:50%;
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+  0%{opacity:.4}
+  50%{opacity:1}
+  100%{opacity:.4}
+}
+
+/* CHANNEL GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+  gap:12px;
+}
+
+/* CHANNEL CARD */
+.card{
+  padding:18px 10px;
+  text-align:center;
+  border-radius:16px;
+  background:linear-gradient(135deg,#1a1a1a,#0d0d0d);
+  cursor:pointer;
+  transition:.25s;
+}
+.card:hover{
+  transform:translateY(-4px) scale(1.03);
+  box-shadow:0 12px 25px rgba(0,255,200,.15);
+}
+.watch{
+  font-size:14px;
+  font-weight:600;
+  color:#00e0ff;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:14px;
+  font-size:12px;
+  opacity:.6;
+}

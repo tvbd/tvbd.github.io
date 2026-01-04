@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Live Stream</title>
+
+<!-- HLS.js -->
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #000;
+    color: #fff;
+    font-family: system-ui, -apple-system, Roboto, Arial;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .ad-slot {
+    min-height: 90px;
+    max-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+  }
+
+  .player-area {
+    flex: 1;
+    position: relative;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+  }
+
+  .loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.65);
+    font-size: 15px;
+    z-index: 5;
+  }
+
+  .live-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 6;
+  }
+
+  @media (max-width: 768px) {
+    .ad-slot {
+      min-height: 60px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+
+<!-- 🎥 PLAYER -->
+<div class="player-area">
+  <div class="live-badge">LIVE</div>
+  <div class="loading" id="loading">Loading live stream…</div>
+  <video id="video" controls autoplay playsinline muted></video>
+</div>
+
+
+<script>
+const video = document.getElementById("video");
+const loading = document.getElementById("loading");
+
+const params = new URLSearchParams(location.search);
+const src = params.get("fire");
+
+if (!src) {
+  loading.innerText = "No stream URL provided";
+  throw new Error("Missing fire parameter");
+}
+
+function hideLoader() {
+  loading.style.display = "none";
+}
+
+// Required for Chrome autoplay
+video.muted = true;
+video.playsInline = true;
+
+// 🍎 Safari / iOS (Native HLS)
+if (video.canPlayType("application/vnd.apple.mpegurl")) {
+  video.src = src;
+  video.addEventListener("loadedmetadata", () => {
+    video.play().catch(()=>{});
+    hideLoader();
+  });
+
+// 🤖 Android / 💻 PC (HLS.js)
+} else if (Hls.isSupported()) {
+
+  const hls = new Hls({
+    // 🔥 FAST START + LIVE OPTIMIZATION
+    enableWorker: true,
+    lowLatencyMode: true,
+
+    startPosition: -1,              // always live edge
+    liveSyncDuration: 1,
+    liveMaxLatencyDuration: 2,
+
+    maxBufferLength: 6,
+    maxMaxBufferLength: 10,
+    backBufferLength: 0,
+
+    fragLoadingMaxRetry: 3,
+    manifestLoadingMaxRetry: 3,
+    levelLoadingMaxRetry: 3
+  });
+
+  hls.loadSource(src);
+  hls.attachMedia(video);
+
+  // 🚀 PLAY AS SOON AS FIRST TS IS BUFFERED
+  hls.on(Hls.Events.FRAG_BUFFERED, () => {
+    if (video.paused) {
+      video.play().catch(()=>{});
+      hideLoader();
+    }
+  });
+
+  hls.on(Hls.Events.MANIFEST_PARSED, () => {
+    video.play().catch(()=>{});
+  });
+
+  // Auto recover on stall
+  setInterval(() => {
+    if (video.readyState < 3 && !video.paused) {
+      video.play().catch(()=>{});
+    }
+  }, 3000);
+
+  hls.on(Hls.Events.ERROR, (event, data) => {
+    console.warn("HLS error:", data);
+    loading.innerText = "Reconnecting…";
+  });
+
+} else {
+  loading.innerText = "HLS not supported on this device";
+}
+</script>
+
+</body>
+</html>
