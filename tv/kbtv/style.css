@@ -19,8 +19,8 @@
         .search:focus { box-shadow:0 0 10px var(--green); width:180px; }
 
         /* CONTAINER */
-        .container { flex:1; display:grid; grid-template-columns:2.9fr 1.2fr; gap:2px; padding:0px; overflow:hidden; max-width:1600px; margin:0 auto; width:100%; }
-
+        .container { flex:1; display:grid; grid-template-columns:2.5fr 1.3fr; gap:2px; padding:0px; overflow:hidden; max-width:1600px; margin:0 auto; width:100%; }
+        
         /* PLAYER SECTION */
         .player-wrap { display:flex; flex-direction:column; border:1px solid var(--green); background:#000; overflow:hidden; height:100%; }
         .video-container { position:relative; width:100%; background:#000; flex-shrink:0; }
@@ -37,7 +37,7 @@
         #watermark { font-family:'Orbitron'; border:1px solid; padding:2px 8px; font-size:12px; opacity:0.8; }
 
         /* LIST SECTION */
-        .list-wrap { display:flex; flex-direction:column; border:1px solid var(--green); background:var(--panel); overflow:scroll; height:100vh; }
+        .list-wrap { display:flex; flex-direction:column; border:1px solid var(--green); background:var(--panel); overflow:scroll; height:100vh;width:470px }
         
         .marquee { background:#000; color:#ccc; padding:5px; font-size:14px; border-bottom:1px solid #333; white-space:nowrap; overflow:hidden; }
 
@@ -68,7 +68,7 @@
             .search { width: 120px; padding: 4px 8px; font-size: 14px; }
             .search:focus { width: 140px; }
 
-            .container { display: flex; flex-direction: column; padding: 0; gap: 0; flex: 1; overflow: hidden; }
+            .container { display: flex; flex-direction: column; padding: 0; gap: 0; flex: 1; overflow: hidden; grid-template-columns:2.9fr 1.2fr; }
             .player-wrap { border: yes; border-bottom: 2px solid var(--green); height: auto; flex-shrink: 0; border-radius: 0; }
             .list-wrap { border: none; border-radius: 0; overflow:scroll; height:100vh; }
            
