@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="referrer" content="no-referrer">
+    <title>NexGenBD - Stream App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="app-layout">
+        <div class="video-section">
+            <div class="video-wrapper">
+                <video id="iptv-player" class="video-js vjs-big-play-centered vjs-theme-city" controls preload="auto"></video>
+            </div>
+        </div>
+
+        <div class="list-section">
+            <div class="info-bar">
+                <span class="text-xs font-bold text-white truncate max-w-[60%]" id="playing-title">Select Channel</span>
+                <div id="server-options" class="flex"></div>
+            </div>
+
+            <div class="tabs-header">
+                <div class="tabs-container">
+                    <button class="tab-btn active-tab" onclick="filterData('all')">🔥 VIP</button>
+                    <button class="tab-btn" onclick="filterData('sports')">Sports</button>
+                    <button class="tab-btn" onclick="filterData('news')">News</button>
+                    <button class="tab-btn" onclick="filterData('indian')">Indian</button>
+                    <button class="tab-btn" onclick="filterData('kids')">Kids</button>
+                </div>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="search" placeholder="Search..." class="search-input">
+            </div>
+
+            <div class="grid-scroll-area">
+                <div class="grid-container" id="channel-grid">
+                    <div class="text-slate-500 text-xs col-span-3 text-center mt-10">Loading...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
