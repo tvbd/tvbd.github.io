@@ -19,8 +19,9 @@ body {
     font-family: 'Roboto', Arial, sans-serif;
     background-color: var(--bg-color);
     margin: 0;
-    padding: 20px;
+    padding: 2px;
     color: var(--text-color);
+    overflow: hidden;
     
 }
 
@@ -28,11 +29,11 @@ body {
     display: flex;
     width: 100%;
     margin: 0 auto;
-    gap: 10px;
+    gap: 5px;
 }
 
 #player-container {
-    flex: 1.8;
+    flex: 2;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -42,7 +43,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column; /* Stack elements vertically */
-    width: 100%;
+    width: 100%; 
 }
 
 #player {
