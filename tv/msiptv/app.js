@@ -116,7 +116,7 @@
     }
 
     // Fetch categories and channels
-    fetch('http://103.60.204.26/tv-server')
+    fetch('/server.json')
         .then(response => response.json())
         .then(data => {
             const categoryTabs = document.getElementById('category-tabs');
