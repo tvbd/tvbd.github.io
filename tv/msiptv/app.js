@@ -116,7 +116,7 @@
     }
 
     // Fetch categories and channels
-    fetch('/server.json')
+    fetch('server.json')
         .then(response => response.json())
         .then(data => {
             const categoryTabs = document.getElementById('category-tabs');
