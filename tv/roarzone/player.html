@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from tv.roarzone.info/player.php?stream=edge2/tsports by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Jan 2026 18:34:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; font-family: 'Inter', sans-serif; }
+        
+        /* Player Container */
+        #player { 
+            width: 100%; 
+            height: 100%;
+            position: relative;
+        }
+        
+        /* Loading Overlay */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #e50914;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Custom Clappr UI Styling */
+        /* Control Bar */
+        .media-control-layer .bar-background {
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0)) !important;
+            height: 60px !important;
+        }
+        
+        /* Scrubber/Progress Bar */
+        .media-control-layer .bar-fill-1 {
+            background-color: #e50914 !important; /* Netflix Red */
+        }
+        .media-control-layer .bar-fill-2 {
+            background-color: rgba(255,255,255,0.3) !important;
+        }
+        
+        /* Big Play Button - Always Visible When Paused */
+        .player-poster[data-poster] .play-wrapper, 
+        .player-poster[data-poster] .poster-icon {
+            display: flex !important; /* Always show */
+        }
+        
+        /* Center Play Button Styling */
+        .media-control-center-panel .play-wrapper,
+        .player-poster .play-wrapper {
+            background: rgba(229, 9, 20, 0.9) !important;
+            border-radius: 50% !important;
+            width: 80px !important;
+            height: 80px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.3s ease !important;
+            position: fixed !important;
+            top: 50% !important;
+            left: 50% !important;
+            margin-top: -40px !important; /* Half of height */
+            margin-left: -40px !important; /* Half of width */
+            z-index: 999 !important;
+        }
+        
+        .media-control-center-panel .play-wrapper:hover,
+        .player-poster .play-wrapper:hover {
+            background: #e50914 !important;
+            transform: scale(1.15) !important;
+        }
+        
+        .media-control-center-panel .play-wrapper svg,
+        .player-poster .play-wrapper svg {
+            width: 40px !important;
+            height: 40px !important;
+            fill: #fff !important;
+        }
+
+        /* Volume Bar */
+        .volume-bar-fill-1 {
+            background-color: #e50914 !important;
+        }
+        
+        /* Spinner */
+        .spinner-three-bounce > div {
+            background-color: #e50914 !important;
+        }
+
+        .error-msg {
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-family: sans-serif;
+            text-align: center;
+            flex-direction: column;
+        }
+        .error-msg h2 { color: #e50914; }
+        
+        /* Chromecast Button Styling */
+        .chromecast-button {
+            background: rgba(229, 9, 20, 0.2) !important;
+            border-radius: 4px !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .chromecast-button:hover {
+            background: rgba(229, 9, 20, 0.4) !important;
+            transform: scale(1.1) !important;
+        }
+        
+        .chromecast-button.connected {
+            background: #e50914 !important;
+        }
+        
+        /* Chromecast icon color */
+        .chromecast-button svg,
+        .chromecast-button path {
+            fill: #fff !important;
+        }
+    </style>
+    <!-- Google Cast SDK -->
+    <script type="text/javascript" src="../www.gstatic.com/cv/js/sender/v1/cast_sender97cd.js?loadCastFramework=1"></script>
+    
+    <!-- Local Clappr Scripts -->
+    <script type="text/javascript" src="assets/vendor/clappr/clappr.min.js"></script>
+    <script type="text/javascript" src="assets/vendor/clappr/clappr-chromecast-plugin.min.js"></script>
+</head>
+<body>
+            <!-- Loading Overlay -->
+        <div id="loading-overlay">
+            <div class="spinner"></div>
+        </div>
+
+        <div id="player"></div>
+        <script>
+            // Mobile Detection
+            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+            // Get channel name from URL parameter
+            var urlParams = new URLSearchParams(window.location.search);
+            var streamName = urlParams.get('stream') || 'Live TV';
+            var channelTitle = streamName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            
+            // Configure plugins - exclude Chromecast on iOS
+            var playerPlugins = isIOS ? [] : [ChromecastPlugin];
+            var chromecastConfig = isIOS ? {} : {
+                chromecast: {
+                    appId: '9DFB77C0', // Default Media Receiver
+                    media: {
+                        type: ChromecastPlugin.Movie,
+                        title: channelTitle,
+                        subtitle: 'RoarZone TV - Live Streaming',
+                        customData: {
+                            channel: streamName,
+                            service: 'RoarZone TV'
+                        }
+                    },
+                    // Customize cast button appearance
+                    customData: {
+                        enableCast: true
+                    }
+                }
+            };
+
+            var player = new Clappr.Player(Object.assign({
+                source: "https://edge2.roarzone.info:8443/roarzone/edge2/tsports/index.m3u8?token=3e006f103e4fc91cf2d6081161c1b32cf15d8530-49e4f377dad1ac1141459d6581fce6f9-1767727927-1767724327",
+                parentId: "#player",
+                width: '100%',
+                height: '100%',
+                autoPlay: true,
+                mute: isMobile, // Force mute on mobile to allow autoplay
+                playback: {
+                    playInline: true,
+                    playsInline: true, // Prevents auto-fullscreen on mobile
+                    recycleVideo: Clappr.Browser.isMobile,
+                    playbackNotSupportedMessage: 'Your browser does not support this video format'
+                },
+                playsinline: true,
+                autoSeekFromUrl: false,
+                plugins: playerPlugins,
+                mediacontrol: {seekbar: '#e50914', buttons: '#fff'},
+                events: {
+                    onError: function(e) {
+                        console.log("Clappr Error:", e);
+                        document.getElementById('loading-overlay').style.display = 'none';
+                    },
+                    onReady: function() {
+                        var playerInstance = this;
+                        var loader = document.getElementById('loading-overlay');
+                        
+                        // Ensure playsinline attribute on video element (critical for iOS)
+                        var videoElement = document.querySelector('#player video');
+                        if (videoElement && isMobile) {
+                            videoElement.setAttribute('playsinline', '');
+                            videoElement.setAttribute('webkit-playsinline', '');
+                            videoElement.setAttribute('x5-playsinline', ''); // For some Chinese browsers
+                        }
+                        
+                        // Hide loader
+                        if(loader) {
+                            loader.style.opacity = '0';
+                            setTimeout(function() { loader.style.display = 'none'; }, 500);
+                        }
+
+                        // Autoplay Logic
+                        setTimeout(function() {
+                            if (isMobile) {
+                                // Mobile: Just play muted (no auto-unmute to prevent pause)
+                                playerInstance.play();
+                            } else {
+                                // Desktop: Start with unmuted
+                                playerInstance.unmute();
+                                var playPromise = playerInstance.play();
+                                
+                                if (playPromise && playPromise.catch) {
+                                    playPromise.catch(function(e) {
+                                        console.log("Autoplay blocked (Unmuted). Retrying Muted...");
+                                        playerInstance.mute();
+                                        playerInstance.play();
+                                    });
+                                } else {
+                                    // Fallback for browsers without promise
+                                    setTimeout(function() {
+                                        if (!playerInstance.isPlaying()) {
+                                            playerInstance.mute();
+                                            playerInstance.play();
+                                        }
+                                    }, 300);
+                                }
+                            }
+                        }, 100);
+                    }
+                }
+            }, chromecastConfig));
+
+            // Listen for messages from parent window
+            window.addEventListener('message', function(event) {
+                if (event.data && event.data.action === 'unmute') {
+                    try {
+                        // Check if playing before unmuting
+                        var wasPlaying = player.isPlaying();
+                        
+                        player.unmute();
+                        player.setVolume(100);
+                        
+                        // If it was playing and stopped, restart it
+                        if (wasPlaying && !player.isPlaying()) {
+                            setTimeout(function() {
+                                player.play();
+                            }, 100);
+                        }
+                        
+                        console.log("Unmuted via parent message");
+                    } catch(e) {
+                        console.log("Failed to unmute via message:", e);
+                    }
+                }
+                
+                // Handle PIP request
+                if (event.data && event.data.action === 'enterPIP') {
+                    try {
+                        var videoElement = document.querySelector('#player video');
+                        if (videoElement && document.pictureInPictureEnabled) {
+                            if (!document.pictureInPictureElement) {
+                                videoElement.requestPictureInPicture()
+                                    .then(function() {
+                                        console.log("Entered PIP mode");
+                                    })
+                                    .catch(function(error) {
+                                        console.log("Could not enter PIP:", error);
+                                    });
+                            }
+                        }
+                    } catch(e) {
+                        console.log("PIP not supported:", e);
+                    }
+                }
+                
+                if (event.data && event.data.action === 'exitPIP') {
+                    try {
+                        if (document.pictureInPictureElement) {
+                            document.exitPictureInPicture()
+                                .then(function() {
+                                    console.log("Exited PIP mode");
+                                })
+                                .catch(function(error) {
+                                    console.log("Could not exit PIP:", error);
+                                });
+                        }
+                    } catch(e) {
+                        console.log("Could not exit PIP:", e);
+                    }
+                }
+            });
+
+            // --- Analytics Logic ---
+            var analyticsInterval = null;
+            var deviceId = localStorage.getItem('tv_device_id');
+            if (!deviceId) {
+                deviceId = 'web_' + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
+                localStorage.setItem('tv_device_id', deviceId);
+            }
+
+            function startAnalytics() {
+                if (analyticsInterval) clearInterval(analyticsInterval);
+                analyticsInterval = setInterval(sendHeartbeat, 30000); // Every 30s
+                sendHeartbeat(); // Initial ping
+            }
+
+            function sendHeartbeat() {
+                if (!player.isPlaying()) return; // Only track if playing
+
+                fetch('api/analytics.json', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        device_id: deviceId,
+                        channel: streamName,
+                        platform: 'web',
+                        interval: 30
+                    })
+                }).catch(e => console.log('Analytics error:', e));
+            }
+
+            // Start analytics when playback starts
+            player.on(Clappr.Events.PLAYER_PLAY, function() {
+                startAnalytics();
+            });
+
+            player.on(Clappr.Events.PLAYER_PAUSE, function() {
+                if (analyticsInterval) clearInterval(analyticsInterval);
+            });
+            
+            player.on(Clappr.Events.PLAYER_STOP, function() {
+                 if (analyticsInterval) clearInterval(analyticsInterval);
+            });
+        </script>
+    </body>
+
+<!-- Mirrored from tv.roarzone.info/player.php?stream=edge2/tsports by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 06 Jan 2026 18:34:10 GMT -->
+</html>
