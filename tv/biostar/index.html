@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Biostar TV World</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="headerBtn" id="backBtn" onclick="goBack()">⟵ Back</div>
+  <div class="title">Biostar TV World</div>
+  <div class="headerBtn" onclick="toggleSearch()">🔍</div>
+</header>
+
+<div id="searchBox">
+  <input id="searchInput" placeholder="Search channel..." onkeyup="searchChannel()">
+</div>
+
+<div id="main">
+
+  <div id="left">
+    <div id="videoWrap">
+      <div id="player"></div>
+
+      <!-- Loading / Poster -->
+      <div id="poster">
+        <img id="posterImg">
+        <div id="loadingText">Loading...</div>
+      </div>
+
+      <img id="watermark" src="//i.imgur.com/1hiDhP0.gif">
+    </div>
+
+    <div id="currentInfo">
+      <img id="currentLogo">
+      <div id="nameWrap">
+        <span id="currentName">Select a Channel</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="right">
+    <div id="category"></div>
+    <div id="list"></div>
+  </div>
+<script src="script.js"></script>
+</div></body>
+
+<footer id="footer">©BDTV World 2026 | Developer: SK</footer>
+
+</html>
+
+
