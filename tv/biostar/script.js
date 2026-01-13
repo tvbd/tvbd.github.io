@@ -19,7 +19,7 @@ ljs("https://vjs.zencdn.net/8.10.0/video.min.js")
 
 lcss("https://vjs.zencdn.net/8.10.0/video-js.css")
 lcss("https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css")
- // lcss("")
+ lcss("https://raw.githubusercontent.com/tvbd/tvbd.github.io/refs/heads/master/tv/biostar/app.css")
 
 function loadScript(u){
   return new Promise(r=>{
@@ -280,4 +280,5 @@ document.addEventListener("DOMContentLoaded",()=>{
   observer.observe(document.body,{subtree:true, childList:true, attributes:true});
 
 });
+
 
