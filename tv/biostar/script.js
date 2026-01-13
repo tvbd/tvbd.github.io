@@ -18,8 +18,8 @@ ljs("https://cdn.jsdelivr.net/npm/dashjs@latest/dist/dash.all.min.js")
 ljs("https://vjs.zencdn.net/8.10.0/video.min.js")
 
 lcss("https://vjs.zencdn.net/8.10.0/video-js.css")
-lcss("https://eamintalukdar.pages.dev/bdixtv/css/bootstrap.min.css")
-lcss("https://eamintalukdar.pages.dev/bdixtv/css/style.css")
+lcss("https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css")
+ // lcss("")
 
 function loadScript(u){
   return new Promise(r=>{
@@ -36,7 +36,7 @@ Promise.all([
 ]).then(()=>window.CLAPPR_READY=true);
 
 const urls=[
-"/playlist.m3u"
+"https://raw.githubusercontent.com/tvbd/tvbd.github.io/refs/heads/master/tv/biostar/playlist.m3u"
 ];
 
 let channels = [];
@@ -280,3 +280,4 @@ document.addEventListener("DOMContentLoaded",()=>{
   observer.observe(document.body,{subtree:true, childList:true, attributes:true});
 
 });
+
