@@ -18,7 +18,7 @@ const serverData = {
      },
 
   'Nagordola': {
-        url: 'http://nagordola.live/',
+        url: 'https://nagordola.live/',
         features: ['TV,FTP,Emby'],
         privacy: 'VIP',
         group: 'BDIX', 
