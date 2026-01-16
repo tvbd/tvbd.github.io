@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>IPTV Pro Arena</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loader-container">
+        <div class="glow-ring"></div>
+        <div class="tv-loader">
+            <div class="tv-frame">
+                <div class="tv-screen">
+                    <div class="color-bars">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tv-stand"></div>
+        </div>
+    </div>
+    <div class="loader-text">
+        <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span>
+    </div>
+    <div class="loader-progress">
+        <div class="loader-progress-bar" id="loaderProgress"></div>
+    </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Keyboard Shortcuts Modal -->
+<div class="modal-overlay" id="shortcutsModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-keyboard"></i> Shortcuts</h2>
+            <button class="modal-close" onclick="toggleModal('shortcutsModal')">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="shortcut-list">
+            <div class="shortcut-item">
+                <span>Play / Pause</span>
+                <div class="shortcut-key"><kbd>Space</kbd></div>
+            </div>
+            <div class="shortcut-item">
+                <span>Mute</span>
+                <div class="shortcut-key"><kbd>M</kbd></div>
+            </div>
+            <div class="shortcut-item">
+                <span>Fullscreen</span>
+                <div class="shortcut-key"><kbd>F</kbd></div>
+            </div>
+            <div class="shortcut-item">
+                <span>Volume Up/Down</span>
+                <div class="shortcut-key"><kbd>↑</kbd> <kbd>↓</kbd></div>
+            </div>
+            <div class="shortcut-item">
+                <span>Next/Prev Channel</span>
+                <div class="shortcut-key"><kbd>N</kbd> <kbd>B</kbd></div>
+            </div>
+            <div class="shortcut-item">
+                <span>Search</span>
+                <div class="shortcut-key"><kbd>/</kbd></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main App Container -->
+<div class="app-container">
+    
+    <!-- Header -->
+    <header class="top-header">
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-tv"></i></div>
+            <span class="logo-text">IPTV Pro</span>
+        </div>
+        
+        <div class="header-actions">
+            <div class="connection-status">
+                <div class="status-dot" id="connectionDot"></div>
+                <span id="connectionText">Online</span>
+            </div>
+            
+            <button class="header-btn" id="themeToggle" title="Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <button class="header-btn" id="shortcutsBtn" title="Shortcuts">
+                <i class="fas fa-keyboard"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Player Section (Sticky at top) -->
+    <div class="player-section">
+        <div class="player-wrapper" id="playerWrapper">
+            <div class="video-container" id="videoContainer">
+                <video id="videoPlayer" playsinline></video>
+                
+                <div class="quality-badge" id="qualityBadge">HD</div>
+                
+                <div class="stats-overlay" id="statsOverlay">
+                    <div><span>Resolution:</span><span id="statRes">-</span></div>
+                    <div><span>Bitrate:</span><span id="statBitrate">-</span></div>
+                    <div><span>Buffer:</span><span id="statBuffer">-</span></div>
+                </div>
+                
+                <!-- Loading State -->
+                <div class="player-state hidden" id="playerLoading">
+                    <div class="loading-spinner">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                    <div class="loading-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <p>Loading stream...</p>
+                </div>
+                
+                <!-- Error State -->
+                <div class="player-state hidden" id="playerError">
+                    <div class="big-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <p id="errorMessage">Failed to load stream</p>
+                    <button class="retry-btn" onclick="retryStream()">
+                        <i class="fas fa-redo"></i> Retry
+                    </button>
+                </div>
+                
+                <!-- Idle State -->
+                <div class="player-state idle-state" id="playerIdle">
+                    <div class="idle-icon"><i class="fas fa-play"></i></div>
+                    <p>Starting auto-play...</p>
+                </div>
+            </div>
+            
+            <!-- Player Overlay -->
+            <div class="player-overlay">
+                <div class="now-playing">
+                    <img class="now-playing-logo" id="nowPlayingLogo" src="" alt="">
+                    <div class="now-playing-info">
+                        <h3 id="nowPlayingName">Loading...</h3>
+                        <span id="nowPlayingMeta"></span>
+                    </div>
+                    <div class="live-badge">● LIVE</div>
+                </div>
+                
+                <div class="custom-controls">
+                    <button class="ctrl-btn" id="playPauseBtn" title="Play/Pause">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    
+                    <button class="ctrl-btn" id="prevBtn" title="Previous">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    
+                    <button class="ctrl-btn" id="nextBtn" title="Next">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                    
+                    <div class="volume-wrapper">
+                        <button class="ctrl-btn" id="muteBtn" title="Mute">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80">
+                    </div>
+                    
+                    <span class="time-display" id="timeDisplay">00:00:00</span>
+                    
+                    <button class="ctrl-btn" id="statsBtn" title="Stats">
+                        <i class="fas fa-chart-bar"></i>
+                    </button>
+                    
+                    <button class="ctrl-btn" id="fullscreenBtn" title="Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Channels Section (Scrollable) -->
+    <div class="channels-section">
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" data-tab="all">
+                <i class="fas fa-globe"></i>
+                All <span class="count" id="allCount">0</span>
+            </button>
+            <button class="tab" data-tab="favorites">
+                <i class="fas fa-heart"></i>
+                Favs <span class="count" id="favCount">0</span>
+            </button>
+            <button class="tab" data-tab="history">
+                <i class="fas fa-history"></i>
+                Recent
+            </button>
+        </div>
+        
+        <!-- Filters -->
+        <div class="filters-section">
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search channels...">
+            </div>
+            
+            <div class="filter-row">
+                <select class="filter-select" id="groupFilter">
+                    <option value="all">All Groups</option>
+                </select>
+                
+                <select class="filter-select" id="sortFilter">
+                    <option value="priority">Priority</option>
+                    <option value="name">Name</option>
+                </select>
+                
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-btn" data-view="list">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Channels Grid -->
+        <div class="channels-container">
+            <div class="channels-grid grid-view" id="channelsGrid"></div>
+        </div>
+    </div>
+</div>
+
+
+<script src="app.js"></script>
+</body>
+</html>
