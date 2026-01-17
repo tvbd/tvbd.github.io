@@ -43,7 +43,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    
+    overflow-x: hidden;
 }
 
 body {
@@ -96,7 +96,7 @@ body {
         0 0 0 4px #333,
         0 0 0 6px #222,
         0 20px 40px rgba(0,0,0,0.5);
-    
+    overflow: hidden;
 }
 
 .tv-screen {
@@ -104,11 +104,11 @@ body {
     inset: 6px;
     background: #000;
     border-radius: 4px;
-    
+    overflow: hidden;
 }
 
 .tv-screen::before {
-    content: "LiveTv";
+    content: "";
     position: absolute;
     inset: 0;
     background: repeating-linear-gradient(
@@ -222,7 +222,7 @@ body {
     background: rgba(255,255,255,0.1);
     border-radius: 10px;
     margin-top: 20px;
-    
+    overflow: hidden;
 }
 
 .loader-progress-bar {
@@ -286,7 +286,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    
+  overflow-x:hidden;
 }
 
 /* === HEADER === */
@@ -395,7 +395,7 @@ body {
 .player-wrapper {
     position: relative;
     width: 100%;
-    max-width: 80%;
+    max-width: 900px;
     margin: 0 auto;
     background: #000;
 }
@@ -403,7 +403,7 @@ body {
 .video-container {
     position: relative;
     width: 100%;
-    padding-top: 56.2%;
+    padding-top: 56.25%;
     background: #000;
 }
 
@@ -719,7 +719,7 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    
+    overflow: hidden;
     background: var(--bg-panel);
 }
 
@@ -826,7 +826,7 @@ body {
     display: flex;
     background: var(--bg-card);
     border-radius: var(--radius-sm);
-    
+    overflow: hidden;
 }
 
 .view-btn {
@@ -857,7 +857,7 @@ body {
 }
 
 .channels-grid.grid-view {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .channels-grid.list-view {
@@ -877,6 +877,7 @@ body {
 }
 
 @media (min-width: 800px) {
+    .app-container {display:inline;}
     .channels-grid.grid-view {
         grid-template-columns: repeat(6, 1fr);
     }
@@ -890,7 +891,7 @@ body {
     cursor: pointer;
     transition: var(--transition);
     position: relative;
-    
+    overflow: hidden;
 }
 
 .channel-card:hover {
@@ -915,13 +916,13 @@ body {
 
 /* Grid View Card */
 .grid-view .channel-card {
-    padding: 4px;
+    padding: 8px;
     text-align: center;
 }
 
 .grid-view .channel-logo-wrapper {
     width: 100%;
-    height: 60px;
+    height: 40px;
     margin-bottom: 6px;
     display: flex;
     align-items: center;
@@ -930,16 +931,16 @@ body {
 
 .grid-view .channel-logo {
     max-width: 100%;
-    max-height: 60px;
+    max-height: 40px;
     object-fit: contain;
     border-radius: 4px;
 }
 
 .grid-view .channel-name {
-    font-size: 12px;
+    font-size: 9px;
     font-weight: 600;
     white-space: nowrap;
-    
+    overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 4px;
 }
@@ -950,7 +951,7 @@ body {
     justify-content: center;
     gap: 2px;
     flex-wrap: wrap;
-    min-height: 0px;
+    min-height: 14px;
 }
 
 /* List View Card */
@@ -987,7 +988,7 @@ body {
     font-weight: 600;
     margin-bottom: 2px;
     white-space: nowrap;
-    
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 
