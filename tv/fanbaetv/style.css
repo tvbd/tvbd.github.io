@@ -879,7 +879,7 @@ body {
 @media (min-width: 800px) {
     .app-container {display:inline;}
     .channels-grid.grid-view {
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(12, 1fr);
     }
 }
 
