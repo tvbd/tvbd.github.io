@@ -86,4 +86,4 @@
 
         ::-webkit-scrollbar { width:4px; background:#000; } ::-webkit-scrollbar-thumb { background:var(--green); }
         @keyframes blink { 50% { opacity:0; } }
-    
+         a:visited {color: white;}
