@@ -287,7 +287,7 @@
         }
 
         /* Channel List */
-        #channel-list {
+         #channel-list {
             flex: 1;
             overflow-y: auto;
             overflow-x: hidden;
@@ -602,7 +602,7 @@
         /* Mobile devices */
         @media (max-width: 768px) {
             #sidebar {
-                width: 25%; /* Full width on mobile */
+                width: 55%; /* Full width on mobile */
                 max-width: 250px;
                 min-width: unset;
             }
@@ -699,7 +699,7 @@
         /* Small mobile devices */
         @media (max-width: 480px) {
             #sidebar {
-                width: 25%;
+                width: 65%;
                 max-width: 250px;
             }
             
@@ -795,7 +795,7 @@
         /* Very small devices */
         @media (max-width: 360px) {
             #sidebar {
-                width: 25%;
+                width: 65%;
                 max-width: 250px;
             }
             
