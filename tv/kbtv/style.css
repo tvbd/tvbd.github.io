@@ -7,8 +7,12 @@
             --border: 1px solid var(--green);
         }
         
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'VT323', monospace; text-transform:uppercase; user-select:none; -webkit-tap-highlight-color: transparent;scrollbar-width:thin;}
-        body { background:var(--bg); color:var(--green); height:100vh; display:flex; flex-direction:column; overflow-y:hidden;  }
+       * { margin:0; padding:0; box-sizing:border-box; font-family:'VT323', monospace; text-transform:uppercase; user-select:none; -webkit-tap-highlight-color: transparent; scrollbar-width: thin;scrollbar-color: var(--green) var(--panel);}
+
+        *::-webkit-scrollbar { width: 4px; height: 4px; }
+        *::-webkit-scrollbar-track { background: var(--panel); }
+        *::-webkit-scrollbar-thumb { background: var(--green); border-radius: 10px; } 
+        body { background:var(--bg); color:var(--green); height:100vh; display:flex; flex-direction:column; overflow-y:hidden;}   
 
         /* HEADER */
         header { flex-shrink: 0; padding:10px 15px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--green); background:#000; z-index:100; }
