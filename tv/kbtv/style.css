@@ -9,7 +9,7 @@
         
        * { margin:0; padding:0; box-sizing:border-box; font-family:'VT323', monospace; text-transform:uppercase; user-select:none; -webkit-tap-highlight-color: transparent; scrollbar-width: thin;scrollbar-color: var(--green) var(--panel);}
 
-        *::-webkit-scrollbar { width: 4px; height: 4px; }
+     /*    *::-webkit-scrollbar { width: 4px; height: 4px; } */
         *::-webkit-scrollbar-track { background: var(--panel); }
         *::-webkit-scrollbar-thumb { background: var(--green); border-radius: 10px; } 
         body { background:var(--bg); color:var(--green); height:100vh; display:flex; flex-direction:column; overflow-y:hidden;}   
