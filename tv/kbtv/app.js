@@ -1,0 +1,96 @@
+  // --- AUTO ROTATE LOGIC ---
+        // This handles full screen orientation
+        player.on('fullscreenchange', function() {
+            if (player.isFullscreen()) {
+                // Try locking to landscape
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch((e)=>{ /* Silently fail on desktop/unsupported */ });
+                }
+            } else {
+                // Unlock on exit (Revert to Auto)
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
+            }
+        });
+
+        player.on('error', function() {
+            const errorDisplay = player.errorDisplay;
+            errorDisplay.el().setAttribute('data-content', '⛔ CHANNEL OFFLINE OR GEOLOCKED');
+            document.querySelector('.vjs-loading-spinner').style.display = 'none';
+        });
+
+        function init() {
+            document.getElementById('noticeText').innerText = db.notice || "WELCOME";
+            if(db.watermark_text) {
+                const wm = document.getElementById('watermark');
+                wm.innerText = db.watermark_text;
+                wm.style.color = db.watermark_color;
+                wm.style.borderColor = db.watermark_color;
+            }
+
+            const cats = new Set(db.channels.map(c => c.group || 'Others'));
+            const menu = document.getElementById('catMenu');
+            Array.from(cats).sort().forEach(c => {
+                const btn = document.createElement('button');
+                btn.className = 'cat-btn'; btn.innerText = c; btn.onclick = () => setCat(c);
+                menu.appendChild(btn);
+            });
+
+            render(db.channels);
+            if(db.channels.length > 0) play(db.channels[0]);
+        }
+
+        function render(list) {
+            const el = document.getElementById('chList'); el.innerHTML = '';
+            if(list.length===0) { el.innerHTML = '<p style="padding:20px;text-align:center;">NO CHANNELS</p>'; return; }
+
+            list.forEach(c => {
+                const div = document.createElement('div');
+                div.className = 'item';
+                
+                const logo = c.logo ? `<img src="${c.logo}" class="c-icon" onerror="this.nextElementSibling.style.display='grid';this.style.display='none'">` : '';
+                const txtIcon = `<div class="c-txt-icon" style="display:${c.logo?'none':'grid'}">${c.icon}</div>`;
+
+                div.innerHTML = `
+                    ${logo} ${txtIcon}
+                    <div class="c-meta" onclick="playChannel('${c.url}', '${c.name.replace(/'/g, "\\'")}', this)">
+                        <div class="c-name">${c.name}</div>
+                        <div class="c-cat">${c.group}</div>
+                    </div>
+                `;
+                el.appendChild(div);
+            });
+        }
+
+        function playChannel(url, name, el) {
+            document.getElementById('chName').innerText = name;
+            let type = url.includes('.mp4') ? 'video/mp4' : 'application/x-mpegURL';
+            player.src({ src: url, type: type });
+            player.play().catch(()=>{});
+
+            // Error Reset
+            player.error(null);
+
+            if(el) {
+                document.querySelectorAll('.item').forEach(i=>i.classList.remove('active'));
+                el.parentElement.classList.add('active');
+            }
+            if(window.innerWidth < 900) {
+                 // Slight scroll to ensure player visibility
+                 document.getElementById('playerTarget').scrollIntoView({behavior:'smooth'});
+            }
+        }
+
+        function play(c) { playChannel(c.url, c.name, document.querySelector('.item')); }
+
+        function setCat(cat) {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.innerText === cat));
+            render(cat === 'All' ? db.channels : db.channels.filter(c => c.group === cat));
+        }
+
+        function search(t) {
+            render(db.channels.filter(c => c.name.toLowerCase().includes(t.toLowerCase())));
+        }
+
+        init();
