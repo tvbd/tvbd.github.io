@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCPLC CCTV | Hybrid TV</title>
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.5/shaka-player.compiled.js"></script>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="sticky-top-area">
+    <header>
+        <div class="logo">CCPLC <span style="font-weight: 300; opacity: 0.6;">CCTV</span></div>
+        <div class="server-switcher">
+            <button class="srv-btn" id="btn-srv-2" onclick="switchServer(2)">সার্ভার ২</button>
+            <button class="srv-btn" id="btn-srv-1" onclick="switchServer(1)">সার্ভার ১</button>
+        </div>
+    </header>
+
+    <div class="info-slider">
+        <div class="info-content" id="sliding-info">তথ্য লোড হচ্ছে...</div>
+    </div>
+
+    <div class="video-box" id="player-container"></div>
+</div>
+
+<div class="container">
+    <div class="search-box-container">
+        <input type="text" id="ch-search" placeholder="চ্যানেলের নাম লিখে সার্চ করুন..." onkeyup="filterChannels()">
+    </div>
+
+    <div class="tabs" id="tabs-list"></div>
+    <div class="grid" id="grid-list">অপেক্ষা করুন...</div>
+</div>
+
+<script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+<script src="app.js"></script>
+<script>
+ const excludeKeywords = ['t sports', 'star sports 1', 'star sports 2', 'sony ten 1', 'sony ten 2', 'sony ten 3', 'sony six', 'star sports select 1', 'star sports select 2'];
+    const manualChannels = [
+        { name: "T-Sports HD", url: "https://bongoflixbd.top/r/?watch=b0aeb53ec98c74b3b1bb5f16acf8f056", logo: "https://upload.wikimedia.org/wikipedia/en/2/2f/T_Sports_logo.png", category: "SPORTS", isIframe: true },
+        { name: "Star Sports 1", url: "https://bongoflixbd.top/r/?watch=339dcfaa4f761b545a5b815ee54a9bad", logo: "🏏", category: "SPORTS", isIframe: true }
+    ];
+
+    const M3U_DISH = 'https://raw.githubusercontent.com/alex8875/m3u/refs/heads/main/dishtv.m3u';
+    const M3U_MAIN = 'https://raw.githubusercontent.com/omnixmain/OMNIX-PLAYLIST-ZONE/refs/heads/main/playlist/RoarZoneTv.m3u';
+    const M3U_BD = 'https://raw.githubusercontent.com/cctvccplc/Tv-Test/refs/heads/main/BD26.m3u8';
+
+    window.onload = () => {
+        pickRandomQuote();
+        updateSlidingInfo();
+        switchServer(2);
+    };
+</script>
+</body>
+</html>
