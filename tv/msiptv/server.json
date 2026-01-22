@@ -1,1 +1,145 @@
-{"News": [{"channel_name": "Tspots", "url": "http://103.60.204.26:3255/TSportsHD/index.m3u8", "image": "http://103.60.204.26/static/images/tlogo.jpg"}, {"channel_name": "ALL Sports 1", "url": "http://103.60.204.26:3255/dazn/index.m3u8", "image": "http://103.60.204.26/static/images/fimg1.jpg"}, {"channel_name": "ALL Sports 2", "url": "http://103.60.204.26:3255/EPLchannel1/index.m3u8", "image": "http://103.60.204.26/static/images/fimg1.jpg"}, {"channel_name": "JamunaTv", "url": "http://103.60.204.26:3255/JAMUNATV/index.m3u8", "image": "http://103.60.204.26/static/images/Jamuna%20Tv1664825738.png"}, {"channel_name": "Rtv", "url": "http://103.60.204.26:3255/RTV/index.m3u8", "image": "http://103.60.204.26/static/images/images(1).jpg"}, {"channel_name": "Channel I", "url": "http://103.60.204.26:3255/chnnel-i/index.m3u8", "image": "http://103.60.204.26/static/images/channeli.png"}, {"channel_name": "Ch24", "url": "http://103.60.204.26:3255/CH24/index.m3u8", "image": "http://103.60.204.26/static/images/Logo_of_Cha.png"}, {"channel_name": "News24", "url": "http://103.60.204.26:3255/NEWS24LIVE/index.m3u8", "image": "http://103.60.204.26/static/images/news24.png"}, {"channel_name": "somynews", "url": "http://103.60.204.26:3255/somyyt/index.m3u8", "image": "http://103.60.204.26/static/images/somoy-news-tv_1.jpg"}, {"channel_name": "Aljazeera", "url": "http://103.60.204.26:3255/Aljazeera/index.m3u8", "image": "http://103.60.204.26/static/images/channelssdsd4_profile.jpg"}, {"channel_name": "indiatoday", "url": "http://103.60.204.26:3255/indiatoday/index.m3u8", "image": "http://103.60.204.26/static/images/images.png"}, {"channel_name": "BanglaV", "url": "http://103.60.204.26:3255/BanglaV/index.m3u8", "image": "http://103.60.204.26/static/images/Banglavision.png"}, {"channel_name": "EKHONTV", "url": "http://103.60.204.26:3255/EKHONTV/index.m3u8", "image": "http://103.60.204.26/static/images/channels4_3434profile.jpg"}, {"channel_name": "Ntv", "url": "http://103.60.204.26:3255/NTVLive1/index.m3u8", "image": "http://103.60.204.26/static/images/channels4_profile.jpg"}, {"channel_name": "DeshTV", "url": "http://103.60.204.26:3255/DeshTV/index.m3u8", "image": "http://103.60.204.26/static/images/ssdsdsd.jpg"}, {"channel_name": "Atnbd", "url": "http://103.60.204.26:3255/getchnk/atnnews/index.m3u8", "image": "http://103.60.204.26/static/images/atnbangla.jpg"}, {"channel_name": "Ch9", "url": "http://103.60.204.26:3255/ch9_nk/index.m3u8", "image": "http://103.60.204.26/static/images/channel9.jpg"}, {"channel_name": "Deeptho", "url": "http://103.60.204.26:3255/deeptho_nk/index.m3u8", "image": "http://103.60.204.26/static/images/deepto.jpg"}, {"channel_name": "Ekattor", "url": "http://103.60.204.26:3255/ekattor_nk/index.m3u8", "image": "http://103.60.204.26/static/images/images.jpg"}], "Sports": [{"channel_name": "Tspots", "url": "http://103.60.204.26:3255/TSportsHD/index.m3u8", "image": "http://103.60.204.26/static/images/tlogo.jpg"}, {"channel_name": "ALL Sports 1", "url": "http://103.60.204.26:3255/dazn/index.m3u8", "image": "http://103.60.204.26/static/images/fimg1.jpg"}, {"channel_name": "ALL Sports 2", "url": "http://103.60.204.26:3255/EPLchannel1/index.m3u8", "image": "http://103.60.204.26/static/images/fimg1.jpg"}, {"channel_name": "Sony Ten 5", "url": "http://103.60.204.26:3255/SonyTenSports5/index.m3u8", "image": "http://103.60.204.26/static/images/ea3358b9-2bec-4615-a889-daa2e396c74c.webp"}, {"channel_name": "Gtv", "url": "http://103.60.204.26:3255/gtv/index.m3u8", "image": "http://103.60.204.26/static/images/images (7).png"}, {"channel_name": "Sony Ten 1", "url": "http://103.60.204.26:3255/SonytenSports1HD/index.m3u8", "image": "http://103.60.204.26/static/images/ea3358b9-2bec-4615-a889-daa2e396c74c.webp"}, {"channel_name": "Sony Ten 2", "url": "http://103.60.204.26:3255/SonyTenSports2/index.m3u8", "image": "http://103.60.204.26/static/images/ea3358b9-2bec-4615-a889-daa2e396c74c.webp"}, {"channel_name": "EurosportHD", "url": "http://103.60.204.26:3255/EurosportHD/index.m3u8", "image": "http://103.60.204.26/static/images/01709bcd-6d53-4710-a64f-bc49cecf1d61.webp"}, {"channel_name": "Ten Cricket", "url": "http://103.60.204.26:3255/SonyTenCricket/index.m3u8", "image": "http://103.60.204.26/static/images/795170c2-ec78-457e-9fa0-54a23d23361c.webp"}, {"channel_name": "TNT 1", "url": "http://103.60.204.26:3255/tnt1hd/index.m3u8", "image": "http://103.60.204.26/static/images/tnt-sports-logo-png_seeklogo-486966.png"}, {"channel_name": "TNT 2", "url": "http://103.60.204.26:3255/tnt2hd/index.m3u8", "image": "http://103.60.204.26/static/images/tnt-sports-logo-png_seeklogo-486966.png"}, {"channel_name": "TNT Premium", "url": "http://103.60.204.26:3255/tnthd/index.m3u8", "image": "http://103.60.204.26/static/images/tnt-sports-logo-png_seeklogo-486966.png"}, {"channel_name": "Willow HD", "url": "http://103.60.204.26:3255/willow/index.m3u8", "image": "http://103.60.204.26/static/images/willow-logo.jpg"}, {"channel_name": "Skyspots", "url": "http://103.60.204.26:3255/skyspots/index.m3u8", "image": "http://103.60.204.26/static/images/sky-sport-premier-league-logo-png_seeklogo-456293.png"}, {"channel_name": "Bein Spots 1", "url": "http://103.60.204.26:3255/bein1-kh/index.m3u8", "image": "http://103.60.204.26/static/images/unnamed.png"}, {"channel_name": "Start Spots 1 HD", "url": "http://103.60.204.26:3255/starthd1/index.m3u8", "image": "http://103.60.204.26/static/images/SS_logo.jpg"}], "Sportzfy": [{"channel_name": "Sportzfy live", "url": "http://103.60.204.26:3255/sportzfy1/index.m3u8", "image": "http://103.60.204.26/static/images/fimg1.jpg"}, {"channel_name": "Sportzfy live 2", "url": "http://103.60.204.26:3255/sportfy-2/index.m3u8", "image": "http://103.60.204.26/static/images/fimg1.jpg"}], "All Football League": [{"channel_name": "F1", "url": "http://103.60.204.26:3255/lg1/index.m3u8", "image": "http://103.60.204.26/static/images/5959d93b-72f6-4da2-b788-c220a56823bf.png"}, {"channel_name": "F2", "url": "http://103.60.204.26:3255/lg2/index.m3u8", "image": "http://103.60.204.26/static/images/5959d93b-72f6-4da2-b788-c220a56823bf.png"}, {"channel_name": "F3", "url": "http://103.60.204.26:3255/lg3/index.m3u8", "image": "http://103.60.204.26/static/images/5959d93b-72f6-4da2-b788-c220a56823bf.png"}, {"channel_name": "F4", "url": "http://103.60.204.26:3255/lg4/index.m3u8", "image": "http://103.60.204.26/static/images/5959d93b-72f6-4da2-b788-c220a56823bf.png"}, {"channel_name": "F5", "url": "http://103.60.204.26:3255/lg5/index.m3u8", "image": "http://103.60.204.26/static/images/5959d93b-72f6-4da2-b788-c220a56823bf.png"}, {"channel_name": "F7", "url": "http://103.60.204.26:3255/lg7_p_b1/index.m3u8", "image": "http://103.60.204.26/static/images/5959d93b-72f6-4da2-b788-c220a56823bf.png"}, {"channel_name": "F6", "url": "http://103.60.204.26:3255/lg6_p/index.m3u8", "image": "http://103.60.204.26/static/images/5959d93b-72f6-4da2-b788-c220a56823bf.png"}], "Ent": [{"channel_name": "ZeeBangla", "url": "http://103.60.204.26:3255/ZeeBangla/index.m3u8", "image": "http://103.60.204.26/static/images/6984812b-1c24-43cf-bded-3803c3f17bdd.png"}, {"channel_name": "Star jalsha", "url": "http://103.60.204.26:3255/star_jolsha/index.m3u8", "image": "http://103.60.204.26/static/images/starjol.jpeg"}, {"channel_name": "SonySABHD", "url": "http://103.60.204.26:3255/SonySABHD/index.m3u8", "image": "http://103.60.204.26/static/images/0ab48ac0-ec84-4ca2-9601-746ff3cb809e.webp"}, {"channel_name": "ARYDigitalasia", "url": "http://103.60.204.26:3255/ARYDigitalasia/index.m3u8", "image": "http://103.60.204.26/static/images/channels4_psrofile.jpg"}], "Info": [{"channel_name": "Discovery", "url": "http://103.60.204.26:3255/Discovery/index.m3u8", "image": "http://103.60.204.26/static/images/6594d216-aaca-4eee-b6f5-bbc6b80feb15.webp"}, {"channel_name": "AnimalPlanetHD", "url": "http://103.60.204.26:3255/AnimalPlanetHD/index.m3u8", "image": "http://103.60.204.26/static/images/c16e8633-6b2a-401a-9cd6-ac26a4fcdedb.webp"}, {"channel_name": "TLCHD", "url": "http://103.60.204.26:3255/TLCHD/index.m3u8", "image": "http://103.60.204.26/static/images/0973097c-bc5c-4b28-aaca-f04d6f6cb5e2.webp"}], "Religion": [{"channel_name": "MakkahLive", "url": "http://103.60.204.26:3255/MakkahLive/index.m3u8", "image": "http://103.60.204.26/static/images/MakkahLive.jpg"}, {"channel_name": "MedinawithLive", "url": "http://103.60.204.26:3255/MedinawithLive1/index.m3u8", "image": "http://103.60.204.26/static/images/unnamed(1).png"}], "Movie": [{"channel_name": "SonyAath", "url": "http://103.60.204.26:3255/SonyAath/index.m3u8", "image": "http://103.60.204.26/static/images/f4db1c12-b10f-46e8-a09b-e0efb8820970.png"}, {"channel_name": "SonyEnt", "url": "http://103.60.204.26:3255/SonyEntertainmentTelevisionHD/index.m3u8", "image": "http://103.60.204.26/static/images/0ab48ac0-ec84-4ca2-9601-746ff3cb809e.webp"}, {"channel_name": "STARMovies", "url": "http://103.60.204.26:3255/STARMovies/index.m3u8", "image": "http://103.60.204.26/static/images/startmovies.png"}, {"channel_name": "SonyMAX", "url": "http://103.60.204.26:3255/SonyMAX/index.m3u8", "image": "http://103.60.204.26/static/images/sonymax.jpeg"}, {"channel_name": "Zee Cinema", "url": "http://103.60.204.26:3255/ZeeCinemaHD/index.m3u8", "image": "http://103.60.204.26/static/images/zeecenema.jpeg"}], "Kids": [{"channel_name": "CartoonNetwork", "url": "http://103.60.204.26:3255/CartoonNetwork/index.m3u8", "image": "http://103.60.204.26/static/images/d2a02d82-fde4-4769-a6d9-95c0560e2120.webp"}, {"channel_name": "POGO", "url": "http://103.60.204.26:3255/POGO/index.m3u8", "image": "http://103.60.204.26/static/images/7e7c2afe-a663-4c09-983a-2d0fa0f1ca9a.webp"}, {"channel_name": "DiscoveryKids", "url": "http://103.60.204.26:3255/DiscoveryKids/index.m3u8", "image": "http://103.60.204.26/static/images/325887a7-84ea-4cf9-a6fd-6111ddc25671.webp"}]}
+{
+  "playlist_metadata": {
+    "title": "NUR MOHAMMAD Playlist",
+    "total_channels": 105,
+    "version": "1.0",
+    "generated_date": "2026-01-22",
+    "author": "NUR MOHAMMAD",
+    "provider": "OUTFLANK TV"
+  },
+  "content": {
+    "DRAMA": [
+      {
+        "name": "Zee Bangla",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTFpKLo5cYb54zMuUNtSaJOOxK0aQKrC-VJ6a0_XIspxxk0aX178b0z3oO1Xn8qIiE7Jmrw3bv06A4axit55KEFhS6vgmcTo0cUqXhlbZh0IYNkPdomla8SJR7bvlBV2hGKeDDwQyzyztAWhyphenhyphenodRZ6FXnYIbNdoBoxdECEpNQBPDeTFkAh2zqISTWvag/s600/Nur_20251107_002115_0000.png",
+        "url": "https://tvsen1.aynaott.com/PNEb3v2q6GBk/index.m3u8"
+      },
+      {
+        "name": "Aakash Aath",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSV1py3jfF1GxTt9mLp4FaGPh_VSQkb7vlAkk6gM4lyaZ-VpKGcZjvj1bAj5XGM2z6FzZ-YcF5ypK3eSqTdiJWbUwfAcpo9gpp46XzFPdyuqWwJpN8CJVD2Eccw7THi60xgJ9rMkm-i8S83s4x6ZAO27kALxlY7ulLkwIO4CEuMz40yvj52A7yxCM1Ng/s600/Nur_20251107_000734_0000.png",
+        "url": "https://tvs01.nurmd2006-official.workers.dev/dwlive/AAKAASH-AATH/playlist.m3u8"
+      },
+      {
+        "name": "Hum TV",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiUUr5b6nt32L9MbGNHgY_TYzD6tb5gy_3t7LjrIEdX8x5qURZJ1QjyZVO_bE7zgUuny3K2gg3nPYFWVuls07NeP8AZ1Ko2rK63afWf9dgfr4ZP2gTP-OdwjlTfRnqaMmRBA8scsekezXydvxlou7pd1-FcA0IDE9W2jPWuwgm-LjS_wM6OH9IDeGFU6Q/s600/Nur_20251106_235545_0000.png",
+        "url": "https://ml-pull-dvc-myco.io:2096/HUM_ENTERTAINMENT/index.m3u8"
+      },
+      {
+        "name": "ARY Digital",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJevI_k2cbabTVI7ylFRiaqGmXVfS30w4BHpF72kXn9AMMgZS8L5YQ9DPrx3DqwNSuUs7cDCL1NSD6FM3ne3pTP-yFdT1Mr8nxregkTX-3ZXquReqpi38_lW1WTNa0DrvkYnD6jsB-Ruw-cymWq4Ely5oPmZ4qduZ1CvVCLSAV6Z9XxB8i2AZV8bgVNg/s600/Nur_20251106_235521_0000.png",
+        "url": "https://ml-pull-dvc-myco.io:2096/ARY_DIGITAL/tracks-v4a1/mono.ts.m3u8"
+      },
+      {
+        "name": "Deepto TV HD",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgEcUKZKXpZYe-67ozuLp6SuDBYF6JuQrzvT3IHSFvrBlIOgNvHCm9CHE5qqMWz9yoA4LOLL2knp13N8_SqVeOfGaUuQwJH02JjlYuLx4JBOzuLBGX2ezdoW2I3RSEFkJVyb-3OOlWe7WZ0I25-UtBfiKqVHZnsrZ1NC1J0ZEr1qODT2F7eWw74APyYRg/s600/Nur_20251216_221956_0000.png",
+        "url": "https://byphdgllyk.gpcdn.net/hls/deeptotv/0_1/index.m3u8"
+      },
+      {
+        "name": "Star Jalsha HD",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPZdDXbsGeDOGhPC-Og7bXRrJxsbaFnZ1IEVB7-bPsJtpvNE9IhcMv0Q5OnUq5GCK9UqE7mzMCZinQaN1NSjk2wqKQFs_dreX5yGnDiXNju5yYT_9BDLC3dThhXRIfKk5XQGNc4oi6qWO3fvw5-9dqydLf6pvyHsq5cske3F1FKKih75cCUk20OKVymg/s600/Nur_20251216_222101_0000.png",
+        "url": "https://tvsen1.aynaott.com/gUX8BJmNc2yF/tracks-v1a1/mono.ts.m3u8"
+      }
+    ],
+    "ENTERTAINMENT": [
+      {
+        "name": "BanglaVision HD",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifvqFI-fPWs7H8OLJyJKGL9lDkpiwzaTdFIZ0_dB_MFnkW9hpW9FfF1nF4T0TeodpKMXBJsfdP263c98Nep-FSqlGaEMnsjUIPbxUGrUWWU8vBrz1MgjBztGTBragrsUq7QkJpaj8fqINiPgjCaK2Y_YS_BRGNhrAZCnKMLLhWAC904h7ntIo5NUZTxw/s600/Nur_20251216_221646_0000.png",
+        "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1715/output/index.m3u8"
+      },
+      {
+        "name": "NTV HD",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi4f1iTD2QxPcxlKgduj_rRvea0_EIaVxPX5Nl_mmDidRCAS-7OkMJ9zYrfOMDrEBJB5pnRlc4rZPCMKeos_GsnS3PW5QMRrNg42YTUVsCW6QCVXK8pZbwb_2xlTb-88IyiBZwNjlstJOlcD0MHobwAJqQNZ79ELWt4LP3vN7UtnUjl-MkWK8gn6uZHJg/s600/Nur_20251216_222816_0000.png",
+        "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1716/output/index.m3u8"
+      },
+      {
+        "name": "Nagorik TV",
+        "logo": "",
+        "url": "https://satoshi-cors.herokuapp.com/http://116.204.149.16/nagorik/tracks-v1a1/mono.m3u8"
+      }
+    ],
+    "ISLAMIC": [
+      {
+        "name": "Saudi Quran TV",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjleKdDnG77fWUg5ZKAV8JKa9MFOH8iq7q0lmMTtzF75qsAZfxfxzTzbdVhhHhCUbCszQ9CZqNDkslVA_OWboGPZARGQFVXHb9cKBUB1FlG8KcqQffWWdXKSNBWJ_2Dd-YFGqjia2ujeIOinC_Ilkb83kZbJE07IMPjnF06dUlSn_LhN-OwahHc43cESw/s600/Nur_20251107_152155_0000.png",
+        "url": "https://ml-pull-dvc-myco.io:2096/SAUDI_QURAN/tracks-v1a1/mono.ts.m3u8"
+      },
+      {
+        "name": "Peace TV Bangla",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTZgotu5MDgwwbWdlMvdv_GHWbdwkAPappIssIxuHpJK3-lBT16WXTK-BX13JJwTDFVOfVfbaHA6V37KDfEeIrUgqSPJmHnaLYHGumQ7PATse0UtH8o9SMejBcOX-etVqqux9Znsz2Vv7PlMo31FdgdDYlV-MSRHxoBbZRBzBhIVWBsHN8-2_KFNQpGw/s600/Nur_20251216_221739_0000.png",
+        "url": "https://dzkyvlfyge.erbvr.com/PeaceTvBangla/tracks-v4a1/mono.m3u8"
+      }
+    ],
+    "KIDS": [
+      {
+        "name": "Duronto TV",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZ10o12m5_heYW_O1b71UxtR_ZtpK9dmjzwh1XaPs3lfC8Ev4CweSEOam1lCJ5Tf0V59Yyba60h-UPffxAIMj78BM-qvY5ZMeEAVJYfJ1lOzP0gQn3zX5_iduoCgPb7y-d2NB6NgJ0Ck7vTkwg9VxjNTtmSs4yHN3SHIyxGoZe00djFk5vh95PuCrF/s600/Nur_20251103_211727_0000.png",
+        "url": "https://tvs02.nurmd2006-official.workers.dev/duronto.stream/tracks-v1a1/mono.m3u8"
+      },
+      {
+        "name": "Gopal Bhar",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWh27tjd1FNVAOPSX0USYijfaEyINTkfaG0cPk8rzg61aDbyXSp2tBqxIb84p8UyhJLLNiDNC59fZD90u2gn52piHfUmy-ULyeZbf_mkRGvJKVKdwLYSOPiLEQJV2p8uvgVK-PB8ADIGcGotQOnNqrp4gTasKVqoxJ3sbt-77SeKqG-0frt2nLktDXlw/s600/Nur_20251216_230322_0000.png",
+        "url": "https://cloudfrontnet.vercel.app/tplay/playout/209611/master.m3u8"
+      }
+    ],
+    "MOVIES": [
+      {
+        "name": "Lotus Macau",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZ2-CuAoARb0QOtO6oM-x-4nuLA3yWe9-xzoWLuzOg_hVcxWcHHbJDjU3NC8q0dEHj20F9P14RPRFdEBdOKRn5UC0nvsS6ulsXPniJDPCDvcs3d-R6k-PO9yW3qj4X6EwTmy88n7qW-D8sthM1jloquuj1MIVz6UOUoHcc7pGVcgAIhEvm-gI3Rxda/s600/Nur_20251103_202827_0000.png",
+        "url": "https://cdn1.skygo.mn/live/disk1/Lotus/HLSv3-FTA/Lotus-avc1_2089200=342-mp4a_256000_eng=343.m3u8"
+      },
+      {
+        "name": "GoldMines",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJlZ5eY8iUll1OFYBn_jUNjVBB5UMLHfLV-ZYfhSnOmrYWGHJHt9iwsgKI5lQ4aoXVj_2hIXCQnZClXBGZhgKvgXmrPykyFDdPP_J34bvZTXnyVZk-M1V1vPIo2E_RpgJXS_qJNeDufBLedvF4EZRXhXUqocmZTg-e7FGvSCarKQ9IK6ufwbedqSU88g/s600/Nur_20251219_134746_0000.png",
+        "url": "https://cdn-2.pishow.tv/live/1459/master.m3u8"
+      }
+    ],
+    "MUSIC": [
+      {
+        "name": "Mastiii TV",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjBVBPPA2T7dgQsvo6Ft6OOy0aCC-0Q2JILSpXBIDGyr4JWSLh5aTH5DdxToER1g4gmCwS4gB83rXCJIUwqi-TPMBd56y0W1GnQcQrVgpqYQIeMjrSQf4XQktyhj4bCD7AaKgxrgHoPGbTQQLdMGY14N0jBriQJvU6ga8LTeXOI-GgkaMhR_wqWGF9/s600/Nur_20251104_201459_0000.png",
+        "url": "https://tvsen6.aynaott.com/mastimusic/index.m3u8"
+      },
+      {
+        "name": "Sangeet Bangla",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgrLOUFHDDyqsVLJrykfcAe5h-yLsBYxvRFRtNC0pfFTMvqEwGlRq0gU5jnSOW_L5aWermQ-XYwI8x3an2mI01Fxe5diC1LMXykyw6f_DtJ_GilLz0Mxb_cumqpUmdOy-RAXSFXgX4xRxBMrW6k5VsOcLIYpdczThtec0-Yemkf_jlIgNN_kyCpnBOkA/s600/Nur_20251219_135056_0000.png",
+        "url": "https://cdn-4.pishow.tv/live/1143/master.m3u8"
+      }
+    ],
+    "NEWS": [
+      {
+        "name": "Somoy TV HD",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhPSNUDTzHuYQ0WpDI8ypfMqQQW9K7Z8DPAKD5z9hSMLzsF4n9K06cq1brE3AJczF9zAqPSaWZvczWphVux_36DlPKnxzA56iS2JxELQKN4oPHib8HdtVJrPWHogZQfwBN_Aw4v86vulOYmPdd_-i5VM_YkD_nLciyc25SUnAKjoi02024SpO9OXu2Y7Q/s600/Nur_20251107_155917_0000.png",
+        "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1702/output/1702-audio_113322_eng=113200-video=2202800.m3u8"
+      },
+      {
+        "name": "Jamuna TV HD",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkgxrAG9T6n17HV0eusUzIz4y93pF6pmT0W3WjunhaM-0ge5x82Y3JH5gqq9CTkqbFKq3C2VEUrvQMXAVZ-BQmTDg8KRGwZ_2S-QPDLiHWfC3hn4y_dq-KCgdxMnM3V6UMkc0bE6adKLqtSV-5AggAnnwHVDWiNCf6Qic1R5i_o569Zde9QtTgocD5dQ/s600/Nur_20251107_155850_0000.png",
+        "url": "https://owrcovcrpy.gpcdn.net/bpk-tv/1701/output/index.m3u8"
+      }
+    ],
+    "SCIENTIFIC": [
+      {
+        "name": "BBC Earth HD",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOesEJ_pQ1Zci7Q7uwsn3F2L1pjF0HD0ehJoKui5LxIF1KEMr-5_C0yKumQcPPb99pr8ERXWbMdP2YVhdX3fpAvC-QZk_3GDfj16g7nmq4CbDgFpTbW4-KsklWe1wle5Sltfq_KKg1ogTKNKG5mSJ5I0bO69Q8_E7-iEHiMQ17fwuv2UkDt9xaNQSo/s600/Nur_20251103_234030_0000.png",
+        "url": "https://d3u3pfhhvuad9k.cloudfront.net/playlist/amg00793-bbcstudios-bbcearta-lgus/playlist.m3u8"
+      },
+      {
+        "name": "National Geography",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjV4fNg7Y1yZkZ-RLrrheUqWIAgFbv8MNr2gHS7iKuUMZO5-ydXzWSA5b6eQ1IbfX-JL5m1NAZWjftduuM_Xt81XRPaJpfQvUCwlzBOj4Iqaf3Tc0xWjyfsI3mq1xIG0oIq1dI2udnE06DAKv7UtJybngNhn0P0tiIMRlGTJilMLfYVB2kXh1QF6Ddb5w/s600/Nur_20251226_220828_0000.png",
+        "url": "https://satoshi-cors.herokuapp.com/http://151.80.18.177:86/National_Geo_HD/index.m3u8"
+      }
+    ],
+    "SPORTS": [
+      {
+        "name": "T Sports",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirWpGtNoXEImEsBvrMeKO31Llaeu-4VWoQ35oZVF6gc98x9_rLkGj1B-wiv5P99v4ZxQpMl44RVSmDJ9IjkmQRZG5DWEvM7xBusVGuyRXWDFR0zJl1jWYphnTTpBlliwPu1WZ7V5bVeEM6E1TgtnK4IYFLyF3ttQoWRrzEaKSC9phcJo7nNMWhHFQRpg/s600/Nur_20251215_124106_0000.png",
+        "url": "https://iptv.prisma.net.bd/hls/stream2/playlist.m3u8"
+      },
+      {
+        "name": "Sony Sports 2",
+        "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6Xn5XEZKnXQjFNVlz72LPbKGgZU-26pbBebhlk5PKguE3Hpn54269pWHmQ0Kwpen7UTWt-8CGB8fpLrPpaqgJpScRUttA5W7LCandh-X2kwdAdVyX_91aUauIOix0jsyBjOBXFFY_NYF0J0xVeTSgJWI5H10ICsKyaq0XKiEIteH0wxsLfBlbuxrmcw/s600/Nur_20251215_125630_0000.png",
+        "url": "https://tvsen3.aynaott.com/HsatAP9H/index.m3u8"
+      }
+    ]
+  }
+}
