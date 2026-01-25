@@ -1,0 +1,29 @@
+        :root { --green: #00ff99; --panel-bg: #1a1a1a;}
+* { margin: 0;padding: 0;-webkit-tap-highlight-color: transparent;scrollbar-width: thin;scrollbar-color: var(--green) var(--panel-bg)}
+        body { background: #020617; color: white; font-family: 'Inter', sans-serif; margin: 0;  /* -- display: flex; */ flex-direction: column; height: 100vh; xoverflow: hidden; }
+
+        /* --- PLAYER SECTION (Head Lock) --- */
+        .head-lock { flex-shrink: 0; width: 100%; z-index: 100; background: #000; box-shadow: 0 4px 20px rgba(0,0,0,0.8); }
+        .player-wrap { border-bottom: 1px solid var(--green); display: flex; flex-direction: column; }
+        .video-container { position:relative; width:100%; background:#000; aspect-ratio: 16/9; }
+        video { position:absolute; top:0; left:0; width:100%; height:100%; outline: none; }
+
+        .info-bar { padding:10px; background:#111; border-top:1px solid var(--green); display:flex; justify-content:space-between; align-items:center; }
+        .ch-info h2 { font-family:'Orbitron'; font-size:14px; margin:0; color:#fff; }
+        .live-badge { background:red; color:white; padding:1px 5px; font-size:9px; border-radius:2px; animation:blink 1s infinite; font-weight: bold; margin-right: 5px; }
+        #watermark { font-family:'Orbitron'; border:1px solid var(--green); padding:2px 8px; font-size:11px; color: var(--green); cursor: pointer; }
+        @keyframes blink { 0% { opacity:1; } 50% { opacity:0.4; } 100% { opacity:1; } }
+
+        /* Navigation Chips */
+        .cat-bar { display: flex; overflow: auto; white-space: nowrap; padding: 10px; gap: 8px; background: #0f172a; scrollbar-width: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .cat-chip {background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 50px; font-size: 11px; font-weight: 600; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); }
+        .cat-chip.active { background: var(--green); color: #000; border: none; }
+
+        /* Scroll Area */
+        .content-scroll { flex-grow: 1; overflow-y: auto; background: #020617; scrollbar-width: none; }
+        .ch-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; margin: 8px 15px; padding: 10px; display: flex; align-items: center; cursor: pointer; }
+        .active-play { border-left: 4px solid var(--green); background: rgba(0, 255, 153, 0.05); }
+        
+        .footer { background: #0f172a; border-top: 1px solid rgba(255,255,255,0.1); padding: 25px 15px; text-align: center; }
+        .social-btn { width: 35px; height: 35px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 8px; color: white; transition: 0.3s; }
+        ::-webkit-scrollbar { display: none; }
