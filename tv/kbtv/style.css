@@ -1,6 +1,4 @@
-
-       
-        :root { 
+ :root { 
             --green: #0f0; 
             --bg: #050505; 
             --panel: rgba(15,15,15,0.98); 
@@ -8,7 +6,6 @@
         }
         
        * { margin:0; padding:0; box-sizing:border-box; font-family:'VT323', monospace; text-transform:uppercase; user-select:none; -webkit-tap-highlight-color: transparent; scrollbar-width: thin;scrollbar-color: var(--green) var(--panel);}
-
      /*    *::-webkit-scrollbar { width: 4px; height: 4px; } */
         *::-webkit-scrollbar-track { background: var(--panel); }
         *::-webkit-scrollbar-thumb { background: var(--green); border-radius: 10px; } 
@@ -62,8 +59,8 @@
         .c-cat { font-size:11px; color:#777; }
 
         /* FOOTER */
-        footer { flex-shrink:0; background:#000; border-top:1px solid var(--green); padding:5px 10px; font-size:12px; display:flex; justify-content:space-between; align-items:center; color:#666; }
-
+        footer {flex-shrink:0; background:#000; border-top:1px solid var(--green); padding:5px 10px; font-size:14px; display:flex; justify-content:space-between; align-items:center; color:#666; }
+       footer span a{text-decoration:none; cursor:text;}
         /* MOBILE LAYOUT */
         @media(max-width: 900px) {
             body { height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
@@ -86,4 +83,4 @@
 
         ::-webkit-scrollbar { width:4px; background:#000; } ::-webkit-scrollbar-thumb { background:var(--green); }
         @keyframes blink { 50% { opacity:0; } }
-         a:visited {color: white;}
+a:visited {color: white;}
