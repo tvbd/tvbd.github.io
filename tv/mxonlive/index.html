@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>LIVE — Toffeex | Watch Live Sports & TV</title>
+    <meta name="description" content="Watch live TV channels on Toffeex. Stream Sports, Cricket, Football, News, Movies, and Entertainment channels for free in HD quality.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mxonlive.xyz/">
+    <meta property="og:title" content="LIVE — Toffeex | Watch Live Sports & TV">
+    <meta property="og:description" content="Watch live TV channels on Toffeex. Stream Sports, Cricket, Football, News, Movies, and Entertainment channels for free in HD quality.">
+    <meta property="og:image" content="https://mxonlive.xyz/assets/mxonlive_143.webp">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Video.js CSS -->
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+
+    <link rel="icon" type="image/webp" href="https://mxonlive.xyz/assets/mxonlive_143.webp">
+    <link rel="apple-touch-icon" href="https://mxonlive.xyz/assets/mxonlive_143.webp">
+
+    
+    <link href="css/styles.css" rel="stylesheet" />
+
+ 
+</head>
+
+<body>
+
+    <div class="main-wrapper container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8 mb-3">
+                <div class="player-wrapper">
+                    <div class="ratio-16x9">
+                        <video
+                            id="my-video"
+                            class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid"
+                            controls
+                            preload="auto"
+                            playsinline
+                            data-setup='{"fluid": true}'>
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-4 mb-3">
+                <div class="content-panel">
+                    <div class="nav-scroll" id="categoryScroll">
+                        <ul class="nav nav-tabs">
+                                                        <li class="nav-item">
+                                <a class="nav-link active" 
+                                   onclick="filterChannels('Entertainment', this)">
+                                    Entertainment                                </a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link " 
+                                   onclick="filterChannels('Infotainment', this)">
+                                    Infotainment                                </a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link " 
+                                   onclick="filterChannels('Kids', this)">
+                                    Kids                                </a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link " 
+                                   onclick="filterChannels('Movies', this)">
+                                    Movies                                </a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link " 
+                                   onclick="filterChannels('Music', this)">
+                                    Music                                </a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link " 
+                                   onclick="filterChannels('News', this)">
+                                    News                                </a>
+                            </li>
+                                                        <li class="nav-item">
+                                <a class="nav-link " 
+                                   onclick="filterChannels('Sports', this)">
+                                    Sports                                </a>
+                            </li>
+                                                    </ul>
+                    </div>
+                    <div id="channel-container" class="channel-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <!-- Video.js -->
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+  <script src="js/mx.js"></script>
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+ body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 13px;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #ddd;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+        .main-wrapper {
+            flex: 1;
+            width: 100%;
+            padding: 15px 0 0 0;
+        }
+
+        .player-wrapper {
+            background: #000;
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.9);
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .ratio-16x9 {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            overflow-y: hidden; 
+        }
+
+        .video-js,
+        .vjs-tech {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain;
+        }
+
+        .content-panel {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            padding: 15px 10px;
+            height: 100%;
+            display: flex;
+            flex-direction: column; 
+        }
+
+        .nav-scroll {
+            width: 100%; 
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #222;
+            scrollbar-width: thin;
+            -ms-overflow-style: none;
+            cursor: grab;
+        }
+        .nav-scroll::-webkit-scrollbar { display: none; }
+        .nav-scroll:active { cursor: grabbing; }
+
+        .nav-tabs {
+            display: flex;
+            flex-wrap: nowrap;
+            border: none;
+            gap: 8px;
+        }
+
+        .nav-link {
+            color: #888 !important;
+            font-weight: 600;
+            font-size: 13px;
+            border: 1px solid #222;
+            border-radius: 2px !important;
+            padding: 6px 16px;
+            background: #111;
+            transition: all 0.2s;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .nav-link.active {
+            background-color: #fff !important;
+            color: #000 !important;
+            border-color: #fff;
+            box-shadow: 0 0 10px rgba(255,255,255,0.1);
+        }
+
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+            gap: 10px;
+            justify-content: center;
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        @media (max-width: 991px) {
+            .channel-grid { max-height: none;overflow-y: visible; }
+        }
+
+        .channel-grid::-webkit-scrollbar { width: 4px; }
+        .channel-grid::-webkit-scrollbar-thumb { background: #e50914; border-radius: 4px; }
+
+        .channel-card {
+            background: #fff;
+            border-radius: 4px;
+            aspect-ratio: 1/1;
+            padding: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-3px);
+            border-color: white;
+            z-index: 2;
+        }
+
+        .channel-card.active-channel {
+            border-color: #e50914;
+            box-shadow: 0 0 12px rgba(229, 9, 20, 0.4);
+        }
+
+        .channel-card img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
+        }
+
+        #visitor-counter {
+            text-align: center;
+            margin-top: auto;
+            padding: 20px 0;
+            width: 100%;
+            background: #000;
+            border-top: 1px solid #111;
+        }
