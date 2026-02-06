@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta name="google-site-verification" content="0uQlXjXpFYG1zGLQwXLeayJLF4Lh0RdpVHNfuH7AAEA" />
+<meta charset="utf-8">
+<meta name="google-site-verification" content="mJfeKwLuQa2NVq4sCvPBuE1zIe9lCJtVBE4PwuRfZCc" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="">
+<title>Biostar TV World</title>
+<link rel="icon" href="">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+
+<header>
+  <div class="headerBtn" id="backBtn">⟵ Back</div>
+  <div class="title">Biostar TV World</div>
+  <div class="headerBtn" id="searchBtn">🔍</div>
+</header>
+
+<div id="searchBox">
+  <input id="searchInput" placeholder="Search channel...">
+</div>
+
+<div id="main">
+  <div id="left">
+    <div id="videoWrap">
+      <video id="video" playsinline></video>
+
+      <div id="controls">
+        <div class="leftCtrl">
+          <button id="btnPlay">▶</button>
+          <button id="btnMute">🔊</button>
+          <input id="vol" type="range" min="0" max="1" step="0.01" value="1">
+        </div>
+
+        <div class="rightCtrl">
+          <span id="live">LIVE</span>
+          <button id="btnHd">HD</button>
+          <button id="btnShare">🔗</button>
+          <button id="btnFull">⛶</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="currentInfo">
+      <img id="currentLogo">
+      <span id="currentName">Select a Channel</span>
+    </div>
+  </div>
+
+  <div id="right">
+    <div id="category"></div>
+    <div id="list"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<footer id="footer">© TV World. All Rights Reserved 2026</footer>
+</html>
