@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LiveTV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://jwpsrv.com/library/XpMfzFwiEeOfZhIxOQfUww.js"></script>
+<link href="style.css" rel="stylesheet">
+    
+</head>
+<body>
+<div class="app-container">
+    <main class="player-section">
+        <div class="video-container">
+            <!-- JW Player container div instead of iframe -->
+            <div id="main-player"></div>
+        </div>
+        <div class="video-info">
+            <h1 id="now-playing-title">Select a Channel</h1>
+        </div>
+    </main>
+    <aside class="sidebar">
+        <div class="search-container">
+            <input id="channel-search" placeholder="Search channels..." autocomplete="off">
+            <div class="category-tabs">
+                <button class="cat-tab active" data-type="all">All</button>
+                <button class="cat-tab" data-type="Sports">Sports</button>
+                <button class="cat-tab" data-type="News">News</button>
+                <button class="cat-tab" data-type="Bangla">Bangla</button>
+                <button class="cat-tab" data-type="Indian Bangla">Indian Bangla</button>
+                <button class="cat-tab" data-type="Hindi">Hindi</button>
+                <button class="cat-tab" data-type="Kids">Kids</button>
+                <button class="cat-tab" data-type="Documentary">Doc</button>
+                <button class="cat-tab" data-type="Music">Music</button>
+                <button class="cat-tab" data-type="Other">Other</button>
+            </div>
+        </div>
+        <ul class="channel-list" id="listbar"></ul>
+    </aside>
+</div>
+</body>
+    <script src="app.js"></script>
+</html>
+
+
