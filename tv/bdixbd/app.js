@@ -9,7 +9,7 @@
     let items = [];
     let activeCategory = "all";
 
-    fetch("//198.195.239.50/tv_channels.json")
+    fetch("https://198.195.239.50/tv_channels.json")
     .then(r => r.json())
     .then(data => {
         data.channels.forEach((ch, i) => {
