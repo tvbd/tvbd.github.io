@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IPTV Streamer TV</title>
+    
+    <!-- Player CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.css" />
+    <!-- VideoJS CSS -->
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+<link href="style.css" rel="stylesheet" />
+</head>
+<body class="theme-dark">
+
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <div class="brand">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span>Streamer TV</span>
+            </div>
+            <button class="btn" id="toggleSidebarBtn" title="Toggle Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+
+        <!-- Center Controls (Engine, Color, Theme) -->
+        <!-- On mobile, this becomes a scrollable strip. Labels are hidden. -->
+        <div class="header-center">
+            <div class="control-group">
+                <span class="desktop-only">Engine:</span>
+                <select id="engineSelect" style="min-width: 130px;">
+                    <option value="auto" selected>Auto</option>
+                    <option value="videojs">VideoJS</option>
+                    <option value="clappr">Clappr</option>
+                    <option value="plyr">Plyr</option>
+                    <option value="iframe">Embed</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <span class="desktop-only">Color:</span>
+                <select id="colorSelect">
+                    <option value="#238636">Green</option>
+                    <option value="#1f6feb">Blue</option>
+                    <option value="#da3633">Red</option>
+                    <option value="#d29922">Orange</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <span class="desktop-only">Theme:</span>
+                <select id="themeSelect">
+                    <option value="theme-dark">Dark</option>
+                    <option value="theme-light">Light</option>
+                    <option value="theme-black">Black</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <button class="btn btn-primary" id="openEditorBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                <span class="desktop-only">Load List</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="playlist-header">
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px; align-items:center;">
+                    <span style="font-size:0.8rem; font-weight:bold; color:var(--text-muted); text-transform:uppercase;">Channels</span>
+                    <span id="channelCount" style="font-size:0.8rem; color:var(--text-muted);">0</span>
+                </div>
+                <input type="text" id="searchInput" class="playlist-search" placeholder="Search...">
+            </div>
+
+            <div class="categories-wrapper" id="categoriesContainer">
+                <!-- Chips injected via JS -->
+            </div>
+
+            <ul class="channel-list" id="channelList">
+                <!-- Items injected via JS -->
+            </ul>
+        </aside>
+
+        <!-- Player Area -->
+        <main class="player-area">
+            <div class="player-controls-bar">
+                <div id="currentPlayingName" style="font-weight:600; color:var(--text-main); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Select a channel</div>
+                <div class="current-track-info">Formats: .m3u8, .ts, .mpd</div>
+            </div>
+            <div class="video-wrapper" id="videoContainer">
+                <div style="text-align:center; color: var(--text-muted);">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3; margin-bottom:15px;"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+                    <p>Ready to stream.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Editor Modal -->
+    <div class="modal-overlay" id="editorModal">
+        <div class="modal">
+            <div class="modal-header">
+                <span>Import Playlist</span>
+                <span style="cursor:pointer;" id="closeEditorBtn">✕</span>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin:0 0 10px 0;">
+                    Supports <b>.m3u8, .ts, .mpd</b>. Links will be checked for availability.
+                </p>
+                <textarea id="m3uInput" class="playlist-input" placeholder="#EXTM3U..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <div style="display:flex; gap:10px;">
+                    <button class="btn" id="clearBtn">Clear</button>
+                    <button class="btn" id="defaultBtn">Demo List</button>
+                </div>
+                <div style="display:flex; gap:10px;">
+                    <button class="btn" id="cancelEditorBtn">Cancel</button>
+                    <button class="btn btn-primary" id="savePlaylistBtn">Load</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast">Message</div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-dash-plugin@latest/dist/clappr-dash-plugin.min.js"></script>
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+ <script src="m3u.js"></script>
+    <script>
+        const state = {
+            playlist: [],
+            groups: ['All'],
+            activeGroup: 'All',
+            currentIndex: -1,
+            currentPlayer: null,
+            currentEngine: 'auto',
+            hlsInstance: null
+        };
+
+        
+
+        const els = {
+            channelList: document.getElementById('channelList'),
+            categoriesContainer: document.getElementById('categoriesContainer'),
+            channelCount: document.getElementById('channelCount'),
+            searchInput: document.getElementById('searchInput'),
+            videoContainer: document.getElementById('videoContainer'),
+            engineSelect: document.getElementById('engineSelect'),
+            currentPlayingName: document.getElementById('currentPlayingName'),
+            editorModal: document.getElementById('editorModal'),
+            m3uInput: document.getElementById('m3uInput'),
+            sidebar: document.getElementById('sidebar'),
+            toast: document.getElementById('toast'),
+            openEditorBtn: document.getElementById('openEditorBtn'),
+            closeEditorBtn: document.getElementById('closeEditorBtn'),
+            cancelEditorBtn: document.getElementById('cancelEditorBtn'),
+            savePlaylistBtn: document.getElementById('savePlaylistBtn'),
+            toggleSidebarBtn: document.getElementById('toggleSidebarBtn'),
+            clearBtn: document.getElementById('clearBtn'),
+            defaultBtn: document.getElementById('defaultBtn'),
+            themeSelect: document.getElementById('themeSelect'),
+            colorSelect: document.getElementById('colorSelect'),
+        };
+
+        function init() {
+            els.m3uInput.value = defaultM3U;
+            parseAndLoadPlaylist(els.m3uInput.value);
+            setupThemeControls();
+
+            // Events
+            els.openEditorBtn.addEventListener('click', () => toggleModal(true));
+            els.closeEditorBtn.addEventListener('click', () => toggleModal(false));
+            els.cancelEditorBtn.addEventListener('click', () => toggleModal(false));
+            els.clearBtn.addEventListener('click', () => { els.m3uInput.value = ''; els.m3uInput.focus(); });
+            els.defaultBtn.addEventListener('click', () => { els.m3uInput.value = defaultM3U; });
+            
+            els.savePlaylistBtn.addEventListener('click', () => {
+                parseAndLoadPlaylist(els.m3uInput.value);
+                toggleModal(false);
+                showToast('Playlist Loaded');
+            });
+            
+            els.searchInput.addEventListener('input', (e) => renderPlaylist(e.target.value));
+            els.engineSelect.addEventListener('change', (e) => {
+                state.currentEngine = e.target.value;
+                if(state.currentIndex !== -1) playIndex(state.currentIndex);
+            });
+
+            els.toggleSidebarBtn.addEventListener('click', () => {
+                if(window.innerWidth <= 768) els.sidebar.classList.toggle('mobile-hidden');
+                else {
+                    const sidebarWidth = getComputedStyle(document.documentElement).getPropertyValue('--sidebar-width');
+                    const isHidden = els.sidebar.style.marginLeft === `-${sidebarWidth}`;
+                    els.sidebar.style.marginLeft = isHidden ? '0' : `-${sidebarWidth}`;
+                }
+            });
+
+            els.editorModal.addEventListener('click', (e) => { if(e.target === els.editorModal) toggleModal(false); });
+        }
+
+        /* --- THEME & COLOR --- */
+        function setupThemeControls() {
+            els.themeSelect.addEventListener('change', (e) => document.body.className = e.target.value);
+            els.colorSelect.addEventListener('change', (e) => {
+                const color = e.target.value;
+                document.documentElement.style.setProperty('--accent', color);
+                document.documentElement.style.setProperty('--accent-hover', color + 'dd');
+            });
+        }
+
+        /* --- STATUS LOGIC --- */
+        function updateChannelStatus(index, status) {
+            if (index >= 0 && index < state.playlist.length) {
+                state.playlist[index].status = status; 
+                renderPlaylist(els.searchInput.value);
+            }
+        }
+
+        /* --- PARSER --- */
+        function parseAndLoadPlaylist(text) {
+            const lines = text.split('\n');
+            const result = [];
+            const groupsSet = new Set(['All']);
+            let currentItem = {};
+
+            for (let line of lines) {
+                line = line.trim();
+                if (!line) continue;
+                if (line.startsWith('#EXTINF:')) {
+                    currentItem = { name: 'Unknown', logo: '', group: 'General', url: '', status: 'online' };
+                    const logoMatch = line.match(/tvg-logo="([^"]*)"/);
+                    if (logoMatch) currentItem.logo = logoMatch[1];
+                    const groupMatch = line.match(/group-title="([^"]*)"/);
+                    if (groupMatch) {
+                        currentItem.group = groupMatch[1] || 'General';
+                        groupsSet.add(currentItem.group);
+                    }
+                    const nameParts = line.split(',');
+                    if (nameParts.length > 1) currentItem.name = nameParts[nameParts.length - 1].trim();
+                } else if (!line.startsWith('#')) {
+                    if (currentItem.name) {
+                        currentItem.url = line;
+                        const isValid = /\.(m3u8|ts|mpd)(\?.*)?$/i.test(line) || /(youtube|twitch|vimeo)/i.test(line);
+                        currentItem.status = isValid ? 'online' : 'offline';
+                        result.push(currentItem);
+                        currentItem = {}; 
+                    }
+                }
+            }
+            state.playlist = result;
+            state.groups = Array.from(groupsSet).sort();
+            state.activeGroup = 'All';
+            
+            renderCategories();
+            renderPlaylist();
+            els.channelCount.textContent = `${result.length} channels`;
+        }
+
+        /* --- UI RENDER --- */
+        function renderCategories() {
+            els.categoriesContainer.innerHTML = '';
+            state.groups.forEach(group => {
+                const chip = document.createElement('div');
+                chip.className = `cat-chip ${group === state.activeGroup ? 'active' : ''}`;
+                chip.textContent = group;
+                chip.onclick = () => {
+                    state.activeGroup = group;
+                    renderCategories();
+                    renderPlaylist();
+                };
+                els.categoriesContainer.appendChild(chip);
+            });
+        }
+
+        function renderPlaylist(filter = '') {
+            els.channelList.innerHTML = '';
+            const lowerFilter = filter.toLowerCase();
+            
+            const filtered = state.playlist.filter(item => {
+                const matchesGroup = state.activeGroup === 'All' || item.group === state.activeGroup;
+                const matchesSearch = item.name.toLowerCase().includes(lowerFilter) || item.group.toLowerCase().includes(lowerFilter);
+                return matchesGroup && matchesSearch;
+            });
+
+            filtered.forEach((item, index) => {
+                const originalIndex = state.playlist.indexOf(item);
+                const li = document.createElement('li');
+                li.className = `channel-item ${originalIndex === state.currentIndex ? 'active' : ''}`;
+                li.onclick = () => playIndex(originalIndex);
+
+                const logoSrc = item.logo && item.logo.length > 5 ? item.logo : `https://picsum.photos/seed/${originalIndex}/50/50`;
+                
+                li.innerHTML = `
+                    <img src="${logoSrc}" class="ch-logo" loading="lazy" onerror="this.src='https://via.placeholder.com/40?text=?'">
+                    <div class="ch-info">
+                        <div class="ch-name">
+                            ${item.name}
+                            <span class="status-tag ${item.status}">${item.status}</span>
+                        </div>
+                        <div class="ch-group">${item.group}</div>
+                    </div>
+                `;
+                els.channelList.appendChild(li);
+            });
+        }
+
+        /* --- PLAYER ENGINE --- */
+        function destroyPlayer() {
+            if (state.currentPlayer) {
+                try {
+                    if (state.currentPlayer.dispose) state.currentPlayer.dispose(); // VideoJS
+                    if (state.currentPlayer.destroy) state.currentPlayer.destroy(); // Clappr/Plyr
+                    if(state.currentPlayer.pause && typeof state.currentPlayer.tagName === 'string') state.currentPlayer.pause();
+                } catch(e) {}
+                state.currentPlayer = null;
+            }
+            if (state.hlsInstance) {
+                state.hlsInstance.destroy();
+                state.hlsInstance = null;
+            }
+            els.videoContainer.innerHTML = '';
+        }
+
+        function playIndex(index) {
+            const item = state.playlist[index];
+           
+
+            state.currentIndex = index;
+            updateChannelStatus(index, 'checking');
+            els.currentPlayingName.textContent = `${item.name}`;
+            
+            if(window.innerWidth <= 768) els.sidebar.classList.add('mobile-hidden');
+            destroyPlayer();
+
+            let engine = state.currentEngine;
+            let url = item.url;
+
+            if (engine === 'auto') {
+                const lowerUrl = url.toLowerCase();
+                if (lowerUrl.includes('.mpd')) engine = 'clappr'; 
+                else if (/(youtube|twitch|vimeo|github|vercel|pages)/.test(lowerUrl)) engine = 'iframe';
+                else engine = 'videojs'; 
+            }
+
+            try {
+                switch (engine) {
+                    case 'videojs': initVideoJS(url); break;
+                    case 'clappr': initClappr(url); break;
+                    case 'plyr': initPlyr(url); break;
+                    case 'iframe': initIframe(url); break;
+                    default: initVideoJS(url);
+                }
+            } catch(err) {
+                console.error(err);
+                handleStreamError(index);
+            }
+        }
+
+        function handleStreamError(index) {
+            updateChannelStatus(index, 'offline');
+            showToast('Stream failed to load', true);
+        }
+
+        function initVideoJS(url) {
+            const video = document.createElement('video');
+            video.className = 'video-js vjs-default-skin vjs-big-play-centered';
+            video.controls = true;
+            els.videoContainer.appendChild(video);
+            
+            state.currentPlayer = videojs(video, {
+                autoplay: true,
+                preload: 'auto',
+                fluid: true,
+                responsive: true,
+                html5: {
+                    hls: { overrideNative: true },
+                    nativeVideoTracks: false,
+                    nativeAudioTracks: false,
+                    nativeTextTracks: false
+                },
+                sources: [{ src: url, type: 'application/x-mpegURL' }]
+            });
+
+            state.currentPlayer.ready(() => {
+                state.currentPlayer.play().catch(e => {
+                    state.currentPlayer.muted(true);
+                    state.currentPlayer.play();
+                });
+            });
+
+            state.currentPlayer.on('error', () => handleStreamError(state.currentIndex));
+        }
+
+        function initClappr(url) {
+            const div = document.createElement('div');
+            div.id = 'player-wrapper';
+            els.videoContainer.appendChild(div);
+
+            let mimeType = 'application/x-mpegURL';
+            if(url.includes('.mpd')) mimeType = 'application/dash+xml';
+            
+            const plugins = [];
+            if(url.includes('.mpd') && window.ClapprDashPlugin) plugins.push(window.ClapprDashPlugin);
+
+            state.currentPlayer = new Clappr.Player({
+                source: url, parentId: '#player-wrapper', height: '100%', width: '100%',
+                autoPlay: true, mute: true, mimeType: mimeType, plugins: plugins,
+                events: { 
+                    onError: () => handleStreamError(state.currentIndex),
+                    onPlay: () => updateChannelStatus(state.currentIndex, 'online')
+                }
+            });
+        }
+
+        function initPlyr(url) {
+            const video = document.createElement('video');
+            video.controls = true; video.id = 'plyr-player';
+            els.videoContainer.appendChild(video);
+            state.currentPlayer = new Plyr('#plyr-player', { debug: false, autoplay: true, muted: true });
+            
+            let source = { src: url, type: 'video/mp4' };
+            if (url.includes('.m3u8')) source.type = 'application/x-mpegURL';
+            
+            if (Hls.isSupported() && url.includes('.m3u8')) {
+                state.hlsInstance = new Hls();
+                state.hlsInstance.loadSource(url);
+                state.hlsInstance.attachMedia(video);
+                state.hlsInstance.on(Hls.Events.ERROR, () => handleStreamError(state.currentIndex));
+                state.hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => updateChannelStatus(state.currentIndex, 'online'));
+            } else {
+                state.currentPlayer.source = { type: 'video', sources: [source] };
+            }
+        }
+
+        function initIframe(url) {
+            const ytRegex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+            const match = url.match(ytRegex);
+            if (match && match[1]) url = `https://www.youtube.com/embed/${match[1]}?autoplay=1&rel=0`;
+            if (url.includes('twitch.tv/') && !url.includes('embed')) url = url.replace('twitch.tv/', 'twitch.tv/embed/') + '?parent=localhost&muted=true';
+
+            const iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.style.width = '100%'; iframe.style.height = '100%'; iframe.style.border = 'none';
+            iframe.setAttribute('allowfullscreen', 'true');
+            iframe.setAttribute('allow', 'autoplay; encrypted-media');
+            iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation');
+            els.videoContainer.appendChild(iframe);
+            state.currentPlayer = iframe;
+            updateChannelStatus(state.currentIndex, 'online');
+        }
+
+        function toggleModal(show) { els.editorModal.style.display = show ? 'flex' : 'none'; }
+        function showToast(msg, isError = false) {
+            els.toast.textContent = msg;
+            els.toast.style.borderColor = isError ? 'var(--status-offline)' : 'var(--accent)';
+            els.toast.classList.add('show');
+            setTimeout(() => els.toast.classList.remove('show'), 3000);
+        }
+
+        init();
+    </script>
+</body>
+</html>
