@@ -302,10 +302,10 @@
                 li.className = `channel-item ${originalIndex === state.currentIndex ? 'active' : ''}`;
                 li.onclick = () => playIndex(originalIndex);
 
-                const logoSrc = item.logo && item.logo.length > 5 ? item.logo : `https://picsum.photos/seed/${originalIndex}/50/50`;
+                const logoSrc = item.logo && item.logo.length > 5 ? item.logo : `https://i.imgur.com/ZUuvx2S.png`;
                 
                 li.innerHTML = `
-                    <img src="${logoSrc}" class="ch-logo" loading="lazy" onerror="this.src='https://via.placeholder.com/40?text=?'">
+                    <img src="${logoSrc}" class="ch-logo" loading="lazy" onerror="this.src='https://i.imgur.com/ZUuvx2S.png'">
                     <div class="ch-info">
                         <div class="ch-name">
                             ${item.name}
@@ -474,4 +474,5 @@
         init();
     </script>
 </body>
+
 </html>
