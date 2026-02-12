@@ -1,0 +1,19 @@
+#EXTM3U
+
+#EXTINF:-1 tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirWpGtNoXEImEsBvrMeKO31Llaeu-4VWoQ35oZVF6gc98x9_rLkGj1B-wiv5P99v4ZxQpMl44RVSmDJ9IjkmQRZG5DWEvM7xBusVGuyRXWDFR0zJl1jWYphnTTpBlliwPu1WZ7V5bVeEM6E1TgtnK4IYFLyF3ttQoWRrzEaKSC9phcJo7nNMWhHFQRpg/s600/Nur_20251215_124106_0000.png" group-title="SPORTS" tvg-name="T Sports",T Sports
+https://padmaonline.duckdns.org:8088/T-SportHD/index.m3u8
+
+#EXTINF:-1 tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6Xn5XEZKnXQjFNVlz72LPbKGgZU-26pbBebhlk5PKguE3Hpn54269pWHmQ0Kwpen7UTWt-8CGB8fpLrPpaqgJpScRUttA5W7LCandh-X2kwdAdVyX_91aUauIOix0jsyBjOBXFFY_NYF0J0xVeTSgJWI5H10ICsKyaq0XKiEIteH0wxsLfBlbuxrmcw/s600/Nur_20251215_125630_0000.png" group-title="SPORTS" tvg-name="Sony Sports 2",Sony Sports 2
+https://tvsen3.aynaott.com/HsatAP9H/index.m3u8
+
+#EXTINF:-1 tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYuknH82R_1f_efCjMsnWV2YdoJB0UhJUfAR0qPKCXn1KT7QzuW3DZGiOMV8DxritbSe_TM5QJeePu6NcBdxSqYetaI7UHW1BrCGMhzjx9Z0f7pTXN_qSAcPdfVTHjqPfVdYRLWCeVoed5vOsfsz75Us0P6DK5Eq3pssyVBjWs7gKM3-AgEKbuDfSqDw/s600/Nur_20251107_160039_0000.png" group-title="SPORTS" tvg-name="Geo Sports",Geo Super
+https://ml-pull-dvc-myco.io:2096/GEO_SUPER/tracks-v1a1/mono.ts.m3u8
+
+#EXTINF:-1 tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhN2-O4MHJ08c5sEQRS2P0lkInX9N9vAFT0mQLjOZpaCRGxSGe0Bij9GWQvqRwNUY5RrM09hhIx2dHs_BRGeyzrIcfxi7Zuq4egAtZRTEbxBQIQ-otv0FTmSDKjF48faqzoRkeqyKSIskgpokY_hq9aAE9UheeCGyPFT_3-eMoLg6I-Q7ISHG0mI8us/s600/Nur_20251103_234916_0000.png" group-title="SPORTS" tvg-name="Fubo Sports",Fubo Sports
+https://wurlfubo.global.transmit.live/hls/67f42332d3dd98936978f581/v1/fubotv_fubo_sports_network_1/lg_us/latest/main/hls/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvJ1HtheTbTZjOoXTO9KRK1fIhh1uXhyvSckbf05J7yIcdT4ZucX1fvfjnyiv9QK-m0pBK6MoY6KhcVPQpsRSXdgBFU612nmbKpY864gsoMvMaCyu_fOdNVbx6ADMbz2dftZ7-0Arzx81kC8nqbeduSEsquwrPpzNGm2wZw6rXHe79vlF7DokCavubWA/s600/Nur_20251107_160202_0000.png" group-title="SPORTS" tvg-name="DD Sports",DD Sports
+https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/b17adfe543354fdd8d189b110617cddd/index_3.m3u8
+
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkuoMefKCwCg_ehUud7YkHG6s5DeWWZwBXsj8JV0Cv3yr1wPWETfx3wE4I&s=10" group-title="SPORTS" tvg-name="Xtream Sports",Xtream Sports
+https://streams2.sofast.tv/ptnr-yupptv/title-XTREM-SPORTS-ENG_yupptv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/e0b81a5c-6ab5-48cd-aaa9-f82de4ab5bf9/manifest.m3u8

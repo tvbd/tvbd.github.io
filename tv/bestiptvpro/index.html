@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best IPTV PRO | Premium Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+
+    <header class="header">
+        <div class="app-logo">
+            <i class="fas fa-play-circle"></i>
+            <div class="app-name">Best IPTV PRO</div>
+        </div>
+        <div class="header-icons">
+            <button class="icon-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+            <button class="icon-btn" id="addBtn"><i class="fas fa-plus"></i></button>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <div class="search-box">
+            <i class="fas fa-search" style="color: var(--accent);"></i>
+            <input type="text" id="searchInput" placeholder="Search playlist by name...">
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="section-header">
+            <h2 class="section-title">My Collection</h2>
+            <span id="count" class="badge badge-official">0 Playlists</span>
+        </div>
+        <div class="playlist-list" id="playlistList">
+            </div>
+    </main>
+
+    <div class="modal-backdrop" id="backdrop"></div>
+    <div class="input-modal" id="modal">
+        <h3 style="margin-bottom: 25px; text-align: center; font-size: 1.5rem;">New Playlist</h3>
+        <form class="input-form" id="pForm">
+            <div class="input-group">
+                <label>Name</label>
+                <input type="text" class="input-field" placeholder="Enter name..." id="pName" required>
+            </div>
+            <div class="input-group">
+                <label>M3U URL</label>
+                <input type="url" class="input-field" placeholder="https://..." id="pUrl">
+            </div>
+            <div style="text-align: center; color: var(--text-dim); font-size: 0.75rem; margin: 5px 0; font-weight: bold; opacity: 0.5;">OR UPLOAD FILE</div>
+            <input type="file" id="pFile" accept=".m3u,.m3u8" style="display: none;">
+            <button type="button" class="input-field" onclick="document.getElementById('pFile').click()" id="fileDisplay" style="cursor: pointer; border-style: dashed; background: rgba(255,255,255,0.03);">
+                <i class="fas fa-cloud-upload-alt" style="margin-right: 8px;"></i> Select M3U File
+            </button>
+            <button type="submit" class="submit-btn">ADD TO LIBRARY</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div>Developed by <b>TVBD</b> • v2.5 Premium</div>
+    </footer>
+<script src='app.js'></script>
+</body>
+</html>
