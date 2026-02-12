@@ -1,0 +1,86 @@
+  :root {
+            --glass-bg: rgba(10, 10, 15, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --brand: #00e5ff;
+            --glow-color: rgba(0, 229, 255, 0.3);
+            --primary-color: #67e8f9;
+            --secondary-color: #0891b2;
+        }
+* {margin:0px;padding:0px;scrollbar-width:thin;}
+
+        body {
+            margin: 0; background: #000; font-family: 'Outfit', sans-serif;
+            color: white; height: 100vh; display: flex;
+            align-items: center; justify-content: center; overflow: hidden;
+        }
+
+        #ambient-layer {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 140vw; height: 140vh; z-index: -1;
+            background: radial-gradient(circle at center, var(--glow-color) 0%, #000 70%);
+            transition: background 2s ease; filter: blur(80px);
+        }
+
+        .glass-card {
+            width: 100%; max-width: 700px; background: var(--glass-bg);
+            backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
+            border: 1px solid var(--glass-border); border-radius: 28px;
+            padding: 20px; display: flex; flex-direction: column; gap: 10px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
+        }
+
+        .header { display:inline; justify-content: space-between; align-items: center; }
+        .brand { font-size: 16px; font-weight: 800; 
+            background: linear-gradient(to right, #fff, var(--brand)); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;padding-bottom:5px }
+        
+        .live-tag {
+            background: rgba(255, 0, 0, 0.15); color: #ff4d4d;
+            padding: 5px 12px; border-radius: 50px; font-size: 11px;
+            font-weight: 700; border: 1px solid rgba(255, 0, 0, 0.3);
+            display: flex; align-items: center; gap: 6px;
+        }
+        .dot { width: 8px; height: 8px; background: #ff4d4d; border-radius: 50%; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        /* Player CSS */
+        #player-wrapper {
+            width: 100%; aspect-ratio: 16/9; background: #000;
+            border-radius: 18px; overflow: hidden; position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .shaka-controls-container { background: transparent !important; }
+        .shaka-control-panel { background: linear-gradient(transparent, rgba(0,0,0,0.7)) !important; }
+        .shaka-play-button-container { background: none !important; }
+        .shaka-seek-bar-played, .shaka-volume-bar-filled {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) !important;
+        }
+        .shaka-play-button { background-color: var(--primary-color) !important; }
+
+        .loader {
+            width: 50px; height: 50px;
+            border: 5px solid rgba(255,255,255,0.05); border-top: 5px solid var(--primary-color);
+            border-radius: 50%; animation: spin 1s linear infinite;
+            position: absolute; top: 50%; left: 50%;
+            margin: -25px 0 0 -25px; z-index: 10; display: none;
+        }
+        @keyframes spin { 0% {transform:rotate(0deg)} 100% {transform:rotate(360deg)} }
+
+        .internal-footer {
+            text-align: center; font-size: 10px; color: rgba(255,255,255,0.4);
+            letter-spacing: 1px; text-transform: uppercase;
+        }
+        .internal-footer a { color: var(--brand); text-decoration: none; font-weight: 700; }
+
+        .controls { grid-template-columns: 2fr 2fr; gap:10px;overflow-y:auto;}
+        .btn-full { grid-column: span 2; }
+        .btn {
+            background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+            color: #fff; padding: 10px; border-radius: 14px;margin:2px;
+            font-weight: 600; cursor: pointer; transition: 0.3s;
+        }
+        .btn.active { background: #fff; color: #000; font-weight: 800; border-color: #fff;}
+
+
+.btn.active:before{content:"▶";color:#000; font-weight:600;font-size: }

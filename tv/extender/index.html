@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> EXTENDER</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.16.3/controls.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="ambient-layer"></div>
+
+    <div class="glass-card">
+        <div class="header">
+            <div class="brand">ICC-DALAL</div>
+            <div class="live-tag"><div class="dot"></div> LIVE</div>
+        </div>
+
+        <div id="player-wrapper" data-shaka-player-container>
+            <video data-shaka-player id="video" autoplay playsinline style="width:100%; height:100%;"></video>
+            <div class="loader" id="loading-spinner"></div>
+        </div>
+
+        <div class="internal-footer">
+            POWERED BY TVBD</a>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-full" id="btn-1" onclick="loadMatch(1)">GEO SUPER</button> 
+            <button class="btn" id="btn-2" onclick="loadMatch(2)">PRIME ENG</button>
+            <button class="btn" id="btn-3" onclick="loadMatch(3)">PRIME HIN</button>
+            <button class="btn" id="btn-4" onclick="loadMatch(4)">PRIME EX</button>
+            <button class="btn" id="btn-5" onclick="loadMatch(5)">WILLOW HD</button>
+            <button class="btn" id="btn-6" onclick="loadMatch(6)">T SPORTS</button>
+            <button class="btn" id="btn-7" onclick="loadMatch(7)">JIO+ HOT M01</button>
+             <button class="btn" id="btn-8" onclick="loadMatch(8)">JIO+ HOT M02</button>
+             <button class="btn" id="btn-9" onclick="loadMatch(9)">JIO+ HOT M03</button>
+             <button class="btn" id="btn-10" onclick="loadMatch(1)">T*PMAD LIVE</button> 
+        </div>
+    </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.16.3/shaka-player.ui.min.js"></script>
+  <script src="m3u.js"></script>
+    <script>
+        let player;
+        let ui;
+
+        async function init() {
+            const video = document.getElementById('video');
+            const container = document.getElementById('player-wrapper');
+            const spinner = document.getElementById('loading-spinner');
+
+            // Automatic UI extraction
+            ui = container['ui'];
+            player = ui.getControls().getPlayer();
+            window.player = player;
+
+            ui.configure({
+                'controlPanelElements': ['play_pause', 'time_and_duration', 'spacer', 'mute', 'volume', 'fullscreen', 'overflow_menu'],
+                'fadeDelay': 2
+            });
+
+            player.configure({
+                streaming: { bufferingGoal: 6, lowLatencyMode: true },
+                manifest: { dash: { ignoreMinBufferTime: true } }
+            });
+
+            player.addEventListener('loading', () => { spinner.style.display = 'block'; });
+            player.addEventListener('loaded', () => { spinner.style.display = 'none'; });
+
+            loadMatch(1);
+        }
+
+        async function loadMatch(id) {
+            document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('btn-' + id).classList.add('active');
+            
+            const s = streams[id];
+            const url = s.mpd || s.hls;
+
+            try {
+                await window.player.unload();
+                if (s.keyId && s.key) {
+                    window.player.configure({ drm: { clearKeys: { [s.keyId]: s.key } } });
+                } else {
+                    window.player.configure({ drm: { clearKeys: {} } });
+                }
+                await window.player.load(url);
+            } catch (e) { console.error("Load failed", e); }
+        }
+
+        document.addEventListener('shaka-ui-loaded', init);
+        document.addEventListener('DOMContentLoaded', () => shaka.polyfill.installAll());
+    </script>
+</body>
+</html>
