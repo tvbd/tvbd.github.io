@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livefy TV (Create By HASAN)</title>
+    
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display.swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+<style>
+
+</style>
+</head>
+<body>
+<!-- Shaka Player UI 
+    <div id="app-download-modal" class="app-modal">
+        <div class="app-modal-content">
+            <button class="app-modal-close-btn">&times;</button>
+            <img src="YOUR_APP_ICON_URL_HERE" alt="App Icon" class="app-icon" onerror="this.style.display='none'">
+            <h2>আমাদের অ্যাপ ডাউনলোড করুন!</h2>
+            <p>সেরা অভিজ্ঞতার জন্য এবং সব ফিচার আনলক করতে, আমাদের অফিসিয়াল অ্যাপটি ডাউনলোড করুন।</p>
+            <a href="https://github.com/hasannoob/Apps/raw/refs/heads/main/LiveFy%20Tv%20.apk" class="app-download-button" download>
+                <i class="fas fa-download"></i> ডাউনলোড করুন
+            </a>
+        </div>
+    </div>
+-->
+    <header class="main-header">
+        <div id="three-dot-menu" class="three-dot-menu"> <i class="fas fa-bars"></i> </div>
+        <div class="header-content">
+            <div class="header-title">LIVEFY TV</div>
+            <div class="flag-bd">
+                <div class="red-circle"></div>
+            </div>
+        </div>
+        <div id="notification-bell">
+            <i class="fas fa-bell"></i>
+            <span id="notification-count">0</span>
+            <div id="notification-panel">
+                <div class="notification-header">Live Matches</div>
+                <ul id="notification-list" class="notification-list"></ul>
+            </div>
+        </div>
+    </header>
+    
+    <div class="update-bar">
+        <span class="update-label">UPDATE</span>
+        <div class="update-marquee">
+            <span id="update-text-content">Loading...</span>
+        </div>
+    </div>
+
+    <div id="popup-overlay" class="popup-overlay"></div>
+    <div id="side-popup" class="side-popup">
+        <div class="popup-header"> <h2>Menu</h2> <button id="close-popup-btn" class="close-popup-btn">&times;</button> </div>
+        <ul class="popup-nav">
+            <li id="popup-nav-home" class="popup-nav-item"> <svg fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg> <span>Home</span> </li>
+            <li id="popup-nav-channels" class="popup-nav-item"> <svg fill="currentColor" viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"></path></svg> <span>Live TV</span> </li>
+            <li id="popup-nav-highlights" class="popup-nav-item"> <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.5 13c-2.34 0-4.59.88-6.23 2.52-1.64 1.64-2.52 3.88-2.52 6.23H5V3h14v10.5h-1.5zm-5.5 3.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5-2.5-1.12-2.5-2.5 1.12-2.5 2.5 2.5z"></path></svg> <span>Highlights</span> </li>
+            <li id="popup-nav-playlist" class="popup-nav-item hidden"> <svg fill="currentColor" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8 12.5v-9l6 4.5-6 4.5z"></path></svg> <span>My Playlist</span> </li>
+            <li id="popup-nav-about" class="popup-nav-item"> <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path></svg> <span>About Us</span> </li>
+        </ul>
+    </div>
+    
+    <div id="alert-modal" class="alert-modal">
+        <div class="alert-modal-content"> <button class="alert-close-btn" onclick="closeAlert()">&times;</button>
+            <div class="alert-content"> <h3 id="alert-title-container">Loading...</h3> <p id="alert-message-container">Loading...</p> </div>
+        </div>
+    </div>
+    <div class="content">
+        <div id="home-section"> <div class="section-header"> <h2><button class="alert-btn" onclick="showAlert()"><i class="fas fa-bell"></i> Alert</button></h2> <a href="#" id="telegram-link" class="join-now-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram-plane"></i> Join Now</a> <div id="time-display-home" class="datetime-box"></div> </div> <div class="banner" id="home-banner-top"> <a href="#" target="_blank" rel="noopener noreferrer"><img src="https://placehold.co/600x100/111/fff?text=Loading Ad..." alt="Banner" class="banner-image"></a> </div> <div class="filter-tabs" id="match-tabs-container"> <button class="tab-btn active-tab" onclick="filterMatches('all', this)">ALL <span id="count-all" class="tab-count">0</span></button> <button class="tab-btn" onclick="filterMatches('live', this)">LIVE <span id="count-live" class="tab-count">0</span></button> <button class="tab-btn" onclick="filterMatches('upcoming', this)">UPCOMING <span id="count-upcoming" class="tab-count">0</span></button> <button class="tab-btn" onclick="filterMatches('recent', this)">RECENT <span id="count-recent" class="tab-count">0</span></button> </div> <div id="match-list-container" style="display: flex; flex-direction: column;"></div> <div class="banner" id="home-banner-bottom"> <a href="#" target="_blank" rel="noopener noreferrer"><img src="https://placehold.co/600x100/111/fff?text=Loading Ad..." alt="Banner" class="banner-image"></a> </div> </div>
+        <div id="sports-channels-section" class="hidden"> <div class="section-header"> <h2>Live TV</h2> <a href="#" id="telegram-link-channels" class="join-now-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram-plane"></i> Join Now</a> <div id="time-display-channels" class="datetime-box"></div> </div> <div class="filter-tabs" id="channel-category-tabs"></div> <div class="channel-grid" id="channel-grid-container"></div> <div class="banner" id="channels-banner"> <a href="#" target="_blank" rel="noopener noreferrer"><img src="https://placehold.co/600x100/111/fff?text=Loading Ad..." alt="Banner" class="banner-image"></a> </div> </div>
+        <div id="highlights-section" class="hidden"> <div class="section-header"> <h2>Highlights</h2> <a href="#" id="telegram-link-highlights" class="join-now-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram-plane"></i> Join Now</a> <div id="time-display-highlights" class="datetime-box"></div> </div> <div class="filter-tabs" id="highlight-category-tabs"></div> <div id="highlights-container"></div> <div class="banner" id="highlights-banner"> <a href="#" target="_blank" rel="noopener noreferrer"><img src="https://placehold.co/600x100/111/fff?text=Loading Ad..." alt="Banner" class="banner-image"></a> </div> </div>
+        <div id="playlist-section" class="hidden">
+            <div class="section-header"> <h2>My Playlist</h2> <a href="#" id="telegram-link-playlist" class="join-now-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram-plane"></i> Join Now</a> <div id="time-display-playlist" class="datetime-box"></div> </div>
+            <div class="filter-tabs" id="main-playlist-tabs"></div>
+            <div class="filter-tabs" id="playlist-category-tabs"></div>
+            <div class="channel-grid" id="playlist-grid-container"></div> 
+        </div>
+        <div id="about-us-section" class="hidden">
+            <div class="section-header"> 
+                <h2>About Us</h2>
+                <div id="time-display-about" class="datetime-box"></div> 
+            </div>
+            <div class="about-content">
+                <h2>Welcome to Livefy TV</h2>
+                <p>
+                    <strong>Livefy TV</strong> is your ultimate destination for streaming live sports matches, thrilling highlights, and a vast collection of live TV channels, all in one place. Our mission is to provide a seamless and high-quality streaming experience for all sports enthusiasts.
+                </p>
+                <p>
+                    This platform was developed and is passionately maintained by <strong>HASAN</strong>. We are constantly working to improve the service and add new features to enhance your viewing experience.
+                </p>
+                <p>
+                    <strong>Disclaimer:</strong> We do not host any content on our own servers. All streams and videos found on our platform are sourced from third-party services that are freely available on the internet. We are not responsible for the legality or copyright of the content.
+                </p>
+                <p>
+                    For any queries, feedback, or issues, please feel free to join our Telegram channel.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="video-player"> <div id="video-container-wrapper"> <button id="close-btn" onclick="closeVideo()">❌</button> <div class="video-wrapper"> 
+        <video id="video" playsinline controls></video>
+        <span id="livefy-text-animator">LIVEFY TV</span>
+    </div> </div> <div id="error-message-box"> <button class="close-error-btn" onclick="hideMessage()">✖</button> <h3 id="error-title">Error</h3> <p id="error-text">The video cannot be loaded.</p> </div> <div id="controls-area"> <div id="quality-selector-container" class="hidden"> <label for="quality-select">Video Quality:</label> <select id="quality-select"> <option value="-1">Auto</option> </select> </div> <div id="server-buttons"></div> </div> </div>
+    <nav class="bottom-nav">
+        <div id="nav-home" class="nav-item active" onclick="showTab('home-section', this)"> <svg fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg> <span>Home</span> </div>
+        <div id="nav-channels" class="nav-item" onclick="showTab('sports-channels-section', this)"> <svg fill="currentColor" viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"></path></svg> <span>Live TV</span> </div>
+        <div id="nav-highlights" class="nav-item" onclick="showTab('highlights-section', this)"> <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.5 13c-2.34 0-4.59.88-6.23 2.52-1.64 1.64-2.52 3.88-2.52 6.23H5V3h14v10.5h-1.5zm-5.5 3.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5-2.5-1.12-2.5-2.5 1.12-2.5 2.5 2.5z"></path></svg> <span>Highlights</span> </div>
+        <div id="nav-playlist" class="nav-item hidden" onclick="showTab('playlist-section', this)"> <svg fill="currentColor" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8 12.5v-9l6 4.5-6 4.5z"></path></svg> <span>My Playlist</span> </div>
+    </nav>
+    
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+
+<script src="app.js"></script>
+  
+</body>
+</html>
