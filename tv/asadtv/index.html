@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASD TV - Live Streaming</title>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="brand"><i class="fas fa-play-circle"></i> ASD<span>TV</span></div>
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="channelSearch" placeholder="চ্যানেল খুঁজুন..." onkeyup="filterChannels()">
+        </div>
+        <div class="user-menu"><i class="fas fa-bell"></i><i class="fas fa-user-circle"></i></div>
+    </nav>
+
+    <div id="notice-bar" class="hidden bg-pink-600 text-white font-bold sticky top-[60px] z-[900]">
+        <marquee id="notice-text" behavior="scroll" direction="left" class="py-2">লোড হচ্ছে...</marquee>
+    </div>
+
+    <div class="main-container">
+        <div class="content-area">
+            <div class="player-wrapper">
+                <video id="player" controls playsinline></video>
+            </div>
+            <div class="stream-details">
+                <div class="stream-title-row">
+                    <div>
+                        <h1><span class="live-tag">LIVE</span> <span id="stream-title">লোডিং...</span></h1>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <aside class="sidebar">
+            <div class="tabs"><button class="tab-btn active">চ্যানেল লিস্ট</button></div>
+            <div id="channels-list" class="tab-content"></div>
+        </aside>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>

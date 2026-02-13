@@ -1,0 +1,206 @@
+:root {
+    --primary-color: #66f859;
+    --primary-dark: #66f859;
+    --bg-gradient: linear-gradient(135deg, #0a0015, #05060a);
+    --card-bg: rgba(18, 20, 32, 0.7);
+    --card-border: rgba(255, 0, 79, 0.15);
+    --text-color: #f0f0f0;
+    --accent-hover: rgba(28, 31, 51, 0.8);
+    --glow: 0 0 20px rgba(102, 248, 89, 0.4);
+}
+
+body {
+    margin: 0;
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 5%;
+    background: rgba(5, 6, 10, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 0, 79, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.search-container {
+    position: relative;
+    width: 40%;
+    max-width: 400px;
+}
+
+.search-container i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.search-container input {
+    width: 100%;
+    background: rgba(18, 20, 32, 0.8);
+    border: 1px solid rgba(31, 244, 106, 0.2);
+    padding: 12px 15px 12px 45px;
+    border-radius: 30px;
+    color: white;
+    transition: all 0.3s;
+}
+
+.search-container input:focus {
+    border-color: var(--primary-color);
+    box-shadow: var(--glow);
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 24px;
+    padding: 24px 5%;
+}
+
+.player-wrapper {
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    box-shadow: 0 30px 70px rgba(255, 0, 79, 0.15), inset 0 0 30px rgba(0,0,0,0.6);
+}
+
+aside.sidebar {
+    background: rgba(18, 20, 32, 0.6);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+#channels-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 16px;
+    padding: 16px;
+    overflow-y: auto;
+    max-height: calc(100vh - 180px);
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
+}
+
+#channels-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+#channels-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#channels-list::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.channel-card {
+    background: var(--card-bg);
+    border: 2px solid var(--card-border);
+    border-radius: 16px;
+    padding: 16px 10px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.channel-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: var(--glow);
+    border-color: var(--primary-color);
+}
+
+.channel-card.active {
+    border-color: var(--primary-color);
+    background: rgba(255, 0, 79, 0.12);
+    box-shadow: var(--glow);
+}
+
+.channel-thumb {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 12px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(0,0,0,0.4);
+}
+
+.channel-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.playing-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(102, 248, 89, 0.35);
+    display: none;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 2rem;
+}
+
+.channel-card.active .playing-overlay { display: grid; }
+
+.channel-info h4 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.3;
+}
+
+#notice-bar {
+    background: linear-gradient(90deg, #ff004f, #c7003d);
+    color: white;
+    font-weight: bold;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.live-tag {
+    background: var(--primary-color);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
+
+@media (max-width: 1024px) {
+    .main-container { grid-template-columns: 1fr; }
+    #channels-list { max-height: 50vh; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+    .search-container { width: 100%; }
+    nav { padding: 10px 4%; }
+}
+
+video:fullscreen, iframe:fullscreen {
+    width: 100vw !important;
+    height: 100vh !important;
+    object-fit: contain;
+    background: black;
+}
