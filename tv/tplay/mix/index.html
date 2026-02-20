@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T Play</title>
+    <link rel="icon" href="https://i.postimg.cc/RCnCv14W/T-Play.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="https://i.postimg.cc/RCnCv14W/T-Play.png" alt="T Play Logo" class="sidebar-logo">
+            <button class="close-sidebar" id="closeSidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-nav-item">
+                <a href="#" class="sidebar-nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Mail</span>
+                </a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a href="#" class="sidebar-nav-link">
+                    <i class="fab fa-telegram"></i>
+                    <span>Telegram Channel</span>
+                </a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a href="#" class="sidebar-nav-link">
+                    <i class="fas fa-comments"></i>
+                    <span>Telegram Discussion Group</span>
+                </a>
+            </li>
+            <li class="sidebar-nav-item">
+    <a href="#" class="sidebar-nav-link" id="toggleAdultContent">
+        <i class="fas fa-eye-slash"></i>
+        <span id="adultToggleText">Show 18+ Content</span>
+    </a>
+</li>
+        </ul>
+    </div>
+
+    <div class="header">
+        <div class="logo-container">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <img src="https://i.postimg.cc/RCnCv14W/T-Play.png" alt="T Play Logo" class="logo">
+        </div>
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search channels..." id="channelSearch">
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="filter-container">
+        
+        <!-- Add this new language filter section -->
+    <div class="language-filter-container">
+        <div class="language-bar" id="languageBar">
+            <button class="filter-btn active" data-language="all">All Languages</button>
+            <!-- Language buttons will be dynamically added here -->
+        </div>
+    </div>
+        
+            <div class="category-bar" id="categoryBar">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="News">News</button>
+                <button class="filter-btn" data-category="Sports">Sports</button>
+                <button class="filter-btn" data-category="Entertainment">Entertainment</button>
+                <button class="filter-btn" data-category="Mix-Entertainment">Mix-Entertainment</button>
+                <button class="filter-btn" data-category="Movies">Movies</button>
+                <button class="filter-btn" data-category="Music">Music</button>
+                <button class="filter-btn" data-category="Kids">Kids</button>
+                <button class="filter-btn" data-category="Religious">Religious</button>
+                <button class="filter-btn" data-category="Infotainment">Infotainment</button>
+                <button class="filter-btn" data-category="18+">18+</button>
+            </div>
+
+        <div class="channel-count" id="channelCount">0 channels available</div>
+
+        <div class="channel-list" id="channelList">
+            <!-- Channels will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay">
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <img src="" alt="Channel Logo" class="overlay-logo" id="overlayLogo">
+                <h2 class="overlay-title" id="overlayTitle"></h2>
+            </div>
+            <p class="overlay-subtitle" id="overlaySubtitle"></p>
+            
+            <div class="sources-container" id="overlaySources">
+                <!-- Sources will be loaded here -->
+            </div>
+            
+            <button class="close-btn" id="closeOverlayBtn">Close</button>
+        </div>
+    </div>
+
+    <!-- Remote control instructions -->
+    <div class="remote-info" id="remoteInfo">
+        <p>📺 Use Arrow Keys to navigate | Enter to select | Esc to go back</p>
+    </div>
+
+    <!-- Focus indicator for keyboard navigation -->
+    <div class="focus-indicator" id="focusIndicator"></div>
+
+  <script src="main.js"></script>
+        <script type="text/javascript" data-cfasync="false">
+/*<![CDATA[/* */
+(function(){var i=window,b="fbbdf77e6b86c2b9d962d45002eb13b7",y=[["siteId",832*540-540+252-332+4797778],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],z=["d3d3LnZpc2FyaW9tZWRpYS5jb20va2hhbmRsZWJhcnMubWluLmNzcw==","ZDEzazdwcmF4MXlpMDQuY2xvdWRmcm9udC5uZXQvSG53Zi9jcGF0aC5taW4uanM=","d3d3LnVyZW1kaWxyb25rdy5jb20vbWhhbmRsZWJhcnMubWluLmNzcw==","d3d3Lm5wbmFiaHd5ai5jb20vdnpqbS9pcGF0aC5taW4uanM="],m=-1,v,c,e=function(){clearTimeout(c);m++;if(z[m]&&!(1786267533000<(new Date).getTime()&&1<m)){v=i.document.createElement("script");v.type="text/javascript";v.async=!0;var u=i.document.getElementsByTagName("script")[0];v.src="https://"+atob(z[m]);v.crossOrigin="anonymous";v.onerror=e;v.onload=function(){clearTimeout(c);i[b.slice(0,16)+b.slice(0,16)]||e()};c=setTimeout(e,5E3);u.parentNode.insertBefore(v,u)}};if(!i[b]){try{Object.freeze(i[b]=y)}catch(e){}e()}})();
+/*]]>/* */
+</script>
+
+</body>
+</html>

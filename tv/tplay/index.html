@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T Play</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root{
+  --bg:#050814;
+  --card:#0b1020;
+  --border:#1f2a6b;
+  --accent:#2b5cff;
+  --text:#ffffff;
+  --muted:#aab2d5;
+}
+
+/* RESET */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+
+/* MOBILE SAFE HEIGHT FIX */
+body{
+  min-height:100svh;
+  min-height:100dvh;
+  min-height:calc(var(--vh, 1vh) * 100);
+  background:var(--bg);
+  color:var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* MAIN CONTAINER */
+.container{
+  width:min(900px,94%);
+  text-align:center;
+
+  /* Notch / gesture safe */
+  padding:
+    env(safe-area-inset-top)
+    env(safe-area-inset-right)
+    env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+}
+
+h1{
+  margin:0 0 10px;
+  font-size:28px;
+}
+
+.subtitle{
+  color:var(--muted);
+  margin-bottom:30px;
+  font-size:15px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+@media (max-width:768px){
+  .grid{grid-template-columns:1fr}
+  .subtitle{margin-bottom:22px}
+}
+
+/* CARD */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:30px 20px;
+  cursor:pointer;
+  outline:none;
+  transition:.15s ease;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+}
+
+.card:hover{
+  background:#10183a;
+}
+
+.card:focus-visible{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(43,92,255,.35);
+}
+
+.icon{
+  font-size:46px;
+  color:#dbe2ff;
+}
+
+.title{
+  font-size:18px;
+  font-weight:700;
+}
+
+.desc{
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* FOOTER */
+.footer{
+  margin-top:26px;
+  font-size:13px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1></h1>
+  <div class="subtitle">Select your device to continue</div>
+
+  <div class="grid">
+    <!-- TV -->
+    <div class="card" tabindex="0" data-url="tv/index.html">
+      <div class="icon"><i class="fa-solid fa-tv"></i></div>
+      <div class="title">TV</div>
+      <div class="desc">Smart TV / Android TV / Fire TV</div>
+    </div>
+
+    <!-- Mobile -->
+    <div class="card" tabindex="0" data-url="mobile/index.html">
+      <div class="icon"><i class="fa-solid fa-mobile-screen"></i></div>
+      <div class="title">Mobile</div>
+      <div class="desc">Android / iPhone / Touch devices</div>
+    </div>
+
+    <!-- Laptop / PC -->
+    <div class="card" tabindex="0" data-url="mix/index.html">
+      <div class="icon"><i class="fa-solid fa-laptop"></i></div>
+      <div class="title">Mix</div>
+      <div class="desc">2.0 mix ui</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Remote • Keyboard • Mouse • Touch supported
+  </div>
+</div>
+
+<script>
+/* ===== MOBILE VIEWPORT HEIGHT FIX ===== */
+function setVH(){
+  document.documentElement.style.setProperty(
+    '--vh',
+    window.innerHeight * 0.01 + 'px'
+  );
+}
+setVH();
+window.addEventListener('resize', setVH);
+
+/* ===== INTERACTION ===== */
+const cards = [...document.querySelectorAll(".card")];
+
+function go(url){
+  window.location.href = url;
+}
+
+// Click + Touch
+cards.forEach(card=>{
+  card.addEventListener("click",()=>go(card.dataset.url));
+  card.addEventListener("touchend",e=>{
+    e.preventDefault();
+    go(card.dataset.url);
+  },{passive:false});
+
+  // Enter / Space
+  card.addEventListener("keydown",e=>{
+    if(e.key==="Enter" || e.key===" "){
+      e.preventDefault();
+      go(card.dataset.url);
+    }
+  });
+});
+
+// TV Remote Navigation
+document.addEventListener("keydown",e=>{
+  const arrows=["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"];
+  if(!arrows.includes(e.key)) return;
+
+  const active=document.activeElement;
+  const index=cards.indexOf(active);
+  if(index===-1) return;
+
+  const cols = window.innerWidth <= 768 ? 1 : 3;
+  let next=index;
+
+  if(e.key==="ArrowRight") next=index+1;
+  if(e.key==="ArrowLeft") next=index-1;
+  if(e.key==="ArrowDown") next=index+cols;
+  if(e.key==="ArrowUp") next=index-cols;
+
+  next=Math.max(0,Math.min(cards.length-1,next));
+  if(next!==index){
+    cards[next].focus();
+    e.preventDefault();
+  }
+});
+
+// Auto focus first card (TV friendly)
+window.addEventListener("load",()=>{
+  cards[0].focus();
+});
+</script>
+
+</body>
+</html>

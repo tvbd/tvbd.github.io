@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T Play</title>
+    <link rel="icon" href="https://i.postimg.cc/RCnCv14W/T-Play.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Shaka Player CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.12/controls.css">
+   <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="protection-overlay" id="protectionOverlay"></div>
+
+    <div class="mobile-header"></div>
+    <div class="mobile-nav" id="mobileNav"></div>
+
+    <div class="main-content">
+        <section class="player-section">
+            <div class="video-container">
+                <img id="posterImage" src="https://i.postimg.cc/Pr9sC68t/T-Play-Cover.jpg" alt="T Play Poster">
+                <div id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div>Loading...</div>
+                </div>
+
+                <video id="liveVideo" playsinline webkit-playsinline></video>
+
+                <div class="controls">
+                    <button class="nav-btn" onclick="prevChannel()" title="Previous Channel"><i class="fas fa-chevron-left"></i></button>
+                    <button class="control-btn" onclick="togglePlayPause()" id="playPauseBtn" title="Play/Pause"><i class="fas fa-pause"></i></button>
+                    <button class="control-btn" onclick="cycleZoom()" title="Change View"><i class="fas fa-expand-alt"></i></button>
+                    <button class="control-btn" onclick="toggleFullscreen()" title="Fullscreen"><i class="fas fa-expand"></i></button>
+                    <button class="control-btn ios-fullscreen-btn" onclick="requestFullscreen()" title="Fullscreen (iOS)"><i class="fas fa-expand"></i></button>
+                    <button class="control-btn" onclick="togglePiP()" title="Picture-in-Picture"><i class="fas fa-tv"></i></button>
+
+                    <div class="volume-container">
+                        <button class="mute-btn" onclick="toggleMute()" id="muteBtn" title="Mute"><i class="fas fa-volume-up"></i></button>
+                        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+                    </div>
+
+                    <button class="nav-btn" onclick="nextChannel()" title="Next Channel"><i class="fas fa-chevron-right"></i></button>
+
+                    <select class="source-select" id="sourceMenu">
+                        <option value="0">Main Source</option>
+                    </select>
+
+                    <select class="quality-select" id="qualityMenu">
+                        <option value="auto">Auto Quality</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                <p><i class="fas fa-exclamation-triangle"></i> <span id="errorText">Channel failed to load. Please try another channel.</span></p>
+            </div>
+        </section>
+
+        <aside class="channels-sidebar">
+            <div class="sidebar-header">
+                <div>
+                    <h2 class="section-title">Live Channels</h2>
+                    <div class="channel-count" id="channelCount">0 channels</div>
+                </div>
+                <div class="tplay-logo">
+                    <img src="https://i.postimg.cc/RCnCv14W/T-Play.png" alt="T Play Logo">
+                    <span> </span>
+                </div>
+            </div>
+
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search channels..." id="channelSearch">
+            </div>
+
+            <div class="category-bar">
+                <button class="active" onclick="filterCategory('all', event)">All</button>
+                <button onclick="filterCategory('News', event)">News</button>
+                <button onclick="filterCategory('Kids', event)">Kids</button>
+                <button onclick="filterCategory('Music', event)">Music</button>
+                <button onclick="filterCategory('Movie', event)">Movie</button>
+                <button onclick="filterCategory('Entertainment', event)">Entertainment</button>
+                <button onclick="filterCategory('Mix-Entertainment', event)">Mix Entertainment</button>
+                <button onclick="filterCategory('Sports', event)">Sports</button>
+                <button onclick="filterCategory('Infotainment', event)">Infotainment</button>
+                <button onclick="filterCategory('Religious', event)">Religious</button>
+            </div>
+
+            <div class="channel-list" id="channelList"></div>
+        </aside>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.12/shaka-player.ui.js"></script>
+ 
+     <script src="app.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

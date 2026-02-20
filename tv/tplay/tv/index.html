@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>T Play -Tv</title>
+<link rel="icon" href="https://i.postimg.cc/RCnCv14W/T-Play.png" type="image/png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link rel="stylesheet" href="styles.css"/>
+
+</head>
+
+<body>
+<div class="video-container">
+  <video id="video" autoplay playsinline></video>
+
+  <div id="loading" class="overlayCenter"><div class="spinner"></div></div>
+
+  <div id="noSignal" class="noSignal">
+    <i class="fas fa-tv"></i>
+    <b>No Signal</b>
+    <span id="noSignalText">Trying next source…</span>
+  </div>
+
+  <!-- Bottom Info + Controls -->
+  <div id="infoBar" class="infoBar">
+    <div class="infoLeft">
+      <img id="infoLogo" class="infoLogo" alt="logo">
+      <div class="infoText">
+        <div id="infoTitle" class="infoTitle">Loading…</div>
+        <div id="infoSub" class="infoSub"></div>
+      </div>
+    </div>
+    <div class="infoRight">
+      <button class="btn" id="btnPrev" title="Prev"><i class="fas fa-chevron-left"></i></button>
+      <button class="btn" id="btnPlay" title="Play/Pause"><i class="fas fa-play" id="playIcon"></i></button>
+      <button class="btn" id="btnMute" title="Mute/Unmute"><i class="fas fa-volume-up" id="muteIcon"></i></button>
+      <button class="btn" id="btnFullscreen" title="Fullscreen"><i class="fas fa-expand" id="fullscreenIcon"></i></button>
+      <button class="btn" id="btnSettings" title="Settings"><i class="fas fa-cog"></i></button>
+      <button class="btn" id="btnPackage" title="Packages"><i class="fas fa-box"></i></button>
+      <button class="btn" id="btnGuide" title="Guide"><i class="fas fa-list"></i></button>
+      <button class="btn" id="btnNext" title="Next"><i class="fas fa-chevron-right"></i></button>
+      <button class="btn" id="btnFav" title="Favorite"><i class="fas fa-star" id="favIcon"></i></button>
+    </div>
+  </div>
+
+  <div class="video-logo-watermark hidden" id="videoLogoWatermark">
+  <img src="https://i.postimg.cc/RCnCv14W/T-Play.png" alt="T Play Logo">
+</div>
+
+  <!-- Server Selection Overlay -->
+  <div id="serverOverlay" class="serverOverlay">
+    <div class="serverHeader">
+      <b><i class="fas fa-server"></i> Switch Server</b>
+      <button class="serverClose" id="btnCloseServer">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="serverBody">
+      <div class="serverTitle">
+        <i class="fas fa-tv"></i>
+        <span id="serverChannelName">Current Channel</span>
+      </div>
+      <div id="serverOptions">
+        <!-- Dynamic server options will be added here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Left Guide -->
+  <div id="guide" class="guide">
+    <div class="gTop">
+      <b>Channel Guide</b>
+      <span>←/→ Cat • ↑/↓/→ Tiles • OK Play • ESC Back</span>
+      <button class="guideClose" id="btnCloseGuide">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="gBody">
+      <div class="cat" id="catPanel"></div>
+      <div class="chArea">
+        <div class="searchBox">
+          <input id="search" placeholder="Search (name/number)..." />
+        </div>
+        <div class="grid" id="grid"></div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Package Overlay -->
+  <div id="packageOverlay" class="packageOverlay">
+    <div class="packageHeader">
+      <b><i class="fas fa-box"></i> Packages</b>
+      <button class="packageClose" id="btnClosePackage"><i class="fas fa-times"></i></button>
+    </div>
+
+    <div class="packageBody">
+      <div id="pkgStatus" class="pkgStatus">Access: Basic (Free)</div>
+
+      <div class="pkgGrid" id="pkgGrid"></div>
+
+      <div class="pkgCodeRow">
+        <input id="pkgCodeInput" placeholder="Enter access code" />
+        <button class="pkgBtn" id="btnApplyPkgCode">Apply</button>
+        <button class="pkgBtn" id="btnLogoutPkg">Logout</button>
+      </div>
+
+      <div class="pkgHint">Basic is free. Standard/Premium require a code.</div>
+    </div>
+  </div>
+
+  <!-- Settings Overlay -->
+  <div id="settingsOverlay" class="settingsOverlay">
+    <div class="settingsHeader">
+      <b><i class="fas fa-cog"></i> Settings</b>
+      <button class="settingsClose" id="btnCloseSettings">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="settingsBody">
+      <div class="settingsSection">
+        <div class="settingsTitle">
+          <i class="fas fa-tv"></i>
+          <span>Video Resolution</span>
+        </div>
+        <div id="resolutionList">
+          <!-- Dynamic resolution options will be added here -->
+        </div>
+      </div>
+      
+      <div class="settingsSection">
+        <div class="settingsTitle">
+          <i class="fas fa-volume-up"></i>
+          <span>Audio Language</span>
+        </div>
+        <div id="audioList">
+          <!-- Dynamic audio track options will be added here -->
+        </div>
+      </div>
+      
+      <div class="settingsSection">
+        <div class="settingsTitle">
+          <i class="fas fa-server"></i>
+          <span>Server Source</span>
+        </div>
+        <div id="serverList">
+          <!-- Dynamic server options will be added here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+  
+<script src="codes.js"></script>
+<script src="main.js"></script>
+<!-- Shaka Player only - HLS removed -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.12/shaka-player.compiled.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
