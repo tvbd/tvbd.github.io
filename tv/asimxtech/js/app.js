@@ -435,7 +435,7 @@
       headers["X-Client-Country"] = countryHint;
     }
 
-    const response = await fetch("/tv.json", {
+    const response = await fetch("//raw.githubusercontent.com/tvbd/tvbd.github.io/master/tv/asimxtech/tv.json", {
       cache: "no-store",
       headers
     });
